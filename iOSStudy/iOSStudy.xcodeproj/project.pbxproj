@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,10 @@
 		182E151A25979670007343C4 /* iOSStudyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E151925979670007343C4 /* iOSStudyUITests.m */; };
 		182E154825980A8C007343C4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E154725980A8C007343C4 /* BaseViewController.m */; };
 		182E154E25981624007343C4 /* FeatureListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E154D25981624007343C4 /* FeatureListViewController.m */; };
+		186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6BE2598298A00EA71B8 /* UIScreen+NKExtension.m */; };
+		186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6C5259829A300EA71B8 /* YYKitViewController.m */; };
+		186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6C8259829A300EA71B8 /* MDHTMLLabel.m */; };
+		186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6C9259829A300EA71B8 /* MDHTMLViewController.m */; };
 		564DE6EEE4050BA9C61E183E /* Pods_iOSStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */; };
 		899F9DE455E291B788819876 /* Pods_iOSStudy_iOSStudyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0457CFF1207B5DE6C221E27A /* Pods_iOSStudy_iOSStudyUITests.framework */; };
 		97D9578F04DB5215F1BD4100 /* Pods_iOSStudyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6D35C70D12733982BE3901 /* Pods_iOSStudyTests.framework */; };
@@ -56,6 +60,14 @@
 		182E154725980A8C007343C4 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		182E154C25981624007343C4 /* FeatureListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeatureListViewController.h; sourceTree = "<group>"; };
 		182E154D25981624007343C4 /* FeatureListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeatureListViewController.m; sourceTree = "<group>"; };
+		186CE6BE2598298A00EA71B8 /* UIScreen+NKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+NKExtension.m"; sourceTree = "<group>"; };
+		186CE6BF2598298A00EA71B8 /* UIScreen+NKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+NKExtension.h"; sourceTree = "<group>"; };
+		186CE6C5259829A300EA71B8 /* YYKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYKitViewController.m; sourceTree = "<group>"; };
+		186CE6C6259829A300EA71B8 /* YYKitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKitViewController.h; sourceTree = "<group>"; };
+		186CE6C8259829A300EA71B8 /* MDHTMLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHTMLLabel.m; sourceTree = "<group>"; };
+		186CE6C9259829A300EA71B8 /* MDHTMLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHTMLViewController.m; sourceTree = "<group>"; };
+		186CE6CA259829A300EA71B8 /* MDHTMLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHTMLLabel.h; sourceTree = "<group>"; };
+		186CE6CB259829A300EA71B8 /* MDHTMLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHTMLViewController.h; sourceTree = "<group>"; };
 		5067C21F0903FF04983847D7 /* Pods-iOSStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudy.release.xcconfig"; path = "Target Support Files/Pods-iOSStudy/Pods-iOSStudy.release.xcconfig"; sourceTree = "<group>"; };
 		566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		815E7214DEDCEFCF279A508F /* Pods-iOSStudyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudyTests.debug.xcconfig"; path = "Target Support Files/Pods-iOSStudyTests/Pods-iOSStudyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +160,8 @@
 		182E154225980A4E007343C4 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				186CE6BD2598298A00EA71B8 /* Category */,
+				186CE6BB2598294F00EA71B8 /* Features */,
 				182E14F22597966F007343C4 /* AppDelegate.h */,
 				182E14F32597966F007343C4 /* AppDelegate.m */,
 				182E154625980A8C007343C4 /* BaseViewController.h */,
@@ -157,6 +171,44 @@
 				182E150425979670007343C4 /* main.m */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		186CE6BB2598294F00EA71B8 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				186CE6C7259829A300EA71B8 /* MDHTMLLabel */,
+				186CE6C4259829A300EA71B8 /* YYKIt */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		186CE6BD2598298A00EA71B8 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				186CE6BE2598298A00EA71B8 /* UIScreen+NKExtension.m */,
+				186CE6BF2598298A00EA71B8 /* UIScreen+NKExtension.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		186CE6C4259829A300EA71B8 /* YYKIt */ = {
+			isa = PBXGroup;
+			children = (
+				186CE6C6259829A300EA71B8 /* YYKitViewController.h */,
+				186CE6C5259829A300EA71B8 /* YYKitViewController.m */,
+			);
+			path = YYKIt;
+			sourceTree = "<group>";
+		};
+		186CE6C7259829A300EA71B8 /* MDHTMLLabel */ = {
+			isa = PBXGroup;
+			children = (
+				186CE6CA259829A300EA71B8 /* MDHTMLLabel.h */,
+				186CE6C8259829A300EA71B8 /* MDHTMLLabel.m */,
+				186CE6CB259829A300EA71B8 /* MDHTMLViewController.h */,
+				186CE6C9259829A300EA71B8 /* MDHTMLViewController.m */,
+			);
+			path = MDHTMLLabel;
 			sourceTree = "<group>";
 		};
 		3FD153DB39E05CE038C18353 /* Pods */ = {
@@ -169,7 +221,6 @@
 				815E7214DEDCEFCF279A508F /* Pods-iOSStudyTests.debug.xcconfig */,
 				91DE7C322ADD328E018A0E24 /* Pods-iOSStudyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -422,6 +473,10 @@
 				182E154E25981624007343C4 /* FeatureListViewController.m in Sources */,
 				182E154825980A8C007343C4 /* BaseViewController.m in Sources */,
 				182E14F42597966F007343C4 /* AppDelegate.m in Sources */,
+				186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */,
+				186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */,
+				186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */,
+				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
 				182E150525979670007343C4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

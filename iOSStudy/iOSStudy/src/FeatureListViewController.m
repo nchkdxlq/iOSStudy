@@ -6,17 +6,97 @@
 //
 
 #import "FeatureListViewController.h"
+#import "YYKitViewController.h"
+#import "MDHTMLViewController.h"
 
-@interface FeatureListViewController ()
+static NSString * const kDataSourceClassKey = @"dataSourceClassKey";
+static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
+
+@interface FeatureListViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray<NSDictionary<NSString *, id> *> *dataSource;
 
 @end
 
 @implementation FeatureListViewController
 
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.tableFooterView = [UIView new];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
+    }
+    return _tableView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.title = @"Feature";
+    self.title = @"FeatureList";
+    
+    [self setupSubView];
+    
+    [self setupData];
+}
+
+- (void)setupSubView {
+    [self.view addSubview:self.tableView];
+    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+}
+
+
+
+- (void)setupData {
+    _dataSource = @[
+                    @{kDataSourceClassKey:YYKitViewController.class, kDataSourceTitleKey:@"YYKit"},
+                    @{kDataSourceClassKey:MDHTMLViewController.class, kDataSourceTitleKey:@"MDHTMLLabel"}
+                    ];
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    Class vcClass = [self viewControllerClassTypeAtIndexPath:indexPath];
+    if (vcClass) {
+        UIViewController *vc = [[vcClass alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataSource.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class)];
+    cell.textLabel.font = [UIFont systemFontOfSize:16];
+    cell.textLabel.text = [self titleAtIndexPath:indexPath];
+    return cell;
+}
+
+
+
+- (Class)viewControllerClassTypeAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.dataSource[indexPath.row] objectForKey:kDataSourceClassKey];
+}
+
+- (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.dataSource[indexPath.row] objectForKey:kDataSourceTitleKey];
 }
 
 /*
