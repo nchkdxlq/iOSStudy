@@ -19,6 +19,13 @@
 		186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6C5259829A300EA71B8 /* YYKitViewController.m */; };
 		186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6C8259829A300EA71B8 /* MDHTMLLabel.m */; };
 		186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6C9259829A300EA71B8 /* MDHTMLViewController.m */; };
+		186CE6D825989E5200EA71B8 /* NKAsyncLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6D725989E5200EA71B8 /* NKAsyncLayer.m */; };
+		186CE6DE25989E6F00EA71B8 /* NKLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6DD25989E6F00EA71B8 /* NKLabel.m */; };
+		186CE6ED2598C60C00EA71B8 /* NKTextLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6EC2598C60C00EA71B8 /* NKTextLayout.m */; };
+		186CE6F32598C63700EA71B8 /* NKTextContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6F22598C63700EA71B8 /* NKTextContainer.m */; };
+		186CE6F92598CE2000EA71B8 /* NKTextMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6F82598CE2000EA71B8 /* NKTextMacro.m */; };
+		186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6FF2598D5D300EA71B8 /* NKTextViewController.m */; };
+		186CE70925995E4E00EA71B8 /* NKTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE70825995E4E00EA71B8 /* NKTextLine.m */; };
 		564DE6EEE4050BA9C61E183E /* Pods_iOSStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */; };
 		899F9DE455E291B788819876 /* Pods_iOSStudy_iOSStudyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0457CFF1207B5DE6C221E27A /* Pods_iOSStudy_iOSStudyUITests.framework */; };
 		97D9578F04DB5215F1BD4100 /* Pods_iOSStudyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6D35C70D12733982BE3901 /* Pods_iOSStudyTests.framework */; };
@@ -68,6 +75,20 @@
 		186CE6C9259829A300EA71B8 /* MDHTMLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHTMLViewController.m; sourceTree = "<group>"; };
 		186CE6CA259829A300EA71B8 /* MDHTMLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHTMLLabel.h; sourceTree = "<group>"; };
 		186CE6CB259829A300EA71B8 /* MDHTMLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHTMLViewController.h; sourceTree = "<group>"; };
+		186CE6D625989E5200EA71B8 /* NKAsyncLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKAsyncLayer.h; sourceTree = "<group>"; };
+		186CE6D725989E5200EA71B8 /* NKAsyncLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKAsyncLayer.m; sourceTree = "<group>"; };
+		186CE6DC25989E6F00EA71B8 /* NKLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKLabel.h; sourceTree = "<group>"; };
+		186CE6DD25989E6F00EA71B8 /* NKLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKLabel.m; sourceTree = "<group>"; };
+		186CE6EB2598C60C00EA71B8 /* NKTextLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKTextLayout.h; sourceTree = "<group>"; };
+		186CE6EC2598C60C00EA71B8 /* NKTextLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTextLayout.m; sourceTree = "<group>"; };
+		186CE6F12598C63700EA71B8 /* NKTextContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKTextContainer.h; sourceTree = "<group>"; };
+		186CE6F22598C63700EA71B8 /* NKTextContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTextContainer.m; sourceTree = "<group>"; };
+		186CE6F72598CE2000EA71B8 /* NKTextMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKTextMacro.h; sourceTree = "<group>"; };
+		186CE6F82598CE2000EA71B8 /* NKTextMacro.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTextMacro.m; sourceTree = "<group>"; };
+		186CE6FE2598D5D300EA71B8 /* NKTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKTextViewController.h; sourceTree = "<group>"; };
+		186CE6FF2598D5D300EA71B8 /* NKTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTextViewController.m; sourceTree = "<group>"; };
+		186CE70725995E4E00EA71B8 /* NKTextLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKTextLine.h; sourceTree = "<group>"; };
+		186CE70825995E4E00EA71B8 /* NKTextLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTextLine.m; sourceTree = "<group>"; };
 		5067C21F0903FF04983847D7 /* Pods-iOSStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudy.release.xcconfig"; path = "Target Support Files/Pods-iOSStudy/Pods-iOSStudy.release.xcconfig"; sourceTree = "<group>"; };
 		566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		815E7214DEDCEFCF279A508F /* Pods-iOSStudyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudyTests.debug.xcconfig"; path = "Target Support Files/Pods-iOSStudyTests/Pods-iOSStudyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +181,7 @@
 		182E154225980A4E007343C4 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				186CE6D525989DFC00EA71B8 /* NKText */,
 				186CE6BD2598298A00EA71B8 /* Category */,
 				186CE6BB2598294F00EA71B8 /* Features */,
 				182E14F22597966F007343C4 /* AppDelegate.h */,
@@ -176,6 +198,7 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				186CE6FD2598D5BD00EA71B8 /* NKText */,
 				186CE6C7259829A300EA71B8 /* MDHTMLLabel */,
 				186CE6C4259829A300EA71B8 /* YYKIt */,
 			);
@@ -209,6 +232,34 @@
 				186CE6C9259829A300EA71B8 /* MDHTMLViewController.m */,
 			);
 			path = MDHTMLLabel;
+			sourceTree = "<group>";
+		};
+		186CE6D525989DFC00EA71B8 /* NKText */ = {
+			isa = PBXGroup;
+			children = (
+				186CE6D625989E5200EA71B8 /* NKAsyncLayer.h */,
+				186CE6D725989E5200EA71B8 /* NKAsyncLayer.m */,
+				186CE6DC25989E6F00EA71B8 /* NKLabel.h */,
+				186CE6DD25989E6F00EA71B8 /* NKLabel.m */,
+				186CE70725995E4E00EA71B8 /* NKTextLine.h */,
+				186CE70825995E4E00EA71B8 /* NKTextLine.m */,
+				186CE6EB2598C60C00EA71B8 /* NKTextLayout.h */,
+				186CE6EC2598C60C00EA71B8 /* NKTextLayout.m */,
+				186CE6F12598C63700EA71B8 /* NKTextContainer.h */,
+				186CE6F22598C63700EA71B8 /* NKTextContainer.m */,
+				186CE6F72598CE2000EA71B8 /* NKTextMacro.h */,
+				186CE6F82598CE2000EA71B8 /* NKTextMacro.m */,
+			);
+			path = NKText;
+			sourceTree = "<group>";
+		};
+		186CE6FD2598D5BD00EA71B8 /* NKText */ = {
+			isa = PBXGroup;
+			children = (
+				186CE6FE2598D5D300EA71B8 /* NKTextViewController.h */,
+				186CE6FF2598D5D300EA71B8 /* NKTextViewController.m */,
+			);
+			path = NKText;
 			sourceTree = "<group>";
 		};
 		3FD153DB39E05CE038C18353 /* Pods */ = {
@@ -472,12 +523,19 @@
 			files = (
 				182E154E25981624007343C4 /* FeatureListViewController.m in Sources */,
 				182E154825980A8C007343C4 /* BaseViewController.m in Sources */,
+				186CE6D825989E5200EA71B8 /* NKAsyncLayer.m in Sources */,
+				186CE6DE25989E6F00EA71B8 /* NKLabel.m in Sources */,
 				182E14F42597966F007343C4 /* AppDelegate.m in Sources */,
+				186CE6F32598C63700EA71B8 /* NKTextContainer.m in Sources */,
+				186CE6F92598CE2000EA71B8 /* NKTextMacro.m in Sources */,
 				186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */,
 				186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */,
 				186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */,
+				186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */,
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
 				182E150525979670007343C4 /* main.m in Sources */,
+				186CE70925995E4E00EA71B8 /* NKTextLine.m in Sources */,
+				186CE6ED2598C60C00EA71B8 /* NKTextLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

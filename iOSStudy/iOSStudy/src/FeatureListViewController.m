@@ -8,6 +8,7 @@
 #import "FeatureListViewController.h"
 #import "YYKitViewController.h"
 #import "MDHTMLViewController.h"
+#import "NKTextViewController.h"
 
 static NSString * const kDataSourceClassKey = @"dataSourceClassKey";
 static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
@@ -52,7 +53,8 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
 - (void)setupData {
     _dataSource = @[
                     @{kDataSourceClassKey:YYKitViewController.class, kDataSourceTitleKey:@"YYKit"},
-                    @{kDataSourceClassKey:MDHTMLViewController.class, kDataSourceTitleKey:@"MDHTMLLabel"}
+                    @{kDataSourceClassKey:MDHTMLViewController.class, kDataSourceTitleKey:@"MDHTMLLabel"},
+                    @{kDataSourceClassKey:NKTextViewController.class, kDataSourceTitleKey:@"NKText"}
                     ];
 }
 
