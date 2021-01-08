@@ -8,6 +8,7 @@
 
 #import "YYKitViewController.h"
 #import <YYKit/YYKit.h>
+#import <Masonry/Masonry.h>
 
 #import "UIScreen+NKExtension.h"
 
@@ -30,6 +31,7 @@
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:text];
     [attr setLineSpacing:2];
     [attr setFont:[UIFont systemFontOfSize:18]];
+//    attr.alignment = NSTextAlignmentRight;
     
     YYTextHighlight *highlight1 = [YYTextHighlight new];
     [highlight1 setColor:UIColor.blueColor];
@@ -53,9 +55,19 @@
     yyLabel.backgroundColor = UIColor.lightGrayColor;
     [self.view addSubview:yyLabel];
     
-    CGFloat margin = 10;
-    CGFloat width = UIScreen.width - 2 * margin;
-    yyLabel.frame = CGRectMake(10, 100, width, 200);
+//    CGFloat margin = 10;
+//    CGFloat width = UIScreen.width - 2 * margin;
+//    CGSize size = CGSizeMake(width, MAXFLOAT);
+//    CGSize yySize = [yyLabel sizeThatFits:size];
+//    yyLabel.frame = CGRectMake(10, 100, yySize.width, yySize.height);
+    
+    [yyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.centerY.equalTo(self.view);
+    }];
+    
+    YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) text:attr];
+    NSLog(@"textBoundingRect = %@, textBoundingSize = %@", NSStringFromCGRect(layout.textBoundingRect), NSStringFromCGSize(layout.textBoundingSize));
 }
 
 

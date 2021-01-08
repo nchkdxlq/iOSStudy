@@ -27,6 +27,7 @@
 		186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6FF2598D5D300EA71B8 /* NKTextViewController.m */; };
 		186CE70925995E4E00EA71B8 /* NKTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE70825995E4E00EA71B8 /* NKTextLine.m */; };
 		564DE6EEE4050BA9C61E183E /* Pods_iOSStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */; };
+		767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 767E612525A810C6007066F3 /* SDWebImageViewController.m */; };
 		899F9DE455E291B788819876 /* Pods_iOSStudy_iOSStudyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0457CFF1207B5DE6C221E27A /* Pods_iOSStudy_iOSStudyUITests.framework */; };
 		97D9578F04DB5215F1BD4100 /* Pods_iOSStudyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6D35C70D12733982BE3901 /* Pods_iOSStudyTests.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,8 @@
 		186CE70825995E4E00EA71B8 /* NKTextLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTextLine.m; sourceTree = "<group>"; };
 		5067C21F0903FF04983847D7 /* Pods-iOSStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudy.release.xcconfig"; path = "Target Support Files/Pods-iOSStudy/Pods-iOSStudy.release.xcconfig"; sourceTree = "<group>"; };
 		566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		767E612425A810C6007066F3 /* SDWebImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDWebImageViewController.h; sourceTree = "<group>"; };
+		767E612525A810C6007066F3 /* SDWebImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDWebImageViewController.m; sourceTree = "<group>"; };
 		815E7214DEDCEFCF279A508F /* Pods-iOSStudyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudyTests.debug.xcconfig"; path = "Target Support Files/Pods-iOSStudyTests/Pods-iOSStudyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		91DE7C322ADD328E018A0E24 /* Pods-iOSStudyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudyTests.release.xcconfig"; path = "Target Support Files/Pods-iOSStudyTests/Pods-iOSStudyTests.release.xcconfig"; sourceTree = "<group>"; };
 		A408CDC3388B2A01AFD4DBDA /* Pods-iOSStudy-iOSStudyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudy-iOSStudyUITests.release.xcconfig"; path = "Target Support Files/Pods-iOSStudy-iOSStudyUITests/Pods-iOSStudy-iOSStudyUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				767E612325A810A1007066F3 /* SDWebImage */,
 				186CE6FD2598D5BD00EA71B8 /* NKText */,
 				186CE6C7259829A300EA71B8 /* MDHTMLLabel */,
 				186CE6C4259829A300EA71B8 /* YYKIt */,
@@ -273,6 +277,15 @@
 				91DE7C322ADD328E018A0E24 /* Pods-iOSStudyTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		767E612325A810A1007066F3 /* SDWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				767E612425A810C6007066F3 /* SDWebImageViewController.h */,
+				767E612525A810C6007066F3 /* SDWebImageViewController.m */,
+			);
+			path = SDWebImage;
 			sourceTree = "<group>";
 		};
 		9E12B071240BBE4CBE63EECF /* Frameworks */ = {
@@ -533,6 +546,7 @@
 				186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */,
 				186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */,
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
+				767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */,
 				182E150525979670007343C4 /* main.m in Sources */,
 				186CE70925995E4E00EA71B8 /* NKTextLine.m in Sources */,
 				186CE6ED2598C60C00EA71B8 /* NKTextLayout.m in Sources */,
@@ -701,13 +715,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PAXG53JU3J;
+				DEVELOPMENT_TEAM = 733RR644TP;
 				INFOPLIST_FILE = iOSStudy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.knox.iOSStudy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nchkdxlq.iOSStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -720,13 +734,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PAXG53JU3J;
+				DEVELOPMENT_TEAM = 733RR644TP;
 				INFOPLIST_FILE = iOSStudy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.knox.iOSStudy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nchkdxlq.iOSStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

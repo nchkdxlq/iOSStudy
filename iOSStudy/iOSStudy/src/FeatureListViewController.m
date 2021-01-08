@@ -9,6 +9,7 @@
 #import "YYKitViewController.h"
 #import "MDHTMLViewController.h"
 #import "NKTextViewController.h"
+#import "SDWebImageViewController.h"
 
 static NSString * const kDataSourceClassKey = @"dataSourceClassKey";
 static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
@@ -54,7 +55,8 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
     _dataSource = @[
                     @{kDataSourceClassKey:YYKitViewController.class, kDataSourceTitleKey:@"YYKit"},
                     @{kDataSourceClassKey:MDHTMLViewController.class, kDataSourceTitleKey:@"MDHTMLLabel"},
-                    @{kDataSourceClassKey:NKTextViewController.class, kDataSourceTitleKey:@"NKText"}
+                    @{kDataSourceClassKey:NKTextViewController.class, kDataSourceTitleKey:@"NKText"},
+                    @{kDataSourceClassKey:SDWebImageViewController.class, kDataSourceTitleKey:@"SDWebImage"}
                     ];
 }
 
