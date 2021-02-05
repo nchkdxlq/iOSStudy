@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CGGeometry.h>
+#import <CoreText/CoreText.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NKTextContainer *container;
 @property (nonatomic, strong, readonly) NSAttributedString *text;
 @property (nonatomic, assign, readonly) NSRange range;
-
+///< CTFrameSetter
+@property (nonatomic, readonly) CTFramesetterRef frameSetter;
+///< CTFrame
+@property (nonatomic, readonly) CTFrameRef frame;
+@property (nonatomic, readwrite) NSArray *lines;
 
 + (nullable instancetype)layoutWithContainerSize:(CGSize)size text:(NSAttributedString *)text;
 
