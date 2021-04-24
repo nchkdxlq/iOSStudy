@@ -11,6 +11,8 @@
 #import "NKTextViewController.h"
 #import "SDWebImageViewController.h"
 
+#import "LaunchImageHelper.h"
+
 static NSString * const kDataSourceClassKey = @"dataSourceClassKey";
 static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
 

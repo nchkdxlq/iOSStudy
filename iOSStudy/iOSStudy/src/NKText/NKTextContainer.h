@@ -7,17 +7,28 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CGGeometry.h>
-#import <UIKit/UIGeometry.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NKTextContainer : NSObject <NSCopying>
 
 
-@property (nonatomic, assign) CGSize size;
+@property CGSize size;
 
-@property (nonatomic, assign) UIEdgeInsets insets;
+@property UIEdgeInsets insets;
 
+/// Custom constrained path. Set this property to ignore `size` and `insets`. Default is nil.
+@property (nullable, copy) UIBezierPath *path;
+
+/// Maximum number of rows, 0 means no limit. Default is 0.
+@property NSUInteger maximumNumberOfRows;
+
+/// Path line width. Default is 0;
+@property CGFloat pathLineWidth;
+
+/// Whether the text is vertical form (may used for CJK text layout). Default is NO.
+@property (getter=isVerticalForm) BOOL verticalForm;
 
 + (instancetype)containerWithSize:(CGSize)size;
 

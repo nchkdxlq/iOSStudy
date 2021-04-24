@@ -13,6 +13,11 @@ static inline CFRange NKCFRangeFromNSRange(NSRange range) {
     return CFRangeMake(range.location, range.length);
 }
 
+static inline NSRange NKNSRangeFromCFRange(CFRange range) {
+    return NSMakeRange(range.location, range.length);
+}
+
+
 @interface NKTextMacro : NSObject
 
 @end
