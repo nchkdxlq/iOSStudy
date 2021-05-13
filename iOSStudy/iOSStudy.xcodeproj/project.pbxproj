@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181B4EB32635B33C0071526C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 181B4EB22635B33C0071526C /* main.m */; };
+		181B4EBF2635B3A00071526C /* NKClassEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 181B4EBE2635B3A00071526C /* NKClassEntry.m */; };
 		182E14F42597966F007343C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E14F32597966F007343C4 /* AppDelegate.m */; };
 		182E14FF25979670007343C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182E14FE25979670007343C4 /* Assets.xcassets */; };
 		182E150225979670007343C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182E150025979670007343C4 /* LaunchScreen.storyboard */; };
@@ -26,6 +28,9 @@
 		186CE6F92598CE2000EA71B8 /* NKTextMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6F82598CE2000EA71B8 /* NKTextMacro.m */; };
 		186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6FF2598D5D300EA71B8 /* NKTextViewController.m */; };
 		186CE70925995E4E00EA71B8 /* NKTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE70825995E4E00EA71B8 /* NKTextLine.m */; };
+		186E358F2640E4A400FC810F /* NKBlockEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E358E2640E4A400FC810F /* NKBlockEntry.m */; };
+		186E35922644225200FC810F /* NKBlockCaptureObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35912644225200FC810F /* NKBlockCaptureObject.m */; };
+		186E35962644264200FC810F /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		564DE6EEE4050BA9C61E183E /* Pods_iOSStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */; };
 		763A4F5F25BACBB900A46471 /* NKCGUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 763A4F5E25BACBB900A46471 /* NKCGUtilities.m */; };
 		767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 767E612525A810C6007066F3 /* SDWebImageViewController.m */; };
@@ -53,8 +58,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		181B4EAE2635B33C0071526C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0457CFF1207B5DE6C221E27A /* Pods_iOSStudy_iOSStudyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStudy_iOSStudyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		181B4EB02635B33C0071526C /* Interview */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Interview; sourceTree = BUILT_PRODUCTS_DIR; };
+		181B4EB22635B33C0071526C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		181B4EBD2635B3A00071526C /* NKClassEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKClassEntry.h; sourceTree = "<group>"; };
+		181B4EBE2635B3A00071526C /* NKClassEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKClassEntry.m; sourceTree = "<group>"; };
 		182E14EF2597966F007343C4 /* iOSStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		182E14F22597966F007343C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		182E14F32597966F007343C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -94,6 +115,13 @@
 		186CE6FF2598D5D300EA71B8 /* NKTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTextViewController.m; sourceTree = "<group>"; };
 		186CE70725995E4E00EA71B8 /* NKTextLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKTextLine.h; sourceTree = "<group>"; };
 		186CE70825995E4E00EA71B8 /* NKTextLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTextLine.m; sourceTree = "<group>"; };
+		186E358D2640E4A400FC810F /* NKBlockEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKBlockEntry.h; sourceTree = "<group>"; };
+		186E358E2640E4A400FC810F /* NKBlockEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKBlockEntry.m; sourceTree = "<group>"; };
+		186E35902644225200FC810F /* NKBlockCaptureObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKBlockCaptureObject.h; sourceTree = "<group>"; };
+		186E35912644225200FC810F /* NKBlockCaptureObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKBlockCaptureObject.m; sourceTree = "<group>"; };
+		186E35932644233200FC810F /* NKBlockCaptureObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NKBlockCaptureObject.cpp; sourceTree = "<group>"; };
+		186E35942644264200FC810F /* NSObject+RetainCount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+RetainCount.h"; sourceTree = "<group>"; };
+		186E35952644264200FC810F /* NSObject+RetainCount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RetainCount.m"; sourceTree = "<group>"; };
 		5067C21F0903FF04983847D7 /* Pods-iOSStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudy.release.xcconfig"; path = "Target Support Files/Pods-iOSStudy/Pods-iOSStudy.release.xcconfig"; sourceTree = "<group>"; };
 		566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		763A4F5D25BACBB900A46471 /* NKCGUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCGUtilities.h; sourceTree = "<group>"; };
@@ -115,6 +143,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		181B4EAD2635B33C0071526C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		182E14EC2597966F007343C4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,12 +177,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181B4EB12635B33C0071526C /* Interview */ = {
+			isa = PBXGroup;
+			children = (
+				186E358C2640E48300FC810F /* Block */,
+				181B4EBC2635B3790071526C /* NSObject */,
+				181B4EB22635B33C0071526C /* main.m */,
+				186E35942644264200FC810F /* NSObject+RetainCount.h */,
+				186E35952644264200FC810F /* NSObject+RetainCount.m */,
+			);
+			path = Interview;
+			sourceTree = "<group>";
+		};
+		181B4EBC2635B3790071526C /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				181B4EBD2635B3A00071526C /* NKClassEntry.h */,
+				181B4EBE2635B3A00071526C /* NKClassEntry.m */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
 		182E14E62597966F007343C4 = {
 			isa = PBXGroup;
 			children = (
 				182E14F12597966F007343C4 /* iOSStudy */,
 				182E150D25979670007343C4 /* iOSStudyTests */,
 				182E151825979670007343C4 /* iOSStudyUITests */,
+				181B4EB12635B33C0071526C /* Interview */,
 				182E14F02597966F007343C4 /* Products */,
 				3FD153DB39E05CE038C18353 /* Pods */,
 				9E12B071240BBE4CBE63EECF /* Frameworks */,
@@ -160,6 +217,7 @@
 				182E14EF2597966F007343C4 /* iOSStudy.app */,
 				182E150A25979670007343C4 /* iOSStudyTests.xctest */,
 				182E151525979670007343C4 /* iOSStudyUITests.xctest */,
+				181B4EB02635B33C0071526C /* Interview */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,6 +341,18 @@
 			path = NKText;
 			sourceTree = "<group>";
 		};
+		186E358C2640E48300FC810F /* Block */ = {
+			isa = PBXGroup;
+			children = (
+				186E358D2640E4A400FC810F /* NKBlockEntry.h */,
+				186E358E2640E4A400FC810F /* NKBlockEntry.m */,
+				186E35902644225200FC810F /* NKBlockCaptureObject.h */,
+				186E35912644225200FC810F /* NKBlockCaptureObject.m */,
+				186E35932644233200FC810F /* NKBlockCaptureObject.cpp */,
+			);
+			path = Block;
+			sourceTree = "<group>";
+		};
 		3FD153DB39E05CE038C18353 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +399,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		181B4EAF2635B33C0071526C /* Interview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 181B4EB62635B33C0071526C /* Build configuration list for PBXNativeTarget "Interview" */;
+			buildPhases = (
+				181B4EAC2635B33C0071526C /* Sources */,
+				181B4EAD2635B33C0071526C /* Frameworks */,
+				181B4EAE2635B33C0071526C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Interview;
+			productName = Interview;
+			productReference = 181B4EB02635B33C0071526C /* Interview */;
+			productType = "com.apple.product-type.tool";
+		};
 		182E14EE2597966F007343C4 /* iOSStudy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 182E151E25979670007343C4 /* Build configuration list for PBXNativeTarget "iOSStudy" */;
@@ -395,6 +482,9 @@
 			attributes = {
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
+					181B4EAF2635B33C0071526C = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					182E14EE2597966F007343C4 = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -424,6 +514,7 @@
 				182E14EE2597966F007343C4 /* iOSStudy */,
 				182E150925979670007343C4 /* iOSStudyTests */,
 				182E151425979670007343C4 /* iOSStudyUITests */,
+				181B4EAF2635B33C0071526C /* Interview */,
 			);
 		};
 /* End PBXProject section */
@@ -558,6 +649,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		181B4EAC2635B33C0071526C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				186E35962644264200FC810F /* NSObject+RetainCount.m in Sources */,
+				186E35922644225200FC810F /* NKBlockCaptureObject.m in Sources */,
+				181B4EBF2635B3A00071526C /* NKClassEntry.m in Sources */,
+				181B4EB32635B33C0071526C /* main.m in Sources */,
+				186E358F2640E4A400FC810F /* NKBlockEntry.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		182E14EB2597966F007343C4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -628,6 +731,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		181B4EB42635B33C0071526C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PAXG53JU3J;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		181B4EB52635B33C0071526C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PAXG53JU3J;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		182E151C25979670007343C4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -861,6 +988,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		181B4EB62635B33C0071526C /* Build configuration list for PBXNativeTarget "Interview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				181B4EB42635B33C0071526C /* Debug */,
+				181B4EB52635B33C0071526C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		182E14EA2597966F007343C4 /* Build configuration list for PBXProject "iOSStudy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
