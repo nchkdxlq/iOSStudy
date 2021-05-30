@@ -8,11 +8,13 @@
 #import <Foundation/Foundation.h>
 #import "NKClassEntry.h"
 #import "NKBlockEntry.h"
+#import "NKRuntime.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        [NKClassEntry entry];
-        [NKBlockEntry entry];
+//        [NKBlockEntry entry];
+        [NKRuntime entry];
     }
     return 0;
 }
