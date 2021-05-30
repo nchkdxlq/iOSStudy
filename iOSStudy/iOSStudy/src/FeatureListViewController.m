@@ -10,6 +10,7 @@
 #import "MDHTMLViewController.h"
 #import "NKTextViewController.h"
 #import "SDWebImageViewController.h"
+#import "NKRunLoopViewController.h"
 
 #import "LaunchImageHelper.h"
 
@@ -44,6 +45,8 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
     [self setupSubView];
     
     [self setupData];
+    
+    [NSRunLoop currentRunLoop];
 }
 
 - (void)setupSubView {
@@ -58,8 +61,9 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:YYKitViewController.class, kDataSourceTitleKey:@"YYKit"},
                     @{kDataSourceClassKey:MDHTMLViewController.class, kDataSourceTitleKey:@"MDHTMLLabel"},
                     @{kDataSourceClassKey:NKTextViewController.class, kDataSourceTitleKey:@"NKText"},
-                    @{kDataSourceClassKey:SDWebImageViewController.class, kDataSourceTitleKey:@"SDWebImage"}
-                    ];
+                    @{kDataSourceClassKey:SDWebImageViewController.class, kDataSourceTitleKey:@"SDWebImage"},
+                    @{kDataSourceClassKey:NKRunLoopViewController.class, kDataSourceTitleKey:@"RunLoop"}
+                ];
 }
 
 #pragma mark - UITableViewDelegate
