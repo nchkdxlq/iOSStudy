@@ -1,6 +1,7 @@
 PODS:
   - Aspects (1.4.1)
   - Masonry (1.1.0)
+  - OCMock (3.8.1)
   - SDWebImage (5.10.1):
     - SDWebImage/Core (= 5.10.1)
   - SDWebImage/Core (5.10.1)
@@ -11,6 +12,7 @@ PODS:
 DEPENDENCIES:
   - Aspects
   - Masonry
+  - OCMock
   - SDWebImage
   - YYKit
 
@@ -18,15 +20,17 @@ SPEC REPOS:
   trunk:
     - Aspects
     - Masonry
+    - OCMock
     - SDWebImage
     - YYKit
 
 SPEC CHECKSUMS:
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  OCMock: 29f6e52085b4e7d9b075cbf03ed7c3112f82f934
   SDWebImage: f66a16b95183b92ed6b965ad21d33167bc07612d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: ad3af5a03006eac9988b9962942cec3dfae59c72
+PODFILE CHECKSUM: 6b303349e55385b91bfdccb360ee317cf22ea1f2
 
 COCOAPODS: 1.10.0

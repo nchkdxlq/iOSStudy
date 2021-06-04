@@ -34,6 +34,8 @@
 		186E359A2650DBB000FC810F /* NKRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 186E35992650DBB000FC810F /* NKRuntime.mm */; };
 		18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */; };
 		18CF9AD62663E05300A34A85 /* NKGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD52663E05300A34A85 /* NKGCDViewController.m */; };
+		18CF9AD92669A73500A34A85 /* NKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD82669A73500A34A85 /* NKHTTPClient.m */; };
+		18CF9ADB2669AA4F00A34A85 /* NKHTTPClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9ADA2669AA4F00A34A85 /* NKHTTPClientTest.m */; };
 		564DE6EEE4050BA9C61E183E /* Pods_iOSStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */; };
 		763A4F5F25BACBB900A46471 /* NKCGUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 763A4F5E25BACBB900A46471 /* NKCGUtilities.m */; };
 		767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 767E612525A810C6007066F3 /* SDWebImageViewController.m */; };
@@ -131,6 +133,9 @@
 		18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKRunLoopViewController.m; sourceTree = "<group>"; };
 		18CF9AD42663E05300A34A85 /* NKGCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKGCDViewController.h; sourceTree = "<group>"; };
 		18CF9AD52663E05300A34A85 /* NKGCDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKGCDViewController.m; sourceTree = "<group>"; };
+		18CF9AD72669A73500A34A85 /* NKHTTPClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKHTTPClient.h; sourceTree = "<group>"; };
+		18CF9AD82669A73500A34A85 /* NKHTTPClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKHTTPClient.m; sourceTree = "<group>"; };
+		18CF9ADA2669AA4F00A34A85 /* NKHTTPClientTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKHTTPClientTest.m; sourceTree = "<group>"; };
 		5067C21F0903FF04983847D7 /* Pods-iOSStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudy.release.xcconfig"; path = "Target Support Files/Pods-iOSStudy/Pods-iOSStudy.release.xcconfig"; sourceTree = "<group>"; };
 		566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		763A4F5D25BACBB900A46471 /* NKCGUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCGUtilities.h; sourceTree = "<group>"; };
@@ -247,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				182E150E25979670007343C4 /* iOSStudyTests.m */,
+				18CF9ADA2669AA4F00A34A85 /* NKHTTPClientTest.m */,
 				182E151025979670007343C4 /* Info.plist */,
 			);
 			path = iOSStudyTests;
@@ -275,6 +281,8 @@
 				182E154C25981624007343C4 /* FeatureListViewController.h */,
 				182E154D25981624007343C4 /* FeatureListViewController.m */,
 				182E150425979670007343C4 /* main.m */,
+				18CF9AD72669A73500A34A85 /* NKHTTPClient.h */,
+				18CF9AD82669A73500A34A85 /* NKHTTPClient.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -482,6 +490,7 @@
 				182E150625979670007343C4 /* Sources */,
 				182E150725979670007343C4 /* Frameworks */,
 				182E150825979670007343C4 /* Resources */,
+				0EE95A3F8F69418DE20521D0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -585,6 +594,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0EE95A3F8F69418DE20521D0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSStudyTests/Pods-iOSStudyTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSStudyTests/Pods-iOSStudyTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSStudyTests/Pods-iOSStudyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		26100B9762B11EB4B41748BE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -706,6 +732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				182E154E25981624007343C4 /* FeatureListViewController.m in Sources */,
+				18CF9AD92669A73500A34A85 /* NKHTTPClient.m in Sources */,
 				182E154825980A8C007343C4 /* BaseViewController.m in Sources */,
 				186CE6D825989E5200EA71B8 /* NKAsyncLayer.m in Sources */,
 				186CE6DE25989E6F00EA71B8 /* NKLabel.m in Sources */,
@@ -735,6 +762,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				182E150F25979670007343C4 /* iOSStudyTests.m in Sources */,
+				18CF9ADB2669AA4F00A34A85 /* NKHTTPClientTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

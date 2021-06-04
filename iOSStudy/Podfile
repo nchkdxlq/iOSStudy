@@ -14,6 +14,7 @@ target 'iOSStudy' do
   target 'iOSStudyTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'OCMock'
   end
 
   target 'iOSStudyUITests' do
