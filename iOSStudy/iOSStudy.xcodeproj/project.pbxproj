@@ -33,6 +33,7 @@
 		186E35962644264200FC810F /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		186E359A2650DBB000FC810F /* NKRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 186E35992650DBB000FC810F /* NKRuntime.mm */; };
 		18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */; };
+		18CF9AD62663E05300A34A85 /* NKGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD52663E05300A34A85 /* NKGCDViewController.m */; };
 		564DE6EEE4050BA9C61E183E /* Pods_iOSStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */; };
 		763A4F5F25BACBB900A46471 /* NKCGUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 763A4F5E25BACBB900A46471 /* NKCGUtilities.m */; };
 		767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 767E612525A810C6007066F3 /* SDWebImageViewController.m */; };
@@ -128,6 +129,8 @@
 		186E35992650DBB000FC810F /* NKRuntime.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NKRuntime.mm; sourceTree = "<group>"; };
 		18CF9AD0265D4C1D00A34A85 /* NKRunLoopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKRunLoopViewController.h; sourceTree = "<group>"; };
 		18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKRunLoopViewController.m; sourceTree = "<group>"; };
+		18CF9AD42663E05300A34A85 /* NKGCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKGCDViewController.h; sourceTree = "<group>"; };
+		18CF9AD52663E05300A34A85 /* NKGCDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKGCDViewController.m; sourceTree = "<group>"; };
 		5067C21F0903FF04983847D7 /* Pods-iOSStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudy.release.xcconfig"; path = "Target Support Files/Pods-iOSStudy/Pods-iOSStudy.release.xcconfig"; sourceTree = "<group>"; };
 		566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		763A4F5D25BACBB900A46471 /* NKCGUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCGUtilities.h; sourceTree = "<group>"; };
@@ -279,6 +282,7 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				18CF9AD32663E02600A34A85 /* GCD */,
 				18CF9ACF265D4BE800A34A85 /* RunLoop */,
 				767E612325A810A1007066F3 /* SDWebImage */,
 				186CE6FD2598D5BD00EA71B8 /* NKText */,
@@ -377,6 +381,15 @@
 				18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */,
 			);
 			path = RunLoop;
+			sourceTree = "<group>";
+		};
+		18CF9AD32663E02600A34A85 /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				18CF9AD42663E05300A34A85 /* NKGCDViewController.h */,
+				18CF9AD52663E05300A34A85 /* NKGCDViewController.m */,
+			);
+			name = GCD;
 			sourceTree = "<group>";
 		};
 		3FD153DB39E05CE038C18353 /* Pods */ = {
@@ -702,6 +715,7 @@
 				186CE6F92598CE2000EA71B8 /* NKTextMacro.m in Sources */,
 				186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */,
 				186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */,
+				18CF9AD62663E05300A34A85 /* NKGCDViewController.m in Sources */,
 				186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */,
 				186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */,
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,

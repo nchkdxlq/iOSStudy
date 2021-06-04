@@ -11,6 +11,7 @@
 #import "NKTextViewController.h"
 #import "SDWebImageViewController.h"
 #import "NKRunLoopViewController.h"
+#import "NKGCDViewController.h"
 
 #import "LaunchImageHelper.h"
 
@@ -62,7 +63,8 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:MDHTMLViewController.class, kDataSourceTitleKey:@"MDHTMLLabel"},
                     @{kDataSourceClassKey:NKTextViewController.class, kDataSourceTitleKey:@"NKText"},
                     @{kDataSourceClassKey:SDWebImageViewController.class, kDataSourceTitleKey:@"SDWebImage"},
-                    @{kDataSourceClassKey:NKRunLoopViewController.class, kDataSourceTitleKey:@"RunLoop"}
+                    @{kDataSourceClassKey:NKRunLoopViewController.class, kDataSourceTitleKey:@"RunLoop"},
+                    @{kDataSourceClassKey:NKGCDViewController.class, kDataSourceTitleKey:@"GCD"}
                 ];
 }
 
@@ -78,6 +80,7 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
     Class vcClass = [self viewControllerClassTypeAtIndexPath:indexPath];
     if (vcClass) {
         UIViewController *vc = [[vcClass alloc] init];
+        vc.title = [self titleAtIndexPath:indexPath];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
