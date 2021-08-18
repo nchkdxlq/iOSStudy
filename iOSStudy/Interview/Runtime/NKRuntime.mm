@@ -8,6 +8,7 @@
 #import "NKRuntime.h"
 #import <objc/runtime.h>
 
+
 //////////////////////////////////////////////////////
 @interface NKPerson : NSObject
 
@@ -18,6 +19,7 @@
 @end
 
 @implementation NKPerson
+
 
 @end
 
@@ -51,8 +53,8 @@
 
 
 + (void)entry {
-    NKStudent *st = [NKStudent new];
-    [st setValue:nil forKey:@"name"];
+//    NKStudent *st = [NKStudent new];
+//    [st setValue:nil forKey:@"name"];
 }
 
 

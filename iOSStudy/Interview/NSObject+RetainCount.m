@@ -9,7 +9,7 @@
 
 @implementation NSObject (RetainCount)
 
-- (NSInteger)getRetainCount {
+- (NSUInteger)getRetainCount {
     return self.retainCount;
 }
 

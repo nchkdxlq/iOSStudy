@@ -8,6 +8,7 @@
 #import "NKBlockEntry.h"
 #import "NKBlockCaptureObject.h"
 
+
 @implementation NKBlockEntry
 
 + (void)entry {

@@ -13,6 +13,7 @@
 #import "NKRunLoopViewController.h"
 #import "NKGCDViewController.h"
 #import "NKTimerViewController.h"
+#import "LockViewController.h"
 
 #import "LaunchImageHelper.h"
 
@@ -66,7 +67,8 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:SDWebImageViewController.class, kDataSourceTitleKey:@"SDWebImage"},
                     @{kDataSourceClassKey:NKRunLoopViewController.class, kDataSourceTitleKey:@"RunLoop"},
                     @{kDataSourceClassKey:NKGCDViewController.class, kDataSourceTitleKey:@"GCD"},
-                    @{kDataSourceClassKey:NKTimerViewController.class, kDataSourceTitleKey:@"Timer"}
+                    @{kDataSourceClassKey:NKTimerViewController.class, kDataSourceTitleKey:@"Timer"},
+                    @{kDataSourceClassKey:LockViewController.class, kDataSourceTitleKey:@"Lock"}
                 ];
 }
 

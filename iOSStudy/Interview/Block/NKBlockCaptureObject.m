@@ -25,6 +25,11 @@ void stackBlock(void) {
     };
     NSLog(@"block = %@", [block class]);
     NSLog(@"222 RetainCount = %zd", [obj getRetainCount]);
+    
+    void(^block_assign)(void) = block;
+    
+    NSLog(@"block = %@", [block_assign class]);
+    NSLog(@"333 RetainCount = %zd", [obj getRetainCount]);
 }
 
 void mallocBlock(void) {

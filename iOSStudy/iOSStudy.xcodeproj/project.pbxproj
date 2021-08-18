@@ -32,6 +32,9 @@
 		186E35922644225200FC810F /* NKBlockCaptureObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35912644225200FC810F /* NKBlockCaptureObject.m */; };
 		186E35962644264200FC810F /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		186E359A2650DBB000FC810F /* NKRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 186E35992650DBB000FC810F /* NKRuntime.mm */; };
+		18A9370F26C78638000088B7 /* LockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9370E26C78638000088B7 /* LockViewController.m */; };
+		18A9371026C7887C000088B7 /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A9371426C78AEF000088B7 /* Synchronized.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9371326C78AEF000088B7 /* Synchronized.m */; };
 		18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */; };
 		18CF9AD62663E05300A34A85 /* NKGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD52663E05300A34A85 /* NKGCDViewController.m */; };
 		18CF9AD92669A73500A34A85 /* NKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD82669A73500A34A85 /* NKHTTPClient.m */; };
@@ -131,6 +134,11 @@
 		186E35952644264200FC810F /* NSObject+RetainCount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RetainCount.m"; sourceTree = "<group>"; };
 		186E35982650DBB000FC810F /* NKRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKRuntime.h; sourceTree = "<group>"; };
 		186E35992650DBB000FC810F /* NKRuntime.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NKRuntime.mm; sourceTree = "<group>"; };
+		18A9370D26C78638000088B7 /* LockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockViewController.h; sourceTree = "<group>"; };
+		18A9370E26C78638000088B7 /* LockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LockViewController.m; sourceTree = "<group>"; };
+		18A9371226C78AEF000088B7 /* Synchronized.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Synchronized.h; sourceTree = "<group>"; };
+		18A9371326C78AEF000088B7 /* Synchronized.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Synchronized.m; sourceTree = "<group>"; };
+		18A9371526C78C8B000088B7 /* Synchronized.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Synchronized.cpp; sourceTree = "<group>"; };
 		18CF9AD0265D4C1D00A34A85 /* NKRunLoopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKRunLoopViewController.h; sourceTree = "<group>"; };
 		18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKRunLoopViewController.m; sourceTree = "<group>"; };
 		18CF9AD42663E05300A34A85 /* NKGCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKGCDViewController.h; sourceTree = "<group>"; };
@@ -200,6 +208,7 @@
 		181B4EB12635B33C0071526C /* Interview */ = {
 			isa = PBXGroup;
 			children = (
+				18A9371126C78AB0000088B7 /* @synchronized */,
 				186E3597264D699A00FC810F /* Runtime */,
 				186E358C2640E48300FC810F /* Block */,
 				181B4EBC2635B3790071526C /* NSObject */,
@@ -296,6 +305,7 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				18A9370C26C78617000088B7 /* Lock */,
 				18CF9ADD266B751300A34A85 /* Timer */,
 				18CF9AD32663E02600A34A85 /* GCD */,
 				18CF9ACF265D4BE800A34A85 /* RunLoop */,
@@ -387,6 +397,25 @@
 				186E35992650DBB000FC810F /* NKRuntime.mm */,
 			);
 			path = Runtime;
+			sourceTree = "<group>";
+		};
+		18A9370C26C78617000088B7 /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+				18A9370D26C78638000088B7 /* LockViewController.h */,
+				18A9370E26C78638000088B7 /* LockViewController.m */,
+			);
+			path = Lock;
+			sourceTree = "<group>";
+		};
+		18A9371126C78AB0000088B7 /* @synchronized */ = {
+			isa = PBXGroup;
+			children = (
+				18A9371226C78AEF000088B7 /* Synchronized.h */,
+				18A9371326C78AEF000088B7 /* Synchronized.m */,
+				18A9371526C78C8B000088B7 /* Synchronized.cpp */,
+			);
+			path = "@synchronized";
 			sourceTree = "<group>";
 		};
 		18CF9ACF265D4BE800A34A85 /* RunLoop */ = {
@@ -742,6 +771,7 @@
 				186E359A2650DBB000FC810F /* NKRuntime.mm in Sources */,
 				181B4EB32635B33C0071526C /* main.m in Sources */,
 				186E358F2640E4A400FC810F /* NKBlockEntry.m in Sources */,
+				18A9371426C78AEF000088B7 /* Synchronized.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +784,7 @@
 				182E154825980A8C007343C4 /* BaseViewController.m in Sources */,
 				186CE6D825989E5200EA71B8 /* NKAsyncLayer.m in Sources */,
 				186CE6DE25989E6F00EA71B8 /* NKLabel.m in Sources */,
+				18A9371026C7887C000088B7 /* NSObject+RetainCount.m in Sources */,
 				182E14F42597966F007343C4 /* AppDelegate.m in Sources */,
 				186CE6F32598C63700EA71B8 /* NKTextContainer.m in Sources */,
 				76B150D125C2577F0075D367 /* BBADynamicLaunchImage.m in Sources */,
@@ -762,6 +793,7 @@
 				18CF9AE3266B7C3400A34A85 /* NKWeakProxy.m in Sources */,
 				186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */,
 				18CF9AE0266B753000A34A85 /* NKTimerViewController.m in Sources */,
+				18A9370F26C78638000088B7 /* LockViewController.m in Sources */,
 				18CF9AD62663E05300A34A85 /* NKGCDViewController.m in Sources */,
 				186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */,
 				186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */,

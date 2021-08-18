@@ -13,6 +13,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)entry;
 
+
 @end
+
+
+@interface NKBlockEntry ()
+
+@property (nonatomic, assign) NSInteger age;
+
+- (void)play;
+
+@end
+
 
 NS_ASSUME_NONNULL_END
