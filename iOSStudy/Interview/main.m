@@ -14,8 +14,8 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        [NKClassEntry entry];
-        [NKBlockEntry entry];
-//        [NKRuntime entry];
+//        [NKBlockEntry entry];
+        [NKRuntime entry];
 //        [Synchronized entry];
     }
     return 0;

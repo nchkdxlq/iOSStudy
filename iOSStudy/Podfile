@@ -10,6 +10,8 @@ target 'iOSStudy' do
   pod 'Aspects'
   pod 'YYKit'
   pod 'Masonry'
+  pod 'FMDB'
+  pod 'AFNetworking'
 
   target 'iOSStudyTests' do
     inherit! :search_paths
