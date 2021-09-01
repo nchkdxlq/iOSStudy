@@ -10,13 +10,15 @@
 #import "NKBlockEntry.h"
 #import "NKRuntime.h"
 #import "Synchronized.h"
+#import "NKDictionary.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        [NKClassEntry entry];
 //        [NKBlockEntry entry];
-        [NKRuntime entry];
+//        [NKRuntime entry];
 //        [Synchronized entry];
+        [NKDictionary entry];
     }
     return 0;
 }

@@ -21,13 +21,14 @@
     
 //    [self serialQueue];
 //    [self concurrentQueue];
-//    [self dispatchGroup];
+    [self dispatch_group_enter_leave];
 //    [self dispatch_group_enter_leave];
 //    [self dispatch_barrier];
 //    [self dispatch_apply];
 //    [self dispatch_soruce];
 //    [self dispatch_specific];
-    [self dispatch_set_queue_target];
+//    [self dispatch_set_queue_target];
+//    [self interview2];
 }
 
 
@@ -148,7 +149,7 @@
 }
 
 
-- (void)dispatch_soruce {
+- (void)dispatch_source {
     dispatch_queue_t queue = dispatch_queue_create("com.nk.concurrent", DISPATCH_QUEUE_CONCURRENT);
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC, 1 * NSEC_PER_SEC);

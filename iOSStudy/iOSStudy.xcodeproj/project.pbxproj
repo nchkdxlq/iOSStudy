@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1801B91126DFBD7300639E72 /* NKDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801B91026DFBD7300639E72 /* NKDictionary.m */; };
+		181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A8AF426D71F3800922CA6 /* NKOperationViewController.m */; };
 		181B4EB32635B33C0071526C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 181B4EB22635B33C0071526C /* main.m */; };
 		181B4EBF2635B3A00071526C /* NKClassEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 181B4EBE2635B3A00071526C /* NKClassEntry.m */; };
 		182E14F42597966F007343C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E14F32597966F007343C4 /* AppDelegate.m */; };
@@ -82,6 +84,11 @@
 
 /* Begin PBXFileReference section */
 		0457CFF1207B5DE6C221E27A /* Pods_iOSStudy_iOSStudyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStudy_iOSStudyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1801B90F26DFBD7300639E72 /* NKDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKDictionary.h; sourceTree = "<group>"; };
+		1801B91026DFBD7300639E72 /* NKDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKDictionary.m; sourceTree = "<group>"; };
+		1801B91226DFBDA600639E72 /* NKEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKEntry.h; sourceTree = "<group>"; };
+		181A8AF326D71F3800922CA6 /* NKOperationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKOperationViewController.h; sourceTree = "<group>"; };
+		181A8AF426D71F3800922CA6 /* NKOperationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKOperationViewController.m; sourceTree = "<group>"; };
 		181B4EB02635B33C0071526C /* Interview */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Interview; sourceTree = BUILT_PRODUCTS_DIR; };
 		181B4EB22635B33C0071526C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		181B4EBD2635B3A00071526C /* NKClassEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKClassEntry.h; sourceTree = "<group>"; };
@@ -205,9 +212,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1801B90E26DFBD4300639E72 /* NSDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				1801B90F26DFBD7300639E72 /* NKDictionary.h */,
+				1801B91026DFBD7300639E72 /* NKDictionary.m */,
+			);
+			path = NSDictionary;
+			sourceTree = "<group>";
+		};
+		181A8AF226D71F0900922CA6 /* NSOperation */ = {
+			isa = PBXGroup;
+			children = (
+				181A8AF326D71F3800922CA6 /* NKOperationViewController.h */,
+				181A8AF426D71F3800922CA6 /* NKOperationViewController.m */,
+			);
+			path = NSOperation;
+			sourceTree = "<group>";
+		};
 		181B4EB12635B33C0071526C /* Interview */ = {
 			isa = PBXGroup;
 			children = (
+				1801B90E26DFBD4300639E72 /* NSDictionary */,
 				18A9371126C78AB0000088B7 /* @synchronized */,
 				186E3597264D699A00FC810F /* Runtime */,
 				186E358C2640E48300FC810F /* Block */,
@@ -215,6 +241,7 @@
 				181B4EB22635B33C0071526C /* main.m */,
 				186E35942644264200FC810F /* NSObject+RetainCount.h */,
 				186E35952644264200FC810F /* NSObject+RetainCount.m */,
+				1801B91226DFBDA600639E72 /* NKEntry.h */,
 			);
 			path = Interview;
 			sourceTree = "<group>";
@@ -305,6 +332,7 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				181A8AF226D71F0900922CA6 /* NSOperation */,
 				18A9370C26C78617000088B7 /* Lock */,
 				18CF9ADD266B751300A34A85 /* Timer */,
 				18CF9AD32663E02600A34A85 /* GCD */,
@@ -765,6 +793,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1801B91126DFBD7300639E72 /* NKDictionary.m in Sources */,
 				186E35962644264200FC810F /* NSObject+RetainCount.m in Sources */,
 				186E35922644225200FC810F /* NKBlockCaptureObject.m in Sources */,
 				181B4EBF2635B3A00071526C /* NKClassEntry.m in Sources */,
@@ -798,6 +827,7 @@
 				186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */,
 				186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */,
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
+				181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */,
 				768715EF25B06727005C14A8 /* NKTextAttribute.m in Sources */,
 				767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */,
 				182E150525979670007343C4 /* main.m in Sources */,
