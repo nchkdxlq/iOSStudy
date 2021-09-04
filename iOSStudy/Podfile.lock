@@ -23,6 +23,7 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
+  - "UITableView+FDTemplateLayoutCell (1.6)"
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - Masonry
   - OCMock
   - SDWebImage
+  - "UITableView+FDTemplateLayoutCell"
   - YYKit
 
 SPEC REPOS:
@@ -44,6 +46,7 @@ SPEC REPOS:
     - Masonry
     - OCMock
     - SDWebImage
+    - "UITableView+FDTemplateLayoutCell"
     - YYKit
 
 SPEC CHECKSUMS:
@@ -53,8 +56,9 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   OCMock: 29f6e52085b4e7d9b075cbf03ed7c3112f82f934
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 4edfc1abd6e28b2da6da62938f374965cf81e8fd
+PODFILE CHECKSUM: 65be53084f8893fe03af8489ce2a78ebff417fec
 
 COCOAPODS: 1.10.0

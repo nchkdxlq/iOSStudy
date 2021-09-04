@@ -53,6 +53,9 @@
 
 @property (nonatomic, strong) NKView *testView;
 
+@property (nonatomic, strong) UIView *view1;
+@property (nonatomic, strong) UIView *view2;
+
 @end
 
 @implementation NKUIViewLifeCircleController
@@ -61,6 +64,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self test2];
+}
+
+
+- (void)test2 {
+    UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(100, 200, 200, 200)];
+    view1.backgroundColor = UIColor.redColor;
+    [self.view addSubview:view1];
+    self.view1 = view1;
+    
+    UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    view2.backgroundColor = UIColor.blueColor;
+    [view1 addSubview:view2];
+    self.view2 = view2;
+}
+
+
+- (void)test1 {
     NKView *testView = [[NKView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     testView.backgroundColor = UIColor.lightGrayColor;
     [self.view addSubview:testView];
@@ -114,8 +135,8 @@
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
     
-    [self.testView setNeedsLayout];
-    [self.testView layoutIfNeeded];
+    self.view1.bounds = CGRectMake(30, 30, 200, 200);
+    self.view1.layer.masksToBounds = YES;
 }
 
 

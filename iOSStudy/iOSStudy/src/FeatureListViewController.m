@@ -15,6 +15,7 @@
 #import "NKTimerViewController.h"
 #import "LockViewController.h"
 #import "NKUIViewLifeCircleController.h"
+#import "NKPortViewController.h"
 
 #import "LaunchImageHelper.h"
 
@@ -69,7 +70,8 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:NKRunLoopViewController.class, kDataSourceTitleKey:@"RunLoop"},
                     @{kDataSourceClassKey:NKGCDViewController.class, kDataSourceTitleKey:@"GCD"},
                     @{kDataSourceClassKey:NKTimerViewController.class, kDataSourceTitleKey:@"Timer"},
-                    @{kDataSourceClassKey:NKUIViewLifeCircleController.class, kDataSourceTitleKey:@"UIViewLifeCircel"},
+                    @{kDataSourceClassKey:NKUIViewLifeCircleController.class, kDataSourceTitleKey:@"UIViewLifeCircle"},
+                    @{kDataSourceClassKey:NKPortViewController.class, kDataSourceTitleKey:@"NKPortViewController"},
                     @{kDataSourceClassKey:LockViewController.class, kDataSourceTitleKey:@"Lock"}
                 ];
 }
@@ -116,6 +118,11 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
 
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath {
     return [self.dataSource[indexPath.row] objectForKey:kDataSourceTitleKey];
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"bounds = %@", NSStringFromCGRect(scrollView.bounds));
 }
 
 /*
