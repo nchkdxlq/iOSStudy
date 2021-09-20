@@ -22,6 +22,8 @@
 		184165DD26E04F43001398C5 /* NKUIViewLifeCircleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184165DC26E04F43001398C5 /* NKUIViewLifeCircleController.m */; };
 		184165E026E0598D001398C5 /* NSObject+GCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 184165DF26E0598D001398C5 /* NSObject+GCD.m */; };
 		184165E426E27A18001398C5 /* NKPortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184165E326E27A18001398C5 /* NKPortViewController.m */; };
+		184165E826E31403001398C5 /* NKProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 184165E726E31403001398C5 /* NKProxy.m */; };
+		184165EC26E38506001398C5 /* NKCrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184165EB26E38506001398C5 /* NKCrashViewController.m */; };
 		186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6BE2598298A00EA71B8 /* UIScreen+NKExtension.m */; };
 		186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6C5259829A300EA71B8 /* YYKitViewController.m */; };
 		186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6C8259829A300EA71B8 /* MDHTMLLabel.m */; };
@@ -119,6 +121,10 @@
 		184165DF26E0598D001398C5 /* NSObject+GCD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GCD.m"; sourceTree = "<group>"; };
 		184165E226E27A18001398C5 /* NKPortViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKPortViewController.h; sourceTree = "<group>"; };
 		184165E326E27A18001398C5 /* NKPortViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKPortViewController.m; sourceTree = "<group>"; };
+		184165E626E31403001398C5 /* NKProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKProxy.h; sourceTree = "<group>"; };
+		184165E726E31403001398C5 /* NKProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKProxy.m; sourceTree = "<group>"; };
+		184165EA26E38506001398C5 /* NKCrashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCrashViewController.h; sourceTree = "<group>"; };
+		184165EB26E38506001398C5 /* NKCrashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKCrashViewController.m; sourceTree = "<group>"; };
 		186CE6BE2598298A00EA71B8 /* UIScreen+NKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+NKExtension.m"; sourceTree = "<group>"; };
 		186CE6BF2598298A00EA71B8 /* UIScreen+NKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+NKExtension.h"; sourceTree = "<group>"; };
 		186CE6C5259829A300EA71B8 /* YYKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYKitViewController.m; sourceTree = "<group>"; };
@@ -242,6 +248,7 @@
 		181B4EB12635B33C0071526C /* Interview */ = {
 			isa = PBXGroup;
 			children = (
+				184165E526E313EB001398C5 /* NKProxy */,
 				1801B90E26DFBD4300639E72 /* NSDictionary */,
 				18A9371126C78AB0000088B7 /* @synchronized */,
 				186E3597264D699A00FC810F /* Runtime */,
@@ -358,9 +365,28 @@
 			path = NSPort;
 			sourceTree = "<group>";
 		};
+		184165E526E313EB001398C5 /* NKProxy */ = {
+			isa = PBXGroup;
+			children = (
+				184165E626E31403001398C5 /* NKProxy.h */,
+				184165E726E31403001398C5 /* NKProxy.m */,
+			);
+			path = NKProxy;
+			sourceTree = "<group>";
+		};
+		184165E926E384EC001398C5 /* Crash */ = {
+			isa = PBXGroup;
+			children = (
+				184165EA26E38506001398C5 /* NKCrashViewController.h */,
+				184165EB26E38506001398C5 /* NKCrashViewController.m */,
+			);
+			path = Crash;
+			sourceTree = "<group>";
+		};
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				184165E926E384EC001398C5 /* Crash */,
 				184165E126E279FC001398C5 /* NSPort */,
 				184165DA26E04F0E001398C5 /* UIViewLifeCircle */,
 				181A8AF226D71F0900922CA6 /* NSOperation */,
@@ -829,6 +855,7 @@
 				186E35922644225200FC810F /* NKBlockCaptureObject.m in Sources */,
 				181B4EBF2635B3A00071526C /* NKClassEntry.m in Sources */,
 				186E359A2650DBB000FC810F /* NKRuntime.mm in Sources */,
+				184165E826E31403001398C5 /* NKProxy.m in Sources */,
 				181B4EB32635B33C0071526C /* main.m in Sources */,
 				186E358F2640E4A400FC810F /* NKBlockEntry.m in Sources */,
 				18A9371426C78AEF000088B7 /* Synchronized.m in Sources */,
@@ -866,6 +893,7 @@
 				184165E426E27A18001398C5 /* NKPortViewController.m in Sources */,
 				186CE70925995E4E00EA71B8 /* NKTextLine.m in Sources */,
 				76B150CB25C257540075D367 /* LaunchImageHelper.m in Sources */,
+				184165EC26E38506001398C5 /* NKCrashViewController.m in Sources */,
 				186CE6ED2598C60C00EA71B8 /* NKTextLayout.m in Sources */,
 				18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */,
 				184165DD26E04F43001398C5 /* NKUIViewLifeCircleController.m in Sources */,
@@ -1059,6 +1087,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 733RR644TP;
 				INFOPLIST_FILE = iOSStudy/Info.plist;
@@ -1068,6 +1097,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nchkdxlq.iOSStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;

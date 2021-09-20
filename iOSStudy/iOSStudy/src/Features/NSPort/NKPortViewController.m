@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) NSThread *thread;
 
+@property (nonatomic, assign) NSInteger count;
+
 @end
 
 
@@ -30,6 +32,9 @@
     [[NSRunLoop currentRunLoop] addPort:port forMode:NSRunLoopCommonModes];
     
     [self detachNewThread];
+    
+    NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew;
+    [self addObserver:self forKeyPath:@"count" options:options context:nil];
 }
 
 - (void)detachNewThread {
@@ -58,11 +63,29 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.threadPort sendBeforeDate:[NSDate date] components:nil from:self.mainPort reserved:0];
+//    [self.threadPort sendBeforeDate:[NSDate date] components:nil from:self.mainPort reserved:0];
+    [self willChangeValueForKey:@"count"];
+    _count++;
+    [self didChangeValueForKey:@"count"];
 }
 
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self performSelector:@selector(test) onThread:self.thread withObject:nil waitUntilDone:NO];}
+//    [self performSelector:@selector(test) onThread:self.thread withObject:nil waitUntilDone:NO];
+}
+
+
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSKeyValueChangeKey,id> *)change
+                       context:(void *)context {
+    NSLog(@"%@", change);
+}
+
+- (void)setCount:(NSInteger)count {
+    _count = count;
+}
+
 
 @end
