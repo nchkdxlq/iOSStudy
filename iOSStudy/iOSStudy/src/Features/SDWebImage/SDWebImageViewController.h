@@ -2,7 +2,7 @@
 //  SDWebImageViewController.h
 //  iOSStudy
 //
-//  Created by Cookie on 2021/1/8.
+//  Created by Knox on 2021/1/8.
 //
 
 #import "BaseViewController.h"

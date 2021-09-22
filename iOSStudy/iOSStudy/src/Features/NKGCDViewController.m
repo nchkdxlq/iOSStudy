@@ -11,6 +11,9 @@
 
 @property (nonatomic, strong) dispatch_source_t timer;
 
+
+@property (nonatomic, strong) NSMutableDictionary *map;
+
 @end
 
 @implementation NKGCDViewController
@@ -29,8 +32,52 @@
 //    [self dispatch_specific];
 //    [self dispatch_set_queue_target];
 //    [self interview2];
+    [self threadSafeDictionary];
 }
 
+
+- (void)threadSafeDictionary {
+    NSInteger capacity = 100000;
+    self.map = [NSMutableDictionary dictionaryWithCapacity:capacity];
+    for (NSInteger i = 0; i < capacity; i++) {
+        self.map[@(i)] = @(i);
+    }
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    
+    CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
+    for (NSInteger i = 0; i < capacity; i++) {
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        NSValue *value = [self.map objectForKey:@(i)];
+        dispatch_semaphore_signal(semaphore);
+    }
+    CFAbsoluteTime end = CFAbsoluteTimeGetCurrent();
+    CFAbsoluteTime cost = end - start;
+    NSLog(@"11 cost = %f", cost);
+    
+    dispatch_queue_t queue = dispatch_queue_create("", DISPATCH_QUEUE_CONCURRENT);
+    start = CFAbsoluteTimeGetCurrent();
+    for (NSInteger i = 0; i < capacity; i++) {
+        __block NSValue *value = nil;
+        dispatch_sync(queue, ^{
+            value = [self.map objectForKey:@(i)];
+        });
+    }
+    end = CFAbsoluteTimeGetCurrent();
+    cost = end - start;
+    NSLog(@"22 cost = %f", cost);
+    
+    
+    start = CFAbsoluteTimeGetCurrent();
+    for (NSInteger i = 0; i < capacity; i++) {
+        @synchronized (self) {
+            NSValue *value = [self.map objectForKey:@(i)];
+        }
+    }
+    end = CFAbsoluteTimeGetCurrent();
+    cost = end - start;
+    NSLog(@"33 cost = %f", cost);
+}
 
 - (void)serialQueue {
     dispatch_queue_t queue = dispatch_queue_create("com.nk.serial.queue", NULL);

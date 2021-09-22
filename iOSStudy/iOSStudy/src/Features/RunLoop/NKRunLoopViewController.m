@@ -6,6 +6,10 @@
 //
 
 #import "NKRunLoopViewController.h"
+#import "NKMonitor.h"
+
+
+
 
 void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info) {
     switch (activity) {
@@ -33,7 +37,12 @@ void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity ac
 }
 
 
+
+
 @interface NKRunLoopViewController() <UIGestureRecognizerDelegate>
+
+
+@property (nonatomic, strong) NKMonitor *monitor;
 
 @end
 
@@ -45,12 +54,31 @@ void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity ac
     self.title = @"RunLoop";
     
 //    [self addRunLoopObserver];
-    [self dispatchMainQueue];
-    [self timer];
-    [self buttonTap];
-    [self gestureRecognizer];
-    [self performSelectorAfterDelay];
+//    [self dispatchMainQueue];
+//    [self timer];
+//    [self buttonTap];
+//    [self gestureRecognizer];
+//    [self performSelectorAfterDelay];
+    
+    self.monitor = [NKMonitor new];
+    [self.monitor beginMonitor];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [self.view addSubview:button];
+    button.center = self.view.center;
+    
+    [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)buttonAction:(UIButton *)button {
+    int a = 8;
+    NSLog(@"调试：大量计算 runLoopObserverCallBack");
+    for (long i = 0; i < 999999999; i++) {
+        a = a + 1;
+    }
+    NSLog(@"调试：大量计算结束");
+}
+
 
 - (void)addRunLoopObserver {
     CFRunLoopRef runloopRef = CFRunLoopGetMain();
@@ -59,11 +87,6 @@ void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity ac
                                                             YES, 0,
                                                             runLoopObserverCallback, nil);
     CFRunLoopAddObserver(runloopRef, observer, kCFRunLoopCommonModes);
-}
-
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
 }
 
 #pragma mark - dispatchMainQueue

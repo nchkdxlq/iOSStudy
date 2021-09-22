@@ -52,6 +52,7 @@
 		768715EF25B06727005C14A8 /* NKTextAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 768715EE25B06727005C14A8 /* NKTextAttribute.m */; };
 		76B150CB25C257540075D367 /* LaunchImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B150C925C257540075D367 /* LaunchImageHelper.m */; };
 		76B150D125C2577F0075D367 /* BBADynamicLaunchImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B150CF25C2577F0075D367 /* BBADynamicLaunchImage.m */; };
+		76E441A826E88DE00020C828 /* NKMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E441A726E88DE00020C828 /* NKMonitor.m */; };
 		899F9DE455E291B788819876 /* Pods_iOSStudy_iOSStudyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0457CFF1207B5DE6C221E27A /* Pods_iOSStudy_iOSStudyUITests.framework */; };
 		97D9578F04DB5215F1BD4100 /* Pods_iOSStudyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC6D35C70D12733982BE3901 /* Pods_iOSStudyTests.framework */; };
 /* End PBXBuildFile section */
@@ -178,6 +179,8 @@
 		76B150CA25C257540075D367 /* LaunchImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchImageHelper.h; sourceTree = "<group>"; };
 		76B150CF25C2577F0075D367 /* BBADynamicLaunchImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBADynamicLaunchImage.m; sourceTree = "<group>"; };
 		76B150D025C2577F0075D367 /* BBADynamicLaunchImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBADynamicLaunchImage.h; sourceTree = "<group>"; };
+		76E441A626E88DE00020C828 /* NKMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKMonitor.h; sourceTree = "<group>"; };
+		76E441A726E88DE00020C828 /* NKMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKMonitor.m; sourceTree = "<group>"; };
 		815E7214DEDCEFCF279A508F /* Pods-iOSStudyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudyTests.debug.xcconfig"; path = "Target Support Files/Pods-iOSStudyTests/Pods-iOSStudyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		91DE7C322ADD328E018A0E24 /* Pods-iOSStudyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudyTests.release.xcconfig"; path = "Target Support Files/Pods-iOSStudyTests/Pods-iOSStudyTests.release.xcconfig"; sourceTree = "<group>"; };
 		A408CDC3388B2A01AFD4DBDA /* Pods-iOSStudy-iOSStudyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudy-iOSStudyUITests.release.xcconfig"; path = "Target Support Files/Pods-iOSStudy-iOSStudyUITests/Pods-iOSStudy-iOSStudyUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -482,6 +485,8 @@
 			children = (
 				18CF9AD0265D4C1D00A34A85 /* NKRunLoopViewController.h */,
 				18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */,
+				76E441A626E88DE00020C828 /* NKMonitor.h */,
+				76E441A726E88DE00020C828 /* NKMonitor.m */,
 			);
 			path = RunLoop;
 			sourceTree = "<group>";
@@ -846,6 +851,7 @@
 				186CE6DE25989E6F00EA71B8 /* NKLabel.m in Sources */,
 				18A9371026C7887C000088B7 /* NSObject+RetainCount.m in Sources */,
 				182E14F42597966F007343C4 /* AppDelegate.m in Sources */,
+				76E441A826E88DE00020C828 /* NKMonitor.m in Sources */,
 				186CE6F32598C63700EA71B8 /* NKTextContainer.m in Sources */,
 				76B150D125C2577F0075D367 /* BBADynamicLaunchImage.m in Sources */,
 				186CE6F92598CE2000EA71B8 /* NKTextMacro.m in Sources */,
