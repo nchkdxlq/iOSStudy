@@ -7,6 +7,9 @@
 
 #import "NKGCDViewController.h"
 
+static dispatch_once_t onceToken;
+
+
 @interface NKGCDViewController()
 
 @property (nonatomic, strong) dispatch_source_t timer;
@@ -24,7 +27,7 @@
     
 //    [self serialQueue];
 //    [self concurrentQueue];
-    [self dispatch_group_enter_leave];
+//    [self dispatch_group_enter_leave];
 //    [self dispatch_group_enter_leave];
 //    [self dispatch_barrier];
 //    [self dispatch_apply];
@@ -33,6 +36,20 @@
 //    [self dispatch_set_queue_target];
 //    [self interview2];
     [self threadSafeDictionary];
+}
+
+- (void)dealloc {
+    onceToken = 0;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    dispatch_once(&onceToken, ^{
+        NSLog(@"dispatch_once");
+    });
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
 }
 
 

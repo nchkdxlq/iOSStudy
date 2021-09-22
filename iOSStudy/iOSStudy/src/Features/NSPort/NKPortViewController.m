@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) NSThread *thread;
 
+@property (nonatomic, assign) NSInteger count;
+
 @end
 
 
@@ -30,6 +32,9 @@
     [[NSRunLoop currentRunLoop] addPort:port forMode:NSRunLoopCommonModes];
     
     [self detachNewThread];
+    
+    NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew;
+    [self addObserver:self forKeyPath:@"count" options:options context:nil];
 }
 
 - (void)detachNewThread {
@@ -63,6 +68,8 @@
 
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self performSelector:@selector(test) onThread:self.thread withObject:nil waitUntilDone:NO];}
+//    [self performSelector:@selector(test) onThread:self.thread withObject:nil waitUntilDone:NO];
+}
+
 
 @end
