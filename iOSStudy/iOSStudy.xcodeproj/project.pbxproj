@@ -11,6 +11,9 @@
 		181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A8AF426D71F3800922CA6 /* NKOperationViewController.m */; };
 		181B4EB32635B33C0071526C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 181B4EB22635B33C0071526C /* main.m */; };
 		181B4EBF2635B3A00071526C /* NKClassEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 181B4EBE2635B3A00071526C /* NKClassEntry.m */; };
+		182B99AC26F8C00100F55ECD /* NKResponderChainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B99AB26F8C00100F55ECD /* NKResponderChainViewController.m */; };
+		182B99AF26F8C90500F55ECD /* NKViewA.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B99AE26F8C90500F55ECD /* NKViewA.m */; };
+		182B99B226F8DC9B00F55ECD /* NKTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B99B126F8DC9B00F55ECD /* NKTapGestureRecognizer.m */; };
 		182E14F42597966F007343C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E14F32597966F007343C4 /* AppDelegate.m */; };
 		182E14FF25979670007343C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182E14FE25979670007343C4 /* Assets.xcassets */; };
 		182E150225979670007343C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182E150025979670007343C4 /* LaunchScreen.storyboard */; };
@@ -98,6 +101,12 @@
 		181B4EB22635B33C0071526C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		181B4EBD2635B3A00071526C /* NKClassEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKClassEntry.h; sourceTree = "<group>"; };
 		181B4EBE2635B3A00071526C /* NKClassEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKClassEntry.m; sourceTree = "<group>"; };
+		182B99AA26F8C00100F55ECD /* NKResponderChainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKResponderChainViewController.h; sourceTree = "<group>"; };
+		182B99AB26F8C00100F55ECD /* NKResponderChainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKResponderChainViewController.m; sourceTree = "<group>"; };
+		182B99AD26F8C90500F55ECD /* NKViewA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKViewA.h; sourceTree = "<group>"; };
+		182B99AE26F8C90500F55ECD /* NKViewA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKViewA.m; sourceTree = "<group>"; };
+		182B99B026F8DC9B00F55ECD /* NKTapGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKTapGestureRecognizer.h; sourceTree = "<group>"; };
+		182B99B126F8DC9B00F55ECD /* NKTapGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTapGestureRecognizer.m; sourceTree = "<group>"; };
 		182E14EF2597966F007343C4 /* iOSStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		182E14F22597966F007343C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		182E14F32597966F007343C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -271,6 +280,19 @@
 			path = NSObject;
 			sourceTree = "<group>";
 		};
+		182B99A926F8BFC300F55ECD /* ResponderChain */ = {
+			isa = PBXGroup;
+			children = (
+				182B99AA26F8C00100F55ECD /* NKResponderChainViewController.h */,
+				182B99AB26F8C00100F55ECD /* NKResponderChainViewController.m */,
+				182B99AD26F8C90500F55ECD /* NKViewA.h */,
+				182B99AE26F8C90500F55ECD /* NKViewA.m */,
+				182B99B026F8DC9B00F55ECD /* NKTapGestureRecognizer.h */,
+				182B99B126F8DC9B00F55ECD /* NKTapGestureRecognizer.m */,
+			);
+			path = ResponderChain;
+			sourceTree = "<group>";
+		};
 		182E14E62597966F007343C4 = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +408,7 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				182B99A926F8BFC300F55ECD /* ResponderChain */,
 				184165E926E384EC001398C5 /* Crash */,
 				184165E126E279FC001398C5 /* NSPort */,
 				184165DA26E04F0E001398C5 /* UIViewLifeCircle */,
@@ -866,6 +889,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182B99AF26F8C90500F55ECD /* NKViewA.m in Sources */,
+				182B99AC26F8C00100F55ECD /* NKResponderChainViewController.m in Sources */,
 				182E154E25981624007343C4 /* FeatureListViewController.m in Sources */,
 				18CF9AD92669A73500A34A85 /* NKHTTPClient.m in Sources */,
 				182E154825980A8C007343C4 /* BaseViewController.m in Sources */,
@@ -876,6 +901,7 @@
 				186CE6F32598C63700EA71B8 /* NKTextContainer.m in Sources */,
 				76B150D125C2577F0075D367 /* BBADynamicLaunchImage.m in Sources */,
 				186CE6F92598CE2000EA71B8 /* NKTextMacro.m in Sources */,
+				182B99B226F8DC9B00F55ECD /* NKTapGestureRecognizer.m in Sources */,
 				186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */,
 				18CF9AE3266B7C3400A34A85 /* NKWeakProxy.m in Sources */,
 				186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */,

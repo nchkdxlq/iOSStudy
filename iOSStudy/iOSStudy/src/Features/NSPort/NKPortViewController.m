@@ -63,28 +63,12 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    [self.threadPort sendBeforeDate:[NSDate date] components:nil from:self.mainPort reserved:0];
-    [self willChangeValueForKey:@"count"];
-    _count++;
-    [self didChangeValueForKey:@"count"];
+    [self.threadPort sendBeforeDate:[NSDate date] components:nil from:self.mainPort reserved:0];
 }
 
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 //    [self performSelector:@selector(test) onThread:self.thread withObject:nil waitUntilDone:NO];
-}
-
-
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary<NSKeyValueChangeKey,id> *)change
-                       context:(void *)context {
-    NSLog(@"%@", change);
-}
-
-- (void)setCount:(NSInteger)count {
-    _count = count;
 }
 
 

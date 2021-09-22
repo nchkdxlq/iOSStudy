@@ -17,6 +17,7 @@
 #import "NKUIViewLifeCircleController.h"
 #import "NKPortViewController.h"
 #import "NKCrashViewController.h"
+#import "NKResponderChainViewController.h"
 
 #import "LaunchImageHelper.h"
 
@@ -74,7 +75,8 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:NKUIViewLifeCircleController.class, kDataSourceTitleKey:@"UIViewLifeCircle"},
                     @{kDataSourceClassKey:NKPortViewController.class, kDataSourceTitleKey:@"NKPortViewController"},
                     @{kDataSourceClassKey:LockViewController.class, kDataSourceTitleKey:@"Lock"},
-                    @{kDataSourceClassKey:NKCrashViewController.class, kDataSourceTitleKey:@"Crash"}
+                    @{kDataSourceClassKey:NKCrashViewController.class, kDataSourceTitleKey:@"Crash"},
+                    @{kDataSourceClassKey:NKResponderChainViewController.class, kDataSourceTitleKey:@"ResponderChain"}
                 ];
 }
 
