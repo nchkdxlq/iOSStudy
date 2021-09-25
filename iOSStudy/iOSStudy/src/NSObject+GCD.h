@@ -11,6 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (GCD)
 
+- (void)dispatchSafeMainThreadWithBlock:(dispatch_block_t)block;
+
+- (void)dispatchMainQueueAfterInterval:(NSTimeInterval)interval block:(dispatch_block_t)block;
 
 @end
 

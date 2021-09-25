@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1801B91126DFBD7300639E72 /* NKDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801B91026DFBD7300639E72 /* NKDictionary.m */; };
+		180C6BF926FEC6E3004EEB67 /* LayoutLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 180C6BF826FEC6E3004EEB67 /* LayoutLayer.m */; };
 		181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A8AF426D71F3800922CA6 /* NKOperationViewController.m */; };
 		181B4EB32635B33C0071526C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 181B4EB22635B33C0071526C /* main.m */; };
 		181B4EBF2635B3A00071526C /* NKClassEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 181B4EBE2635B3A00071526C /* NKClassEntry.m */; };
 		182B99AC26F8C00100F55ECD /* NKResponderChainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B99AB26F8C00100F55ECD /* NKResponderChainViewController.m */; };
 		182B99AF26F8C90500F55ECD /* NKViewA.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B99AE26F8C90500F55ECD /* NKViewA.m */; };
 		182B99B226F8DC9B00F55ECD /* NKTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B99B126F8DC9B00F55ECD /* NKTapGestureRecognizer.m */; };
+		182B99B626FE1C9700F55ECD /* LayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B99B526FE1C9700F55ECD /* LayoutViewController.m */; };
+		182B99B926FE1D2800F55ECD /* LayoutBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B99B826FE1D2800F55ECD /* LayoutBgView.m */; };
 		182E14F42597966F007343C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E14F32597966F007343C4 /* AppDelegate.m */; };
 		182E14FF25979670007343C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182E14FE25979670007343C4 /* Assets.xcassets */; };
 		182E150225979670007343C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182E150025979670007343C4 /* LaunchScreen.storyboard */; };
@@ -95,6 +98,8 @@
 		1801B90F26DFBD7300639E72 /* NKDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKDictionary.h; sourceTree = "<group>"; };
 		1801B91026DFBD7300639E72 /* NKDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKDictionary.m; sourceTree = "<group>"; };
 		1801B91226DFBDA600639E72 /* NKEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKEntry.h; sourceTree = "<group>"; };
+		180C6BF726FEC6E3004EEB67 /* LayoutLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayoutLayer.h; sourceTree = "<group>"; };
+		180C6BF826FEC6E3004EEB67 /* LayoutLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayoutLayer.m; sourceTree = "<group>"; };
 		181A8AF326D71F3800922CA6 /* NKOperationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKOperationViewController.h; sourceTree = "<group>"; };
 		181A8AF426D71F3800922CA6 /* NKOperationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKOperationViewController.m; sourceTree = "<group>"; };
 		181B4EB02635B33C0071526C /* Interview */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Interview; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +112,10 @@
 		182B99AE26F8C90500F55ECD /* NKViewA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKViewA.m; sourceTree = "<group>"; };
 		182B99B026F8DC9B00F55ECD /* NKTapGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKTapGestureRecognizer.h; sourceTree = "<group>"; };
 		182B99B126F8DC9B00F55ECD /* NKTapGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTapGestureRecognizer.m; sourceTree = "<group>"; };
+		182B99B426FE1C9700F55ECD /* LayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayoutViewController.h; sourceTree = "<group>"; };
+		182B99B526FE1C9700F55ECD /* LayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayoutViewController.m; sourceTree = "<group>"; };
+		182B99B726FE1D2800F55ECD /* LayoutBgView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayoutBgView.h; sourceTree = "<group>"; };
+		182B99B826FE1D2800F55ECD /* LayoutBgView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayoutBgView.m; sourceTree = "<group>"; };
 		182E14EF2597966F007343C4 /* iOSStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		182E14F22597966F007343C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		182E14F32597966F007343C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -293,6 +302,19 @@
 			path = ResponderChain;
 			sourceTree = "<group>";
 		};
+		182B99B326FE1C5A00F55ECD /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				182B99B426FE1C9700F55ECD /* LayoutViewController.h */,
+				182B99B526FE1C9700F55ECD /* LayoutViewController.m */,
+				182B99B726FE1D2800F55ECD /* LayoutBgView.h */,
+				182B99B826FE1D2800F55ECD /* LayoutBgView.m */,
+				180C6BF726FEC6E3004EEB67 /* LayoutLayer.h */,
+				180C6BF826FEC6E3004EEB67 /* LayoutLayer.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		182E14E62597966F007343C4 = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +430,7 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				182B99B326FE1C5A00F55ECD /* Layout */,
 				182B99A926F8BFC300F55ECD /* ResponderChain */,
 				184165E926E384EC001398C5 /* Crash */,
 				184165E126E279FC001398C5 /* NSPort */,
@@ -905,16 +928,19 @@
 				186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */,
 				18CF9AE3266B7C3400A34A85 /* NKWeakProxy.m in Sources */,
 				186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */,
+				182B99B926FE1D2800F55ECD /* LayoutBgView.m in Sources */,
 				18CF9AE0266B753000A34A85 /* NKTimerViewController.m in Sources */,
 				18A9370F26C78638000088B7 /* LockViewController.m in Sources */,
 				18CF9AD62663E05300A34A85 /* NKGCDViewController.m in Sources */,
 				186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */,
+				180C6BF926FEC6E3004EEB67 /* LayoutLayer.m in Sources */,
 				186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */,
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
 				181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */,
 				768715EF25B06727005C14A8 /* NKTextAttribute.m in Sources */,
 				767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */,
 				184165E026E0598D001398C5 /* NSObject+GCD.m in Sources */,
+				182B99B626FE1C9700F55ECD /* LayoutViewController.m in Sources */,
 				182E150525979670007343C4 /* main.m in Sources */,
 				184165E426E27A18001398C5 /* NKPortViewController.m in Sources */,
 				186CE70925995E4E00EA71B8 /* NKTextLine.m in Sources */,
