@@ -39,8 +39,9 @@ void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity ac
 
 
 
-@interface NKRunLoopViewController() <UIGestureRecognizerDelegate>
+@interface NKRunLoopViewController() <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NKMonitor *monitor;
 
@@ -48,6 +49,16 @@ void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity ac
 
 @implementation NKRunLoopViewController
 
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.tableFooterView = [UIView new];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
+    }
+    return _tableView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,28 +68,37 @@ void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity ac
 //    [self dispatchMainQueue];
 //    [self timer];
 //    [self buttonTap];
-//    [self gestureRecognizer];
+    [self gestureRecognizer];
 //    [self performSelectorAfterDelay];
     
     self.monitor = [NKMonitor new];
     [self.monitor beginMonitor];
     
+    [self setupSubView];
+}
+
+- (void)setupSubView {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
     [self.view addSubview:button];
     button.center = self.view.center;
-    
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.tableView];
+    CGSize size = UIScreen.mainScreen.bounds.size;
+    size.height /= 3;
+    self.tableView.frame = CGRectMake(0, 0, size.width, size.height);
 }
 
 - (void)buttonAction:(UIButton *)button {
-    int a = 8;
-    NSLog(@"调试：大量计算 runLoopObserverCallBack");
-    for (long i = 0; i < 999999999; i++) {
-        a = a + 1;
-    }
-    NSLog(@"调试：大量计算结束");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        int a = 8;
+        NSLog(@"调试：大量计算 buttonAction");
+        for (long i = 0; i < 999999999; i++) {
+            a = a + 1;
+        }
+        NSLog(@"调试：大量计算结束");
+    });
 }
-
 
 - (void)addRunLoopObserver {
     CFRunLoopRef runloopRef = CFRunLoopGetMain();
@@ -152,6 +172,34 @@ void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity ac
     NSLog(@"%s", __func__);
 }
 
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+    [self.monitor endMonitor];
+}
+
+
+#pragma mark - UITableViewDelegate, UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class)];
+    cell.textLabel.text = [NSString stringWithFormat:@"row = %ld", indexPath.row];
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    int a = 8;
+    NSLog(@"调试：大量计算 didSelectRowAtIndexPath");
+    for (long i = 0; i < 999999999; i++) {
+        a = a + 1;
+    }
+    NSLog(@"调试：大量计算结束 didSelectRowAtIndexPath");
+}
 
 
 @end

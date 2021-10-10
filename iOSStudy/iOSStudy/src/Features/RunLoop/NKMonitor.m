@@ -31,27 +31,38 @@ NSString* activityText(CFRunLoopActivity activity) {
 
 @interface NKMonitor ()
 
-@property (nonatomic, strong) dispatch_semaphore_t dispatchSemaphore;
+@property (nonatomic, assign) CFRunLoopObserverRef beforeSourcesObserver;
+@property (nonatomic, strong) dispatch_semaphore_t beforeSourcesSemaphore;
+@property (nonatomic, assign) CFRunLoopActivity beforeSourcesRunLoopActivity;
+@property (nonatomic, assign) NSInteger beforeSourcesTimeoutCount;
 
-@property (nonatomic, assign) CFRunLoopActivity runLoopActivity;
+@property (nonatomic, assign) CFRunLoopObserverRef afterWaitingObserver;
+@property (nonatomic, strong) dispatch_semaphore_t afterWaitingSemaphore;
+@property (nonatomic, assign) CFRunLoopActivity afterWaitingRunLoopActivity;
+@property (nonatomic, assign) NSInteger afterWaitingTimeoutCount;
 
-@property (nonatomic, assign) NSInteger timeoutCount;
-
-@property (nonatomic, assign) CFRunLoopObserverRef runLoopObserver;
-
+@property (nonatomic, assign) BOOL stop;
 
 @end
 
 
-// 记录状态
-static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
+
+static void beforeSourcesObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
     NKMonitor *lagMonitor = (__bridge NKMonitor*)info;
-    lagMonitor.runLoopActivity = activity;
-    NSLog(@"runLoopObserverCallBack %@", activityText(activity));
-    dispatch_semaphore_t semaphore = lagMonitor.dispatchSemaphore;
+    lagMonitor.beforeSourcesRunLoopActivity = activity;
+    NSLog(@"beforeSourcesObserverCallBack %@", activityText(activity));
+    dispatch_semaphore_t semaphore = lagMonitor.beforeSourcesSemaphore;
     dispatch_semaphore_signal(semaphore);
 }
 
+
+static void afterWaitingObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
+    NKMonitor *lagMonitor = (__bridge NKMonitor*)info;
+    lagMonitor.afterWaitingRunLoopActivity = activity;
+    NSLog(@"afterWaitingObserverCallBack %@", activityText(activity));
+    dispatch_semaphore_t semaphore = lagMonitor.afterWaitingSemaphore;
+    dispatch_semaphore_signal(semaphore);
+}
 
 @implementation NKMonitor
 
@@ -59,130 +70,82 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.dispatchSemaphore = dispatch_semaphore_create(0);
+        self.beforeSourcesSemaphore = dispatch_semaphore_create(0);
+        self.afterWaitingSemaphore = dispatch_semaphore_create(0);
+        [self addRunLoopObserver];
     }
     return self;
 }
 
+- (void)addRunLoopObserver {
+    CFRunLoopObserverContext context = {0,(__bridge void*)self, NULL, NULL};
+    CFRunLoopObserverRef beforeSourcesObserver = CFRunLoopObserverCreate(kCFAllocatorDefault,
+                                                                         kCFRunLoopAllActivities,
+                                                                         YES,
+                                                                         INT_MAX,
+                                                                         &beforeSourcesObserverCallBack,
+                                                                         &context);
+     CFRunLoopAddObserver(CFRunLoopGetMain(), beforeSourcesObserver, kCFRunLoopCommonModes);
+     self.beforeSourcesObserver = beforeSourcesObserver;
+    
+    
+    CFRunLoopObserverRef afterWaitingObserver = CFRunLoopObserverCreate(kCFAllocatorDefault,
+                                                                        kCFRunLoopAllActivities,
+                                                                        YES,
+                                                                        INT_MIN,
+                                                                        &afterWaitingObserverCallBack,
+                                                                        &context);
+     CFRunLoopAddObserver(CFRunLoopGetMain(), afterWaitingObserver, kCFRunLoopCommonModes);
+     self.afterWaitingObserver = afterWaitingObserver;
+}
 
-// 注册
 - (void)beginMonitor {
-   CFRunLoopObserverContext context = {0,(__bridge void*)self,NULL,NULL};
-   CFRunLoopObserverRef runLoopObserver = CFRunLoopObserverCreate(kCFAllocatorDefault,
-                                             kCFRunLoopAllActivities,
-                                             YES,
-                                             LONG_MAX,
-                                             &runLoopObserverCallBack,
-                                             &context);
-   //将观察者添加到主线程runloop的common模式下的观察中
-    CFRunLoopAddObserver(CFRunLoopGetMain(), runLoopObserver, kCFRunLoopCommonModes);
-    self.runLoopObserver = runLoopObserver;
-
+    self.stop = NO;
    //创建子线程监控
-   dispatch_async(dispatch_get_global_queue(0, 0), ^{
-       //子线程开启一个持续的loop用来进行监控
-       while (YES) {
-           long semaphoreWait = dispatch_semaphore_wait(self.dispatchSemaphore, dispatch_time(DISPATCH_TIME_NOW, 80 * NSEC_PER_MSEC));
-           NSLog(@"beginMonitor %@", activityText(self.runLoopActivity));
-           if (semaphoreWait != 0) {
-               if (!self.runLoopObserver) {
-                   self.timeoutCount = 0;
-                   self.dispatchSemaphore = NULL;
-                   self.runLoopActivity = 0;
-                   return;
-               }
-               //两个runloop的状态，BeforeSources和AfterWaiting这两个状态区间时间能够检测到是否卡顿
-               if (self.runLoopActivity == kCFRunLoopBeforeSources || self.runLoopActivity == kCFRunLoopAfterWaiting) {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        while (self.stop == NO) {
+            long semaphoreWait = dispatch_semaphore_wait(self.beforeSourcesSemaphore,
+                                                         dispatch_time(DISPATCH_TIME_NOW, 80 * NSEC_PER_MSEC));
+            if (semaphoreWait != 0) {
+                if (self.beforeSourcesRunLoopActivity == kCFRunLoopBeforeSources) {
                    //出现三次出结果
-                   if (++self.timeoutCount < 3) {
-                       continue;
-                   }
-                   NSLog(@"调试：监测到卡顿");
-               } //end activity
-           }// end semaphore wait
-           self.timeoutCount = 0;
-       }// end while
-   });
-}
-
-
-
-- (void)addRunLoopObserver
-{
-    NSRunLoop *curRunLoop = [NSRunLoop currentRunLoop];
-
-    // 第一个监控，监控是否处于 **运行状态**
-    CFRunLoopObserverContext context = {0, (__bridge void *) self, NULL, NULL, NULL};
-    CFRunLoopObserverRef beginObserver = CFRunLoopObserverCreate(kCFAllocatorDefault, kCFRunLoopAllActivities, YES, LONG_MIN, &myRunLoopBeginCallback, &context);
-    CFRetain(beginObserver);
-//    m_runLoopBeginObserver = beginObserver;
-
-    //  第二个监控，监控是否处于 **睡眠状态**
-    CFRunLoopObserverRef endObserver = CFRunLoopObserverCreate(kCFAllocatorDefault, kCFRunLoopAllActivities, YES, LONG_MAX, &myRunLoopEndCallback, &context);
-    CFRetain(endObserver);
-//    m_runLoopEndObserver = endObserver;
-
-    CFRunLoopRef runloop = [curRunLoop getCFRunLoop];
-    CFRunLoopAddObserver(runloop, beginObserver, kCFRunLoopCommonModes);
-    CFRunLoopAddObserver(runloop, endObserver, kCFRunLoopCommonModes);
-
-}
-
-// 第一个监控，监控是否处于 **运行状态**
-void myRunLoopBeginCallback(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info)
-{
-    g_runLoopActivity = activity;
-    g_runLoopMode = eRunloopDefaultMode;
-    switch (activity) {
-        case kCFRunLoopEntry:
-            g_bRun = YES;
-            break;
-        case kCFRunLoopBeforeTimers:
-            if (g_bRun == NO) {
-                gettimeofday(&g_tvRun, NULL);
+                    if (++self.beforeSourcesTimeoutCount < 3) {
+                        continue;
+                    }
+                    NSLog(@"调试：监测到卡顿 beforeSourcesRunLoopActivity");
+                }
             }
-            g_bRun = YES;
-            break;
-        case kCFRunLoopBeforeSources:
-            if (g_bRun == NO) {
-                gettimeofday(&g_tvRun, NULL);
+            self.beforeSourcesTimeoutCount = 0;
+        }
+    });
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        while (self.stop == NO) {
+            long semaphoreWait = dispatch_semaphore_wait(self.afterWaitingSemaphore,
+                                                         dispatch_time(DISPATCH_TIME_NOW, 80 * NSEC_PER_MSEC));
+            if (semaphoreWait != 0) {
+                if (self.afterWaitingRunLoopActivity == kCFRunLoopAfterWaiting) {
+                    //出现三次出结果
+                    if (++self.afterWaitingTimeoutCount < 3) {
+                        continue;
+                    }
+                    NSLog(@"调试：监测到卡顿 afterWaitingRunLoopActivity");
+                }
             }
-            g_bRun = YES;
-            break;
-        case kCFRunLoopAfterWaiting:
-            if (g_bRun == NO) {
-                gettimeofday(&g_tvRun, NULL);
-            }
-            g_bRun = YES;
-            break;
-        case kCFRunLoopAllActivities:
-            break;
-        default:
-            break;
-    }
+            self.afterWaitingTimeoutCount = 0;
+        }
+    });
 }
 
-//  第二个监控，监控是否处于 **睡眠状态**
-void myRunLoopEndCallback(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info)
-{
-    g_runLoopActivity = activity;
-    g_runLoopMode = eRunloopDefaultMode;
-    switch (activity) {
-        case kCFRunLoopBeforeWaiting:
-            gettimeofday(&g_tvRun, NULL);
-            g_bRun = NO;
-            break;
-        case kCFRunLoopExit:
-            g_bRun = NO;
-            break;
-        case kCFRunLoopAllActivities:
-            break;
-        default:
-            break;
-    }
+- (void)endMonitor {
+    CFRunLoopRemoveObserver(CFRunLoopGetMain(), self.beforeSourcesObserver, kCFRunLoopCommonModes);
+    CFRunLoopRemoveObserver(CFRunLoopGetMain(), self.afterWaitingObserver, kCFRunLoopCommonModes);
+    self.stop = YES;
 }
 
-
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+}
 
 @end
 
