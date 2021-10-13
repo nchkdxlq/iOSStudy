@@ -56,6 +56,8 @@
 		18CF9AE3266B7C3400A34A85 /* NKWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AE2266B7C3400A34A85 /* NKWeakProxy.m */; };
 		564DE6EEE4050BA9C61E183E /* Pods_iOSStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */; };
 		763A4F5F25BACBB900A46471 /* NKCGUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 763A4F5E25BACBB900A46471 /* NKCGUtilities.m */; };
+		76767D022715277600540259 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76767D012715277600540259 /* NotificationViewController.m */; };
+		76767D0A2716DDF800540259 /* NKRunLoopActivityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 76767D092716DDF700540259 /* NKRunLoopActivityMonitor.m */; };
 		767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 767E612525A810C6007066F3 /* SDWebImageViewController.m */; };
 		768715EF25B06727005C14A8 /* NKTextAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 768715EE25B06727005C14A8 /* NKTextAttribute.m */; };
 		76B150CB25C257540075D367 /* LaunchImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B150C925C257540075D367 /* LaunchImageHelper.m */; };
@@ -195,6 +197,11 @@
 		566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		763A4F5D25BACBB900A46471 /* NKCGUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCGUtilities.h; sourceTree = "<group>"; };
 		763A4F5E25BACBB900A46471 /* NKCGUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKCGUtilities.m; sourceTree = "<group>"; };
+		76767D002715277600540259 /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		76767D012715277600540259 /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		76767D082716DDF700540259 /* NKRunLoopActivityMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKRunLoopActivityMonitor.h; sourceTree = "<group>"; };
+		76767D092716DDF700540259 /* NKRunLoopActivityMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKRunLoopActivityMonitor.m; sourceTree = "<group>"; };
+		76767D0B2716E6C100540259 /* iOSStudy.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSStudy.pch; sourceTree = "<group>"; };
 		767E612425A810C6007066F3 /* SDWebImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDWebImageViewController.h; sourceTree = "<group>"; };
 		767E612525A810C6007066F3 /* SDWebImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDWebImageViewController.m; sourceTree = "<group>"; };
 		768715ED25B06727005C14A8 /* NKTextAttribute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKTextAttribute.h; sourceTree = "<group>"; };
@@ -349,6 +356,7 @@
 				182E14FE25979670007343C4 /* Assets.xcassets */,
 				182E150025979670007343C4 /* LaunchScreen.storyboard */,
 				182E150325979670007343C4 /* Info.plist */,
+				76767D0B2716E6C100540259 /* iOSStudy.pch */,
 			);
 			path = iOSStudy;
 			sourceTree = "<group>";
@@ -390,6 +398,8 @@
 				18CF9AD82669A73500A34A85 /* NKHTTPClient.m */,
 				184165DE26E0598D001398C5 /* NSObject+GCD.h */,
 				184165DF26E0598D001398C5 /* NSObject+GCD.m */,
+				76767D082716DDF700540259 /* NKRunLoopActivityMonitor.h */,
+				76767D092716DDF700540259 /* NKRunLoopActivityMonitor.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -433,6 +443,7 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				76767CFE2715270F00540259 /* EventBus */,
 				182B99B326FE1C5A00F55ECD /* Layout */,
 				182B99A926F8BFC300F55ECD /* ResponderChain */,
 				184165E926E384EC001398C5 /* Crash */,
@@ -594,6 +605,23 @@
 				91DE7C322ADD328E018A0E24 /* Pods-iOSStudyTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		76767CFE2715270F00540259 /* EventBus */ = {
+			isa = PBXGroup;
+			children = (
+				76767CFF2715275100540259 /* NSNotification */,
+			);
+			path = EventBus;
+			sourceTree = "<group>";
+		};
+		76767CFF2715275100540259 /* NSNotification */ = {
+			isa = PBXGroup;
+			children = (
+				76767D002715277600540259 /* NotificationViewController.h */,
+				76767D012715277600540259 /* NotificationViewController.m */,
+			);
+			path = NSNotification;
 			sourceTree = "<group>";
 		};
 		767E612325A810A1007066F3 /* SDWebImage */ = {
@@ -930,6 +958,7 @@
 				186CE6F32598C63700EA71B8 /* NKTextContainer.m in Sources */,
 				76B150D125C2577F0075D367 /* BBADynamicLaunchImage.m in Sources */,
 				186CE6F92598CE2000EA71B8 /* NKTextMacro.m in Sources */,
+				76767D022715277600540259 /* NotificationViewController.m in Sources */,
 				182B99B226F8DC9B00F55ECD /* NKTapGestureRecognizer.m in Sources */,
 				186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */,
 				18CF9AE3266B7C3400A34A85 /* NKWeakProxy.m in Sources */,
@@ -950,6 +979,7 @@
 				182E150525979670007343C4 /* main.m in Sources */,
 				184165E426E27A18001398C5 /* NKPortViewController.m in Sources */,
 				186CE70925995E4E00EA71B8 /* NKTextLine.m in Sources */,
+				76767D0A2716DDF800540259 /* NKRunLoopActivityMonitor.m in Sources */,
 				76B150CB25C257540075D367 /* LaunchImageHelper.m in Sources */,
 				184165EC26E38506001398C5 /* NKCrashViewController.m in Sources */,
 				186CE6ED2598C60C00EA71B8 /* NKTextLayout.m in Sources */,
@@ -1148,6 +1178,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 733RR644TP;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/iOSStudy/iOSStudy.pch";
 				INFOPLIST_FILE = iOSStudy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1166,8 +1197,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 733RR644TP;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/iOSStudy/iOSStudy.pch";
 				INFOPLIST_FILE = iOSStudy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1175,6 +1208,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nchkdxlq.iOSStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
