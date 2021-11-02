@@ -22,7 +22,7 @@
     window.rootViewController = nav;
     self.window = window;
     [window makeKeyAndVisible];
-    
+    [NKRunLoopActivityMonitor startMonitor];
     return YES;
 }
 
