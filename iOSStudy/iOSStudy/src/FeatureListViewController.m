@@ -19,6 +19,7 @@
 #import "NKCrashViewController.h"
 #import "NKResponderChainViewController.h"
 #import "LayoutViewController.h"
+#import "OffScreenViewController.h"
 #import "NotificationViewController.h"
 #import "CallStackViewController.h"
 
@@ -81,6 +82,7 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:LockViewController.class, kDataSourceTitleKey:@"Lock"},
                     @{kDataSourceClassKey:NKCrashViewController.class, kDataSourceTitleKey:@"Crash"},
                     @{kDataSourceClassKey:LayoutViewController.class, kDataSourceTitleKey:@"Layout"},
+                    @{kDataSourceClassKey:OffScreenViewController.class, kDataSourceTitleKey:@"OffScreen"},
                     @{kDataSourceClassKey:NotificationViewController.class, kDataSourceTitleKey:@"Notification"},
                     @{kDataSourceClassKey:NKResponderChainViewController.class, kDataSourceTitleKey:@"ResponderChain"}
                 ];
