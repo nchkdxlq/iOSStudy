@@ -154,12 +154,12 @@ void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity ac
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    NSLog(@"%s", __func__);
+    NSLog(@"%s, %@", __func__, NKRunLoopActivityMonitor.activityText);
     return YES;
 }
 
 - (void)tapGestureHandler:(UITapGestureRecognizer *)tap {
-    NSLog(@"%s", __func__);
+    NSLog(@"%s, %@", __func__, NKRunLoopActivityMonitor.activityText);
 }
 
 

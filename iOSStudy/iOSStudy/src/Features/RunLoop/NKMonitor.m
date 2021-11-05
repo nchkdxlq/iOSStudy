@@ -50,7 +50,7 @@ NSString* activityText(CFRunLoopActivity activity) {
 static void beforeSourcesObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
     NKMonitor *lagMonitor = (__bridge NKMonitor*)info;
     lagMonitor.beforeSourcesRunLoopActivity = activity;
-    NSLog(@"beforeSourcesObserverCallBack %@", activityText(activity));
+    // NSLog(@"beforeSourcesObserverCallBack %@", activityText(activity));
     dispatch_semaphore_t semaphore = lagMonitor.beforeSourcesSemaphore;
     dispatch_semaphore_signal(semaphore);
 }
@@ -59,7 +59,7 @@ static void beforeSourcesObserverCallBack(CFRunLoopObserverRef observer, CFRunLo
 static void afterWaitingObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
     NKMonitor *lagMonitor = (__bridge NKMonitor*)info;
     lagMonitor.afterWaitingRunLoopActivity = activity;
-    NSLog(@"afterWaitingObserverCallBack %@", activityText(activity));
+    // NSLog(@"afterWaitingObserverCallBack %@", activityText(activity));
     dispatch_semaphore_t semaphore = lagMonitor.afterWaitingSemaphore;
     dispatch_semaphore_signal(semaphore);
 }

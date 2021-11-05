@@ -13,6 +13,8 @@ target 'iOSStudy' do
   pod 'FMDB'
   pod 'AFNetworking'
   pod 'UITableView+FDTemplateLayoutCell'
+  pod 'PLCrashReporter'
+  pod 'KSCrash'
 
   target 'iOSStudyTests' do
     inherit! :search_paths

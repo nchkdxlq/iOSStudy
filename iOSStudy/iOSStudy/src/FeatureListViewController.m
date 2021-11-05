@@ -20,6 +20,7 @@
 #import "NKResponderChainViewController.h"
 #import "LayoutViewController.h"
 #import "NotificationViewController.h"
+#import "CallStackViewController.h"
 
 #import "LaunchImageHelper.h"
 
@@ -72,6 +73,7 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:NKTextViewController.class, kDataSourceTitleKey:@"NKText"},
                     @{kDataSourceClassKey:SDWebImageViewController.class, kDataSourceTitleKey:@"SDWebImage"},
                     @{kDataSourceClassKey:NKRunLoopViewController.class, kDataSourceTitleKey:@"RunLoop"},
+                    @{kDataSourceClassKey:CallStackViewController.class, kDataSourceTitleKey:@"CallStack"},
                     @{kDataSourceClassKey:NKGCDViewController.class, kDataSourceTitleKey:@"GCD"},
                     @{kDataSourceClassKey:NKTimerViewController.class, kDataSourceTitleKey:@"Timer"},
                     @{kDataSourceClassKey:NKUIViewLifeCircleController.class, kDataSourceTitleKey:@"UIViewLifeCircle"},

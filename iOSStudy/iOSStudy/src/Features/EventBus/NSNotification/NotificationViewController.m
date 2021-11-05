@@ -41,7 +41,7 @@ static NSString * const kDidTapSend = @"didTapSend";
     NSNotificationQueue *queue = [NSNotificationQueue defaultQueue];
     for (NSInteger i = 0; i < 5; i++) {
         NSNotification *noti = [NSNotification notificationWithName:kDidTapSend object:nil];
-        [queue enqueueNotification:noti postingStyle:NSPostWhenIdle
+        [queue enqueueNotification:noti postingStyle:NSPostASAP
                       coalesceMask:NSNotificationCoalescingOnName
                           forModes:nil];
     }
