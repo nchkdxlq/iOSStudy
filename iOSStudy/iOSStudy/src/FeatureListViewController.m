@@ -22,6 +22,7 @@
 #import "OffScreenViewController.h"
 #import "NotificationViewController.h"
 #import "CallStackViewController.h"
+#import "FishhookViewController.h"
 
 #import "LaunchImageHelper.h"
 
@@ -54,10 +55,7 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
     self.title = @"FeatureList";
     
     [self setupSubView];
-    
     [self setupData];
-    
-    [NSRunLoop currentRunLoop];
 }
 
 - (void)setupSubView {
@@ -81,6 +79,7 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:NKPortViewController.class, kDataSourceTitleKey:@"NKPortViewController"},
                     @{kDataSourceClassKey:LockViewController.class, kDataSourceTitleKey:@"Lock"},
                     @{kDataSourceClassKey:NKCrashViewController.class, kDataSourceTitleKey:@"Crash"},
+                    @{kDataSourceClassKey:FishhookViewController.class, kDataSourceTitleKey:@"fishhook"},
                     @{kDataSourceClassKey:LayoutViewController.class, kDataSourceTitleKey:@"Layout"},
                     @{kDataSourceClassKey:OffScreenViewController.class, kDataSourceTitleKey:@"OffScreen"},
                     @{kDataSourceClassKey:NotificationViewController.class, kDataSourceTitleKey:@"Notification"},
@@ -134,7 +133,7 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"bounds = %@", NSStringFromCGRect(scrollView.bounds));
+//    NSLog(@"bounds = %@", NSStringFromCGRect(scrollView.bounds));
 }
 
 /*

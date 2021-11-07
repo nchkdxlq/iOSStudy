@@ -30,6 +30,8 @@
 		184165E426E27A18001398C5 /* NKPortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184165E326E27A18001398C5 /* NKPortViewController.m */; };
 		184165E826E31403001398C5 /* NKProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 184165E726E31403001398C5 /* NKProxy.m */; };
 		184165EC26E38506001398C5 /* NKCrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184165EB26E38506001398C5 /* NKCrashViewController.m */; };
+		1855C87D2737CF540038E3AD /* FishhookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182FB5572737CB41001C6DC2 /* FishhookViewController.m */; };
+		1855C8852737D0DD0038E3AD /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 1855C8832737D03E0038E3AD /* fishhook.c */; };
 		186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6BE2598298A00EA71B8 /* UIScreen+NKExtension.m */; };
 		186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6C5259829A300EA71B8 /* YYKitViewController.m */; };
 		186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CE6C8259829A300EA71B8 /* MDHTMLLabel.m */; };
@@ -143,6 +145,8 @@
 		182E154725980A8C007343C4 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		182E154C25981624007343C4 /* FeatureListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeatureListViewController.h; sourceTree = "<group>"; };
 		182E154D25981624007343C4 /* FeatureListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeatureListViewController.m; sourceTree = "<group>"; };
+		182FB5562737CB41001C6DC2 /* FishhookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FishhookViewController.h; sourceTree = "<group>"; };
+		182FB5572737CB41001C6DC2 /* FishhookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FishhookViewController.m; sourceTree = "<group>"; };
 		184165DB26E04F43001398C5 /* NKUIViewLifeCircleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKUIViewLifeCircleController.h; sourceTree = "<group>"; };
 		184165DC26E04F43001398C5 /* NKUIViewLifeCircleController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKUIViewLifeCircleController.m; sourceTree = "<group>"; };
 		184165DE26E0598D001398C5 /* NSObject+GCD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+GCD.h"; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 		184165E726E31403001398C5 /* NKProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKProxy.m; sourceTree = "<group>"; };
 		184165EA26E38506001398C5 /* NKCrashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCrashViewController.h; sourceTree = "<group>"; };
 		184165EB26E38506001398C5 /* NKCrashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKCrashViewController.m; sourceTree = "<group>"; };
+		1855C8822737D03E0038E3AD /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		1855C8832737D03E0038E3AD /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
 		186CE6BE2598298A00EA71B8 /* UIScreen+NKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+NKExtension.m"; sourceTree = "<group>"; };
 		186CE6BF2598298A00EA71B8 /* UIScreen+NKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+NKExtension.h"; sourceTree = "<group>"; };
 		186CE6C5259829A300EA71B8 /* YYKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYKitViewController.m; sourceTree = "<group>"; };
@@ -426,6 +432,17 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		182FB5522737CA53001C6DC2 /* fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				1855C8822737D03E0038E3AD /* fishhook.h */,
+				1855C8832737D03E0038E3AD /* fishhook.c */,
+				182FB5562737CB41001C6DC2 /* FishhookViewController.h */,
+				182FB5572737CB41001C6DC2 /* FishhookViewController.m */,
+			);
+			path = fishhook;
+			sourceTree = "<group>";
+		};
 		184165DA26E04F0E001398C5 /* UIViewLifeCircle */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,6 +660,7 @@
 		766CF0CF272AD31E00DBC236 /* CallStack */ = {
 			isa = PBXGroup;
 			children = (
+				182FB5522737CA53001C6DC2 /* fishhook */,
 				768416FD27300B6500DC201A /* NKCallStackSymbols */,
 				766CF0D6272AD44300DBC236 /* BSBacktraceLogger */,
 				766CF0D0272AD34800DBC236 /* CallStackViewController.h */,
@@ -1054,11 +1072,13 @@
 				182E150525979670007343C4 /* main.m in Sources */,
 				184165E426E27A18001398C5 /* NKPortViewController.m in Sources */,
 				186CE70925995E4E00EA71B8 /* NKTextLine.m in Sources */,
+				1855C87D2737CF540038E3AD /* FishhookViewController.m in Sources */,
 				76767D0A2716DDF800540259 /* NKRunLoopActivityMonitor.m in Sources */,
 				76B150CB25C257540075D367 /* LaunchImageHelper.m in Sources */,
 				76CC9656273168A30021EB92 /* NKStackFrame.m in Sources */,
 				184165EC26E38506001398C5 /* NKCrashViewController.m in Sources */,
 				186CE6ED2598C60C00EA71B8 /* NKTextLayout.m in Sources */,
+				1855C8852737D0DD0038E3AD /* fishhook.c in Sources */,
 				18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */,
 				184165DD26E04F43001398C5 /* NKUIViewLifeCircleController.m in Sources */,
 				763A4F5F25BACBB900A46471 /* NKCGUtilities.m in Sources */,

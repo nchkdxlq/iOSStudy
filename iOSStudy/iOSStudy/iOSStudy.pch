@@ -7,9 +7,10 @@
 
 #ifndef iOSStudy_pch
 #define iOSStudy_pch
+#ifdef __OBJC__
 
 #import "NKRunLoopActivityMonitor.h"
 #import "NSObject+GCD.h"
 
-
+#endif
 #endif /* iOSStudy_pch */
