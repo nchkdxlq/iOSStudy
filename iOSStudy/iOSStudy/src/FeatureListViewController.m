@@ -23,6 +23,7 @@
 #import "NotificationViewController.h"
 #import "CallStackViewController.h"
 #import "FishhookViewController.h"
+#import "NetworkViewController.h"
 
 #import "LaunchImageHelper.h"
 
@@ -64,7 +65,6 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
 }
 
 
-
 - (void)setupData {
     _dataSource = @[
                     @{kDataSourceClassKey:YYKitViewController.class, kDataSourceTitleKey:@"YYKit"},
@@ -83,6 +83,7 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:LayoutViewController.class, kDataSourceTitleKey:@"Layout"},
                     @{kDataSourceClassKey:OffScreenViewController.class, kDataSourceTitleKey:@"OffScreen"},
                     @{kDataSourceClassKey:NotificationViewController.class, kDataSourceTitleKey:@"Notification"},
+                    @{kDataSourceClassKey:NetworkViewController.class, kDataSourceTitleKey:@"Network"},
                     @{kDataSourceClassKey:NKResponderChainViewController.class, kDataSourceTitleKey:@"ResponderChain"}
                 ];
 }
