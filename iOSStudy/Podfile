@@ -15,6 +15,7 @@ target 'iOSStudy' do
   pod 'UITableView+FDTemplateLayoutCell'
   pod 'PLCrashReporter'
   pod 'KSCrash'
+  pod 'DoraemonKit'
 
   target 'iOSStudyTests' do
     inherit! :search_paths

@@ -66,13 +66,6 @@ tlsHandShake: %.3f s \n\
             self.statusCode];
 }
 
-/*
- NSURLSessionTaskMetricsResourceFetchTypeUnknown,
- NSURLSessionTaskMetricsResourceFetchTypeNetworkLoad,
- NSURLSessionTaskMetricsResourceFetchTypeServerPush,
- NSURLSessionTaskMetricsResourceFetchTypeLocalCache,
- 
- */
 - (NSString *)fetchType {
     if (self.resourceFetchType == NSURLSessionTaskMetricsResourceFetchTypeNetworkLoad) {
         return @"NetworkLoad";
@@ -84,4 +77,5 @@ tlsHandShake: %.3f s \n\
         return @"Unknown";
     }
 }
+
 @end
