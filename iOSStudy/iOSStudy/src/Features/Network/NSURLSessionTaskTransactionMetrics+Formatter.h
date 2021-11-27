@@ -23,14 +23,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// TLS握手耗时
 @property (nonatomic, assign, readonly) NSTimeInterval tlsHandShake;
 
-/// 请求头+请求体字节数
-@property (nonatomic, assign, readonly) int64_t countOfRequestBytesSent;
+/// 请求行 + 请求头 + 请求体字节数
+@property (nonatomic, assign, readonly) NSUInteger requestLength;
 
-/// 响应头+响应体字节数
-@property (nonatomic, assign, readonly) int64_t countOfResponseBytesReceived;
+/// 响应行 + 响应头 + 响应体字节数
+@property (nonatomic, assign, readonly) NSUInteger responseLength;
 
 /// HTTP响应状态码
 @property (nonatomic, assign, readonly) NSInteger statusCode;
+
+/// 上行速度
+@property (nonatomic, assign, readonly) NSUInteger upSpeed;
+
+/// 下行速度
+@property (nonatomic, assign, readonly) NSUInteger downSpeed;
 
 
 - (NSString *)metricsDescription;

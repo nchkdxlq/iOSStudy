@@ -7,6 +7,7 @@
 
 #import "NSURLSessionTaskTransactionMetrics+Formatter.h"
 
+
 @implementation NSURLSessionTaskTransactionMetrics (Formatter)
 
 // 从开始请求开始 -> 接收到响应体的最后一个字节
@@ -38,12 +39,101 @@
     return -1;
 }
 
-- (int64_t)countOfRequestBytesSent {
-    return self.countOfRequestHeaderBytesSent + self.countOfRequestBodyBytesSent;
+#pragma makr - request
+
+- (NSUInteger)requestLength {
+    NSUInteger lineLength = [self _requestLineLength];
+    NSUInteger headerLength = [self _requestHeaderLength];
+    NSUInteger cookieLength = [self _reqeustCookieLength];
+    NSUInteger bodyLength = [self.request.HTTPBody length];
+    return lineLength + headerLength + cookieLength + bodyLength;
 }
 
-- (int64_t)countOfResponseBytesReceived {
-    return self.countOfResponseHeaderBytesReceived + self.countOfResponseBodyBytesReceived;
+- (NSUInteger)_requestLineLength {
+    // GET /index.html HTTP/1.1 \r\n   最后再加上 \r\n 的长度2 和 中间的2个空格
+    return self.request.HTTPMethod.length + self.request.URL.path.length + self.networkProtocolName.length + 4;
+}
+
+- (NSUInteger)_requestHeaderLength {
+    return [self _headerLengthForHeaders:self.request.allHTTPHeaderFields];
+}
+
+- (NSUInteger)_reqeustCookieLength {
+    NSArray<NSHTTPCookie *> * cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:self.request.URL];
+    NSUInteger length = 0;
+    for (NSHTTPCookie *cookie in cookies) {
+        // PSTM=1567952440;
+        length += (cookie.name.length + cookie.value.length + 1);
+    }
+    length += (2 * (cookies.count - 1)); // n-1个 ;空格
+    // Cookie: PSTM=1567952440 \r\n
+    length += 10;
+    return length;
+}
+
+- (NSUInteger)_requestBodyLength {
+    return [self.request.HTTPBody length];
+}
+
+#pragma makr - response
+
+- (NSUInteger)responseLength {
+    NSUInteger lineLength = [self _responseLineLength];
+    NSUInteger headerLength = [self _responseHeaderLength];
+    NSUInteger bodyLength = [self _responseBodyLength];
+    return lineLength + headerLength + bodyLength;
+}
+
+- (NSUInteger)_responseLineLength {
+    // HTTP/1.1 200 OK \r\n   最后再加上 \r\n 的长度2 和 中间的2个空格
+    NSString *msg = [NSHTTPURLResponse localizedStringForStatusCode:self.statusCode];
+    return self.networkProtocolName.length + 3 + msg.length + 4;
+}
+
+- (NSUInteger)_responseHeaderLength {
+    return [self _headerLengthForHeaders:[(NSHTTPURLResponse *)self.response allHeaderFields]];
+}
+
+- (NSUInteger)_responseBodyLength {
+    if (self.response.expectedContentLength != NSURLResponseUnknownLength) {
+        return self.response.expectedContentLength;
+    } else {
+        return 0;
+    }
+}
+
+- (NSUInteger)_headerLengthForHeaders:(NSDictionary<NSString *, NSString *> *)headers {
+    /**
+     Accept-Language: zh-cn
+     Accept-Encoding: gzip, deflate
+     */
+    __block NSUInteger length = 0;
+    [headers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
+        // key: value\r\n
+        length += (key.length + obj.length + 4);
+    }];
+    return length;
+}
+
+
+- (NSUInteger)upSpeed {
+    if (self.requestStartDate == nil || self.requestEndDate == nil) return 0;
+    NSTimeInterval cost = [self.requestEndDate timeIntervalSinceDate:self.requestStartDate];
+    if (cost > 0) {
+        return self.requestLength / cost;;
+    } else {
+        return 0;
+    }
+}
+
+- (NSUInteger)downSpeed {
+    if (self.responseStartDate == nil || self.responseEndDate == nil) return 0;
+    NSTimeInterval cost = [self.responseEndDate timeIntervalSinceDate:self.responseStartDate];
+    if (cost > 0) {
+        return self.responseLength / cost;;
+    } else {
+        return 0;
+    }
 }
 
 - (NSInteger)statusCode {
@@ -57,13 +147,17 @@
          dns: %.3f s \n\
     connecte: %.3f s \n\
 tlsHandShake: %.3f s \n\
-  statusCode: %ld",
+  statusCode: %ld \n\
+     upSpeed: %@ \n\
+   downSpeed: %@ \n",
             [self fetchType],
             self.duration,
             self.dns,
             self.connecte,
             self.tlsHandShake,
-            self.statusCode];
+            self.statusCode,
+            [self fileSizeForBytes:self.upSpeed],
+            [self fileSizeForBytes:self.downSpeed]];
 }
 
 - (NSString *)fetchType {
@@ -75,6 +169,22 @@ tlsHandShake: %.3f s \n\
         return @"LocalCache";
     } else {
         return @"Unknown";
+    }
+}
+
+- (NSString *)fileSizeForBytes:(NSUInteger)bytes {
+    const NSUInteger KB = 1024;
+    const NSUInteger MB = 1024 * 1024;
+    const NSUInteger TB = 1024 * 1024 * 1024;
+    
+    if (bytes < KB) {
+        return [NSString stringWithFormat:@"%lu B", bytes];
+    } else if (bytes < MB) {
+        return [NSString stringWithFormat:@"%.2f KB", bytes / (double)KB];
+    } else if (bytes < TB) {
+        return [NSString stringWithFormat:@"%.2f MB", bytes / (double)MB];
+    } else {
+        return [NSString stringWithFormat:@"%.2f TB", bytes / (double)TB];
     }
 }
 
