@@ -7,7 +7,7 @@
 
 #import "NetworkViewController.h"
 #import <AFNetworking/AFNetworking.h>
-#import "NetworkMetrics.h"
+#import "MetricsAFHTTPSessionManager.h"
 #import "UIDeviceMetrics.h"
 
 @implementation NetworkViewController
@@ -16,11 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager setTaskDidFinishCollectingMetricsBlock:^(NSURLSession * _Nonnull session, NSURLSessionTask * _Nonnull task, NSURLSessionTaskMetrics * _Nullable metrics) {
-        [[NetworkMetrics sharedMetrics] collectSessionTaskMetrics:metrics];
-    }];
-    
+    AFHTTPSessionManager *manager = [MetricsAFHTTPSessionManager manager];
     [manager GET:@"https://www.baidu.com" parameters:nil headers:nil progress:NULL success:NULL failure:NULL];
 }
 

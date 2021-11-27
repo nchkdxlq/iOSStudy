@@ -9,6 +9,7 @@
 #import "SDWebImageViewController.h"
 #import <SDWebImage/SDWebImage.h>
 #import <Masonry/Masonry.h>
+#import "MetricsSDWebImageDownloaderOperation.h"
 
 @interface SDWebImageViewController ()
 
@@ -33,14 +34,16 @@
     }];
     
     imageView.image = [UIImage imageNamed:@"小蛮腰"];
+    SDWebImageDownloaderConfig *config = [SDWebImageDownloaderConfig defaultDownloaderConfig];
+    config.operationClass = MetricsSDWebImageDownloaderOperation.class;
     
-//    NSURL *url = [NSURL URLWithString:@"https://ww1.sinaimg.cn/orj360/006amZe7ly1gmfzh6lfa7j30n01dsalp.jpg"];
-//    SDWebImageOptions options = SDWebImageFromLoaderOnly;
-//    [imageView sd_setImageWithURL:url placeholderImage:nil options:options completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-//        if (error) {
-//            NSLog(@"%@", error);
-//        }
-//    }];
+    NSURL *url = [NSURL URLWithString:@"https://ww1.sinaimg.cn/orj360/006amZe7ly1gmfzh6lfa7j30n01dsalp.jpg"];
+    SDWebImageOptions options = SDWebImageFromLoaderOnly;
+    [imageView sd_setImageWithURL:url placeholderImage:nil options:options completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [imageView sd_cancelCurrentImageLoad];
 //    });
