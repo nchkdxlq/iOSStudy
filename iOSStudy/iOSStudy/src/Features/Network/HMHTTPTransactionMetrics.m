@@ -183,7 +183,7 @@
 }
 
 
-- (NSString *)fetchType {
+- (NSString *)resourceFetchType {
     NSURLSessionTaskMetricsResourceFetchType resourceFetchType = self.transactionMetrics.resourceFetchType;
     if (resourceFetchType == NSURLSessionTaskMetricsResourceFetchTypeNetworkLoad) {
         return @"NetworkLoad";
@@ -223,7 +223,7 @@
     statusCode: %ld \n\
 outStreamSpeed: %@ \n\
  inStreamSpeed: %@ \n",
-            [self fetchType],
+            [self resourceFetchType],
             self.duration,
             self.dns,
             self.connect,

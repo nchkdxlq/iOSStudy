@@ -53,7 +53,7 @@
     kr = vm_deallocate(mach_task_self(), (vm_offset_t)threadList, threadCount * sizeof(thread_t));
     assert(kr == KERN_SUCCESS);
     
-    return totalCPU / (float)TH_USAGE_SCALE * 100.0;
+    return totalCPU / (float)TH_USAGE_SCALE;
 }
 
 
@@ -77,7 +77,7 @@
     natural_t total  = user + nice + system + idle;
     previous_info    = info;
     
-    return (user + nice + system) / total * 100.0;
+    return (user + nice + system) / total;
 }
 
 + (NSUInteger)cpuCount {
@@ -89,6 +89,7 @@
     return [NSProcessInfo processInfo].physicalMemory;
 }
 
+// 可以在主线程RunLoop的BeforeWaiting事件中获取内存, 这是内存autoreleasepool还未销毁，可获峰值
 + (unsigned long long)appUsedMemory {
     task_vm_info_data_t vmInfo;
     mach_msg_type_number_t count = TASK_VM_INFO_COUNT;
