@@ -9,7 +9,7 @@
 #import "SDWebImageViewController.h"
 #import <SDWebImage/SDWebImage.h>
 #import <Masonry/Masonry.h>
-#import "MetricsSDWebImageDownloaderOperation.h"
+
 
 @interface SDWebImageViewController ()
 
@@ -34,8 +34,6 @@
     }];
     
     imageView.image = [UIImage imageNamed:@"小蛮腰"];
-    SDWebImageDownloaderConfig *config = [SDWebImageDownloaderConfig defaultDownloaderConfig];
-    config.operationClass = MetricsSDWebImageDownloaderOperation.class;
     
     NSURL *url = [NSURL URLWithString:@"https://ww1.sinaimg.cn/orj360/006amZe7ly1gmfzh6lfa7j30n01dsalp.jpg"];
     SDWebImageOptions options = SDWebImageFromLoaderOnly;

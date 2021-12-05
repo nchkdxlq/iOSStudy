@@ -7,6 +7,7 @@
 
 #import "NKTimerViewController.h"
 #import "NKWeakProxy.h"
+#import <YYKit/YYKit.h>
 
 @interface NKTimerViewController()
 
@@ -22,11 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self testLink];
+    [self testLink];
 }
 
 - (void)testLink {
-    NKWeakProxy *proxy = [NKWeakProxy proxyWithTarget:self];
+    YYWeakProxy *proxy = [YYWeakProxy proxyWithTarget:self];
     self.link = [CADisplayLink displayLinkWithTarget:proxy selector:@selector(linkAction:)];
     [self.link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 }

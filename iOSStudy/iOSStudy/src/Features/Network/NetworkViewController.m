@@ -7,16 +7,20 @@
 
 #import "NetworkViewController.h"
 #import <AFNetworking/AFNetworking.h>
-#import "MetricsAFHTTPSessionManager.h"
 #import "UIDeviceMetrics.h"
+#import "HTTPMetricsManager.h"
+
+@interface NetworkViewController () <HTTPMetricsManagerDelegate>
+
+@end
 
 @implementation NetworkViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[HTTPMetricsManager sharedMetrics] addObserver:self];
     
-    AFHTTPSessionManager *manager = [MetricsAFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:@"https://www.baidu.com" parameters:nil headers:nil progress:NULL success:NULL failure:NULL];
     
     NSDate *begin = [NSDate date];
@@ -25,5 +29,13 @@
     NSLog(@"cpuUsage = %f, cost = %f", cpuUsage, cost);
 }
 
+
+- (void)metricsManager:(HTTPMetricsManager *)manager didCollectedMetrics:(HMHTTPTransactionMetrics *)metrics {
+    NSLog(@"%@", [metrics description]);
+}
+
+- (void)dealloc {
+    [[HTTPMetricsManager sharedMetrics] removeObserver:self];
+}
 
 @end
