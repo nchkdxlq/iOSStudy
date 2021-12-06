@@ -29,13 +29,15 @@
     NSLog(@"cpuUsage = %f, cost = %f", cpuUsage, cost);
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[HTTPMetricsManager sharedMetrics] removeObserver:self];
+}
 
 - (void)metricsManager:(HTTPMetricsManager *)manager didCollectedMetrics:(HMHTTPTransactionMetrics *)metrics {
     NSLog(@"%@", [metrics description]);
 }
 
-- (void)dealloc {
-    [[HTTPMetricsManager sharedMetrics] removeObserver:self];
-}
 
 @end

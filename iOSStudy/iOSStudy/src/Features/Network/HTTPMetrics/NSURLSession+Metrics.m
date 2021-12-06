@@ -8,7 +8,7 @@
 #import "NSURLSession+Metrics.h"
 #import <objc/message.h>
 #import "NSURLSessionDelegateProxy.h"
-
+#import "HTTPMetricsManager.h"
 
 @implementation NSURLSession (Metrics)
 
@@ -20,10 +20,12 @@
 
 
 + (NSURLSession *)metrics_sessionWithConfiguration:(NSURLSessionConfiguration *)configuration
-                                          delegate:(id<NSURLSessionDelegate>)delegate
-                                     delegateQueue:(NSOperationQueue *)queue {
-    id<NSURLSessionDelegate> delegateProxy = [NSURLSessionDelegateProxy proxyWithTarget:delegate];
-    return [self metrics_sessionWithConfiguration:configuration delegate:delegateProxy delegateQueue:queue];
+                                          delegate:(nullable id<NSURLSessionDelegate>)delegate
+                                     delegateQueue:(nullable NSOperationQueue *)queue {
+    id<NSURLSessionDelegate> delegateProxy = [NSURLSessionDelegateProxy proxyWithTarget:delegate queue:queue];
+    return [self metrics_sessionWithConfiguration:configuration
+                                         delegate:delegateProxy
+                                    delegateQueue:HTTPMetricsManager.sharedMetrics.proxyQueue];
 }
 
 @end

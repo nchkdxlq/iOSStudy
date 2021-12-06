@@ -13,9 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) id<NSURLSessionDelegate> target;
 
-- (instancetype)initWithTarget:(id<NSURLSessionDelegate>)target;
++ (instancetype)proxyWithTarget:(nullable id<NSURLSessionDelegate>)target queue:(nullable NSOperationQueue *)queue;
 
-+ (instancetype)proxyWithTarget:(id<NSURLSessionDelegate>)target;
+- (instancetype)initWithTarget:(nullable id<NSURLSessionDelegate>)target queue:(nullable NSOperationQueue *)queue;
+
 
 @end
 

@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) NSMutableArray<id<HTTPMetricsManagerDelegate>> *observers;
 
+@property (nonatomic, strong) dispatch_semaphore_t semaphore;
+
 @end
 
 @implementation HTTPMetricsManager
@@ -45,23 +47,32 @@
     return instance;
 }
 
-
 - (instancetype)init {
     self = [super init];
     if (self) {
         _observers = [NSMutableArray new];
+        _semaphore = dispatch_semaphore_create(1);
+        
+        _proxyQueue = [NSOperationQueue new];
+        _proxyQueue.maxConcurrentOperationCount = 1;
+        _proxyQueue.name = @"HMURLSessionTaskMetricsQueue";
     }
     return self;
 }
 
 - (void)addObserver:(id<HTTPMetricsManagerDelegate>)observer {
-    if (observer == nil || [self.observers containsObject:observer]) return;
-    [self.observers addObject:observer];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    if (observer != nil && ![self.observers containsObject:observer]) {    
+        [self.observers addObject:observer];
+    }
+    dispatch_semaphore_signal(self.semaphore);
 }
 
 - (void)removeObserver:(id<HTTPMetricsManagerDelegate>)observer {
     if (observer == nil) return;
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
     [self.observers removeObject:observer];
+    dispatch_semaphore_signal(self.semaphore);
 }
 
 
