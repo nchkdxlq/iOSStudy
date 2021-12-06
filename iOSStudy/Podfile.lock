@@ -98,10 +98,45 @@ PODS:
     - KSCrash/Recording
   - Masonry (1.1.0)
   - OCMock (3.8.1)
+  - PINCache (3.0.3):
+    - PINCache/Arc-exception-safe (= 3.0.3)
+    - PINCache/Core (= 3.0.3)
+  - PINCache/Arc-exception-safe (3.0.3):
+    - PINCache/Core
+  - PINCache/Core (3.0.3):
+    - PINOperation (~> 1.2.1)
+  - PINOperation (1.2.1)
+  - PINRemoteImage/Core (3.0.3):
+    - PINOperation
+  - PINRemoteImage/iOS (3.0.3):
+    - PINRemoteImage/Core
+  - PINRemoteImage/PINCache (3.0.3):
+    - PINCache (~> 3.0.3)
+    - PINRemoteImage/Core
   - PLCrashReporter (1.10.0)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
+  - Texture (3.1.0):
+    - Texture/AssetsLibrary (= 3.1.0)
+    - Texture/Core (= 3.1.0)
+    - Texture/MapKit (= 3.1.0)
+    - Texture/Photos (= 3.1.0)
+    - Texture/PINRemoteImage (= 3.1.0)
+    - Texture/Video (= 3.1.0)
+  - Texture/AssetsLibrary (3.1.0):
+    - Texture/Core
+  - Texture/Core (3.1.0)
+  - Texture/MapKit (3.1.0):
+    - Texture/Core
+  - Texture/Photos (3.1.0):
+    - Texture/Core
+  - Texture/PINRemoteImage (3.1.0):
+    - PINRemoteImage/iOS (~> 3.0.0)
+    - PINRemoteImage/PINCache
+    - Texture/Core
+  - Texture/Video (3.1.0):
+    - Texture/Core
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
@@ -117,6 +152,7 @@ DEPENDENCIES:
   - OCMock
   - PLCrashReporter
   - SDWebImage
+  - Texture
   - "UITableView+FDTemplateLayoutCell"
   - YYKit
 
@@ -130,8 +166,12 @@ SPEC REPOS:
     - KSCrash
     - Masonry
     - OCMock
+    - PINCache
+    - PINOperation
+    - PINRemoteImage
     - PLCrashReporter
     - SDWebImage
+    - Texture
     - "UITableView+FDTemplateLayoutCell"
     - YYKit
 
@@ -144,11 +184,15 @@ SPEC CHECKSUMS:
   KSCrash: 6689ba5c43800f831b68928ccdbcc8b201d4dd86
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   OCMock: 29f6e52085b4e7d9b075cbf03ed7c3112f82f934
+  PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
+  PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
+  PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   PLCrashReporter: b8c81dcdb3dd7c4247c00b95ada1f1b37d53fde8
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  Texture: 2e8ab2519452515f7f5a520f5a8f7e0a413abfa3
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 2c518f9f33c3519604a0e55b2c93ea1c0b8d0c4c
+PODFILE CHECKSUM: 299c79a99c68e34e39a8575f8e1ea15a5f1072ed
 
 COCOAPODS: 1.10.0

@@ -16,6 +16,7 @@ target 'iOSStudy' do
   pod 'PLCrashReporter'
   pod 'KSCrash'
   pod 'DoraemonKit'
+  pod 'Texture'
 
   target 'iOSStudyTests' do
     inherit! :search_paths
