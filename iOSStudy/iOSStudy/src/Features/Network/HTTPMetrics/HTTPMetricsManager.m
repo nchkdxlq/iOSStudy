@@ -11,6 +11,8 @@
 
 @interface HTTPMetricsManager ()
 
+@property (nonatomic, strong) NSOperationQueue *metricsQueue;
+
 @property (nonatomic, strong) NSMutableArray<id<HTTPMetricsManagerDelegate>> *observers;
 
 @property (nonatomic, strong) dispatch_semaphore_t semaphore;
@@ -21,6 +23,12 @@
 
 
 - (void)didFinishCollectingMetrics:(NSURLSessionTaskMetrics *)metrics {
+    [self.metricsQueue addOperationWithBlock:^{
+        [self internal_didFinishCollectingMetrics:metrics];
+    }];
+}
+
+- (void)internal_didFinishCollectingMetrics:(NSURLSessionTaskMetrics *)metrics {
     NSArray<id<HTTPMetricsManagerDelegate>> *observers = self.observers.copy;
     for (NSURLSessionTaskTransactionMetrics *transactionMetrics in metrics.transactionMetrics) {
         if (transactionMetrics.resourceFetchType == NSURLSessionTaskMetricsResourceFetchTypeLocalCache
@@ -37,7 +45,6 @@
     }
 }
 
-
 + (instancetype)sharedMetrics {
     static HTTPMetricsManager *instance;
     static dispatch_once_t onceToken;
@@ -53,16 +60,16 @@
         _observers = [NSMutableArray new];
         _semaphore = dispatch_semaphore_create(1);
         
-        _proxyQueue = [NSOperationQueue new];
-        _proxyQueue.maxConcurrentOperationCount = 1;
-        _proxyQueue.name = @"HMURLSessionTaskMetricsQueue";
+        _metricsQueue = [NSOperationQueue new];
+        _metricsQueue.maxConcurrentOperationCount = 1;
+        _metricsQueue.name = @"HMURLSessionTaskMetricsQueue";
     }
     return self;
 }
 
 - (void)addObserver:(id<HTTPMetricsManagerDelegate>)observer {
     dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
-    if (observer != nil && ![self.observers containsObject:observer]) {    
+    if (observer != nil && ![self.observers containsObject:observer]) {
         [self.observers addObject:observer];
     }
     dispatch_semaphore_signal(self.semaphore);

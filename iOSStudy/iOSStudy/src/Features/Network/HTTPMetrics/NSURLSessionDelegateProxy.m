@@ -10,20 +10,17 @@
 
 @interface NSURLSessionDelegateProxy () <NSURLSessionTaskDelegate>
 
-@property (nonatomic, strong) NSOperationQueue *queue;
-
 @end
 
 
 @implementation NSURLSessionDelegateProxy
 
-+ (instancetype)proxyWithTarget:(id<NSURLSessionDelegate>)target queue:(NSOperationQueue *)queue {
-    return [[NSURLSessionDelegateProxy alloc] initWithTarget:target queue:queue];
++ (instancetype)proxyWithTarget:(id<NSURLSessionDelegate>)target {
+    return [[NSURLSessionDelegateProxy alloc] initWithTarget:target];
 }
 
-- (instancetype)initWithTarget:(id<NSURLSessionDelegate>)target queue:(NSOperationQueue *)queue {
+- (instancetype)initWithTarget:(id<NSURLSessionDelegate>)target {
     _target = target;
-    _queue = queue ?: [NSOperationQueue mainQueue];
     return self;
 }
 
@@ -41,7 +38,17 @@
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
+    if ([self proxyRespondsToSelector:aSelector]) {
+        return YES;
+    }
     return [_target respondsToSelector:aSelector];
+}
+
+- (BOOL)proxyRespondsToSelector:(SEL)aSelector {
+    if (aSelector == @selector(URLSession:task:didFinishCollectingMetrics:)) {
+        return YES;
+    }
+    return NO;
 }
 
 - (BOOL)conformsToProtocol:(Protocol *)aProtocol {
@@ -88,11 +95,8 @@
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didFinishCollectingMetrics:(NSURLSessionTaskMetrics *)metrics {
     if ([self.target respondsToSelector:@selector(URLSession:task:didFinishCollectingMetrics:)]) {
-        [self.queue addOperationWithBlock:^{
-            [(id<NSURLSessionTaskDelegate>)self.target URLSession:session task:task didFinishCollectingMetrics:metrics];
-        }];
+        [(id<NSURLSessionTaskDelegate>)self.target URLSession:session task:task didFinishCollectingMetrics:metrics];
     }
-    
     [HTTPMetricsManager.sharedMetrics didFinishCollectingMetrics:metrics];
 }
 

@@ -22,10 +22,8 @@
 + (NSURLSession *)metrics_sessionWithConfiguration:(NSURLSessionConfiguration *)configuration
                                           delegate:(nullable id<NSURLSessionDelegate>)delegate
                                      delegateQueue:(nullable NSOperationQueue *)queue {
-    id<NSURLSessionDelegate> delegateProxy = [NSURLSessionDelegateProxy proxyWithTarget:delegate queue:queue];
-    return [self metrics_sessionWithConfiguration:configuration
-                                         delegate:delegateProxy
-                                    delegateQueue:HTTPMetricsManager.sharedMetrics.proxyQueue];
+    id<NSURLSessionDelegate> delegateProxy = [NSURLSessionDelegateProxy proxyWithTarget:delegate];
+    return [self metrics_sessionWithConfiguration:configuration delegate:delegateProxy delegateQueue:queue];
 }
 
 @end

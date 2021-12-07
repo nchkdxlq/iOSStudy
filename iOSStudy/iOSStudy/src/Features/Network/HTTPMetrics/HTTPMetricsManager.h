@@ -24,8 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedMetrics;
 
-@property (nonatomic, strong) NSOperationQueue *proxyQueue;
-
 - (void)addObserver:(id<HTTPMetricsManagerDelegate>)observer;
 
 - (void)removeObserver:(id<HTTPMetricsManagerDelegate>)observer;
