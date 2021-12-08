@@ -33,6 +33,9 @@ PODS:
     - GCDWebServer/Core
   - GCDWebServer/WebUploader (3.5.4):
     - GCDWebServer/Core
+  - IGListDiffKit (4.0.0)
+  - IGListKit (4.0.0):
+    - IGListDiffKit (= 4.0.0)
   - KSCrash (1.15.25):
     - KSCrash/Installations (= 1.15.25)
   - KSCrash/Installations (1.15.25):
@@ -147,6 +150,7 @@ DEPENDENCIES:
   - Aspects
   - DoraemonKit
   - FMDB
+  - IGListKit
   - KSCrash
   - Masonry
   - OCMock
@@ -163,6 +167,8 @@ SPEC REPOS:
     - DoraemonKit
     - FMDB
     - GCDWebServer
+    - IGListDiffKit
+    - IGListKit
     - KSCrash
     - Masonry
     - OCMock
@@ -181,6 +187,8 @@ SPEC CHECKSUMS:
   DoraemonKit: 0a040ae24386654e2a2d2c8d029f5ff5837de3c3
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
+  IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
+  IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   KSCrash: 6689ba5c43800f831b68928ccdbcc8b201d4dd86
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   OCMock: 29f6e52085b4e7d9b075cbf03ed7c3112f82f934
@@ -193,6 +201,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 299c79a99c68e34e39a8575f8e1ea15a5f1072ed
+PODFILE CHECKSUM: 929f7a5885f503dd6002c8e75e1b8fd472cabd66
 
 COCOAPODS: 1.10.0

@@ -54,6 +54,8 @@
 		18A2FC652752870B00864595 /* HMHTTPTransactionMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC642752870B00864595 /* HMHTTPTransactionMetrics.m */; };
 		18A2FC68275CBF8B00864595 /* NSURLSession+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC67275CBF8B00864595 /* NSURLSession+Metrics.m */; };
 		18A2FC6B275CC2DB00864595 /* NSURLSessionDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC6A275CC2DB00864595 /* NSURLSessionDelegateProxy.m */; };
+		18A2FEEE275FADCB00864595 /* NKTextureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FEED275FADCB00864595 /* NKTextureViewController.m */; };
+		18A2FEF22760426F00864595 /* NKIGListKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FEF12760426F00864595 /* NKIGListKitViewController.m */; };
 		18A9370F26C78638000088B7 /* LockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9370E26C78638000088B7 /* LockViewController.m */; };
 		18A9371026C7887C000088B7 /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18A9371426C78AEF000088B7 /* Synchronized.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9371326C78AEF000088B7 /* Synchronized.m */; };
@@ -211,6 +213,10 @@
 		18A2FC69275CC2DB00864595 /* NSURLSessionDelegateProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSURLSessionDelegateProxy.h; sourceTree = "<group>"; };
 		18A2FC6A275CC2DB00864595 /* NSURLSessionDelegateProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSURLSessionDelegateProxy.m; sourceTree = "<group>"; };
 		18A2FC6C275CF0B400864595 /* HTTPMetricsManager+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HTTPMetricsManager+Private.h"; sourceTree = "<group>"; };
+		18A2FEEC275FADCB00864595 /* NKTextureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKTextureViewController.h; sourceTree = "<group>"; };
+		18A2FEED275FADCB00864595 /* NKTextureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTextureViewController.m; sourceTree = "<group>"; };
+		18A2FEF02760426F00864595 /* NKIGListKitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKIGListKitViewController.h; sourceTree = "<group>"; };
+		18A2FEF12760426F00864595 /* NKIGListKitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKIGListKitViewController.m; sourceTree = "<group>"; };
 		18A9370D26C78638000088B7 /* LockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LockViewController.h; sourceTree = "<group>"; };
 		18A9370E26C78638000088B7 /* LockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LockViewController.m; sourceTree = "<group>"; };
 		18A9371226C78AEF000088B7 /* Synchronized.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Synchronized.h; sourceTree = "<group>"; };
@@ -513,6 +519,8 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				18A2FEEF2760424500864595 /* IGListKit */,
+				18A2FEEB275FADAC00864595 /* Texture */,
 				1854064027511EB300EDB9A5 /* Network */,
 				766CF0CF272AD31E00DBC236 /* CallStack */,
 				187867F52713314B00C87E48 /* OffScreen */,
@@ -640,6 +648,24 @@
 				18A2FC6A275CC2DB00864595 /* NSURLSessionDelegateProxy.m */,
 			);
 			path = HTTPMetrics;
+			sourceTree = "<group>";
+		};
+		18A2FEEB275FADAC00864595 /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				18A2FEEC275FADCB00864595 /* NKTextureViewController.h */,
+				18A2FEED275FADCB00864595 /* NKTextureViewController.m */,
+			);
+			path = Texture;
+			sourceTree = "<group>";
+		};
+		18A2FEEF2760424500864595 /* IGListKit */ = {
+			isa = PBXGroup;
+			children = (
+				18A2FEF02760426F00864595 /* NKIGListKitViewController.h */,
+				18A2FEF12760426F00864595 /* NKIGListKitViewController.m */,
+			);
+			path = IGListKit;
 			sourceTree = "<group>";
 		};
 		18A9370C26C78617000088B7 /* Lock */ = {
@@ -1088,6 +1114,7 @@
 				182E154825980A8C007343C4 /* BaseViewController.m in Sources */,
 				186CE6D825989E5200EA71B8 /* NKAsyncLayer.m in Sources */,
 				186CE6DE25989E6F00EA71B8 /* NKLabel.m in Sources */,
+				18A2FEF22760426F00864595 /* NKIGListKitViewController.m in Sources */,
 				18A9371026C7887C000088B7 /* NSObject+RetainCount.m in Sources */,
 				182E14F42597966F007343C4 /* AppDelegate.m in Sources */,
 				76841706273012CD00DC201A /* NKThread.m in Sources */,
@@ -1112,6 +1139,7 @@
 				18CF9AD62663E05300A34A85 /* NKGCDViewController.m in Sources */,
 				186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */,
 				187867F82713319200C87E48 /* OffScreenViewController.m in Sources */,
+				18A2FEEE275FADCB00864595 /* NKTextureViewController.m in Sources */,
 				18A2FC5C27527E9700864595 /* HTTPMetricsManager.m in Sources */,
 				180C6BF926FEC6E3004EEB67 /* LayoutLayer.m in Sources */,
 				18A2FC68275CBF8B00864595 /* NSURLSession+Metrics.m in Sources */,

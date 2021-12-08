@@ -24,6 +24,8 @@
 #import "CallStackViewController.h"
 #import "FishhookViewController.h"
 #import "NetworkViewController.h"
+#import "NKTextureViewController.h"
+#import "NKIGListKitViewController.h"
 
 #import "LaunchImageHelper.h"
 
@@ -84,6 +86,8 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:OffScreenViewController.class, kDataSourceTitleKey:@"OffScreen"},
                     @{kDataSourceClassKey:NotificationViewController.class, kDataSourceTitleKey:@"Notification"},
                     @{kDataSourceClassKey:NetworkViewController.class, kDataSourceTitleKey:@"Network"},
+                    @{kDataSourceClassKey:NKTextureViewController.class, kDataSourceTitleKey:@"Texture"},
+                    @{kDataSourceClassKey:NKIGListKitViewController.class, kDataSourceTitleKey:@"IGListKit"},
                     @{kDataSourceClassKey:NKResponderChainViewController.class, kDataSourceTitleKey:@"ResponderChain"}
                 ];
 }
