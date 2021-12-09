@@ -65,6 +65,10 @@
 		18CF9ADB2669AA4F00A34A85 /* NKHTTPClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9ADA2669AA4F00A34A85 /* NKHTTPClientTest.m */; };
 		18CF9AE0266B753000A34A85 /* NKTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9ADF266B753000A34A85 /* NKTimerViewController.m */; };
 		18CF9AE3266B7C3400A34A85 /* NKWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AE2266B7C3400A34A85 /* NKWeakProxy.m */; };
+		18F6A00E2760F1EC009C9774 /* ASTextNodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A00D2760F1EC009C9774 /* ASTextNodeViewController.m */; };
+		18F6A0112760F3BA009C9774 /* NKChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A0102760F3BA009C9774 /* NKChatListViewController.m */; };
+		18F6A0152760F4E2009C9774 /* NKChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A0142760F4E2009C9774 /* NKChat.m */; };
+		18F6A0182760F656009C9774 /* NKChatCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A0172760F656009C9774 /* NKChatCellNode.m */; };
 		564DE6EEE4050BA9C61E183E /* Pods_iOSStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */; };
 		763A4F5F25BACBB900A46471 /* NKCGUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 763A4F5E25BACBB900A46471 /* NKCGUtilities.m */; };
 		766CF0D2272AD34800DBC236 /* CallStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766CF0D1272AD34800DBC236 /* CallStackViewController.m */; };
@@ -233,6 +237,14 @@
 		18CF9ADF266B753000A34A85 /* NKTimerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKTimerViewController.m; sourceTree = "<group>"; };
 		18CF9AE1266B7C3400A34A85 /* NKWeakProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKWeakProxy.h; sourceTree = "<group>"; };
 		18CF9AE2266B7C3400A34A85 /* NKWeakProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKWeakProxy.m; sourceTree = "<group>"; };
+		18F6A00C2760F1EC009C9774 /* ASTextNodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASTextNodeViewController.h; sourceTree = "<group>"; };
+		18F6A00D2760F1EC009C9774 /* ASTextNodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASTextNodeViewController.m; sourceTree = "<group>"; };
+		18F6A00F2760F3BA009C9774 /* NKChatListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKChatListViewController.h; sourceTree = "<group>"; };
+		18F6A0102760F3BA009C9774 /* NKChatListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKChatListViewController.m; sourceTree = "<group>"; };
+		18F6A0132760F4E2009C9774 /* NKChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKChat.h; sourceTree = "<group>"; };
+		18F6A0142760F4E2009C9774 /* NKChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKChat.m; sourceTree = "<group>"; };
+		18F6A0162760F656009C9774 /* NKChatCellNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKChatCellNode.h; sourceTree = "<group>"; };
+		18F6A0172760F656009C9774 /* NKChatCellNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKChatCellNode.m; sourceTree = "<group>"; };
 		5067C21F0903FF04983847D7 /* Pods-iOSStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudy.release.xcconfig"; path = "Target Support Files/Pods-iOSStudy/Pods-iOSStudy.release.xcconfig"; sourceTree = "<group>"; };
 		566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		763A4F5D25BACBB900A46471 /* NKCGUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCGUtilities.h; sourceTree = "<group>"; };
@@ -655,6 +667,9 @@
 			children = (
 				18A2FEEC275FADCB00864595 /* NKTextureViewController.h */,
 				18A2FEED275FADCB00864595 /* NKTextureViewController.m */,
+				18F6A00C2760F1EC009C9774 /* ASTextNodeViewController.h */,
+				18F6A00D2760F1EC009C9774 /* ASTextNodeViewController.m */,
+				18F6A0122760F48A009C9774 /* ChatList */,
 			);
 			path = Texture;
 			sourceTree = "<group>";
@@ -716,6 +731,19 @@
 				18CF9AE2266B7C3400A34A85 /* NKWeakProxy.m */,
 			);
 			path = Timer;
+			sourceTree = "<group>";
+		};
+		18F6A0122760F48A009C9774 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				18F6A00F2760F3BA009C9774 /* NKChatListViewController.h */,
+				18F6A0102760F3BA009C9774 /* NKChatListViewController.m */,
+				18F6A0132760F4E2009C9774 /* NKChat.h */,
+				18F6A0142760F4E2009C9774 /* NKChat.m */,
+				18F6A0162760F656009C9774 /* NKChatCellNode.h */,
+				18F6A0172760F656009C9774 /* NKChatCellNode.m */,
+			);
+			path = ChatList;
 			sourceTree = "<group>";
 		};
 		3FD153DB39E05CE038C18353 /* Pods */ = {
@@ -1118,6 +1146,7 @@
 				18A9371026C7887C000088B7 /* NSObject+RetainCount.m in Sources */,
 				182E14F42597966F007343C4 /* AppDelegate.m in Sources */,
 				76841706273012CD00DC201A /* NKThread.m in Sources */,
+				18F6A00E2760F1EC009C9774 /* ASTextNodeViewController.m in Sources */,
 				76E441A826E88DE00020C828 /* NKMonitor.m in Sources */,
 				18A2FC652752870B00864595 /* HMHTTPTransactionMetrics.m in Sources */,
 				18A2FC562752018000864595 /* UIDeviceMetrics.m in Sources */,
@@ -1140,6 +1169,7 @@
 				186CE6C02598298A00EA71B8 /* UIScreen+NKExtension.m in Sources */,
 				187867F82713319200C87E48 /* OffScreenViewController.m in Sources */,
 				18A2FEEE275FADCB00864595 /* NKTextureViewController.m in Sources */,
+				18F6A0152760F4E2009C9774 /* NKChat.m in Sources */,
 				18A2FC5C27527E9700864595 /* HTTPMetricsManager.m in Sources */,
 				180C6BF926FEC6E3004EEB67 /* LayoutLayer.m in Sources */,
 				18A2FC68275CBF8B00864595 /* NSURLSession+Metrics.m in Sources */,
@@ -1158,9 +1188,11 @@
 				76767D0A2716DDF800540259 /* NKRunLoopActivityMonitor.m in Sources */,
 				76B150CB25C257540075D367 /* LaunchImageHelper.m in Sources */,
 				76CC9656273168A30021EB92 /* NKStackFrame.m in Sources */,
+				18F6A0112760F3BA009C9774 /* NKChatListViewController.m in Sources */,
 				184165EC26E38506001398C5 /* NKCrashViewController.m in Sources */,
 				186CE6ED2598C60C00EA71B8 /* NKTextLayout.m in Sources */,
 				1855C8852737D0DD0038E3AD /* fishhook.c in Sources */,
+				18F6A0182760F656009C9774 /* NKChatCellNode.m in Sources */,
 				18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */,
 				184165DD26E04F43001398C5 /* NKUIViewLifeCircleController.m in Sources */,
 				763A4F5F25BACBB900A46471 /* NKCGUtilities.m in Sources */,

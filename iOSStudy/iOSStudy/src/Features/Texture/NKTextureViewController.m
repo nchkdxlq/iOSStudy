@@ -8,32 +8,88 @@
 #import "NKTextureViewController.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
-@interface NKTextureViewController ()
+#import "ASTextNodeViewController.h"
+#import "NKChatListViewController.h"
 
+@interface NKCatogaryItem : NSObject
+
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, strong, nullable) Class class;
+
++ (instancetype)itemWithTitle:(NSString *)title class:(nullable Class)cls;
+
+@end
+
+@implementation NKCatogaryItem
+
++ (instancetype)itemWithTitle:(NSString *)title class:(Class)cls {
+    NKCatogaryItem *item = [NKCatogaryItem new];
+    item.title = title;
+    item.class = cls;
+    return item;
+}
+
+@end
+
+/////////////////////////////////////////////
+
+@interface NKTextureViewController () <ASTableDelegate, ASTableDataSource>
+
+@property (nonatomic, strong) NSArray<NKCatogaryItem *> *dataSource;
 
 @end
 
 @implementation NKTextureViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    ASTextNode *nameNode = [ASTextNode new];
-    nameNode.backgroundColor = [UIColor redColor];
-    nameNode.attributedText = [[NSAttributedString alloc] initWithString:@"AsyncDisplayKit" attributes:[self textStyle]];
-    [self.view addSubnode:nameNode];
-    ASSizeRange sizeRange = ASSizeRangeMake(CGSizeZero, CGSizeMake(300, 100));
-//    sizeRange = ASSizeRangeMake(CGSizeMake(200, 200));
-    CGSize size = [nameNode calculateLayoutLayoutSpec:sizeRange].size;
-    nameNode.frame = CGRectMake(100, 100, size.width, size.height);
+- (instancetype)init {
+    self = [super initWithNode:[ASTableNode new]];
+    if (self) {
+        self.node.delegate = self;
+        self.node.dataSource = self;
+        _dataSource = @[
+            [NKCatogaryItem itemWithTitle:@"ASTextNode" class:ASTextNodeViewController.class],
+            [NKCatogaryItem itemWithTitle:@"Chat" class:NKChatListViewController.class],
+            [NKCatogaryItem itemWithTitle:@"ASImageNode" class:nil]
+        ];
+    }
+    return self;
 }
 
-- (NSDictionary *)textStyle {
-    return @{
-        NSFontAttributeName:[UIFont systemFontOfSize:17 weight:UIFontWeightBold],
-        NSForegroundColorAttributeName: UIColor.blueColor
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"Texture Catogaries";
+    
+}
+
+#pragma mark - ASTableDelegate
+
+- (NSInteger)tableNode:(ASTableNode *)tableNode numberOfRowsInSection:(NSInteger)section {
+    return _dataSource.count;
+}
+
+
+#pragma mark - ASTableDataSource
+
+- (ASCellNodeBlock)tableNode:(ASTableNode *)tableNode nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NKCatogaryItem *item = _dataSource[indexPath.row];
+    return ^{
+        ASTextCellNode *textCellNode = [ASTextCellNode new];
+        textCellNode.text = item.title;
+        return textCellNode;
     };
 }
 
+
+- (void)tableNode:(ASTableNode *)tableNode didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableNode deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NKCatogaryItem *item = _dataSource[indexPath.row];
+    if (item.class == nil) return;
+    
+    UIViewController *vc = [item.class new];
+    vc.title = item.title;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end
