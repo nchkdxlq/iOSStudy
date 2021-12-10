@@ -41,9 +41,9 @@
 - (void)loadData {
     NKChat *chat1 = [NKChat new];
     chat1.identifier = NSUUID.UUID.UUIDString;
-    chat1.name = @"张三";
+    chat1.name = @"张学友 - 四大天王";
     chat1.avatar = @"天空_草坪";
-    chat1.desc = @"明天就周末了，有什么安排呀？";
+    chat1.desc = @"明天就周末了，有什么安排呀？明天就周末了，有什么安排呀？明天就周末了，有什么安排呀？明天就周末了，有什么安排呀？";
     chat1.updateTime = [NSDate date];
     self.chatList = @[chat1];
 }
