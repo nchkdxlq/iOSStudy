@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NKChat : NSObject
 
+@property (nonatomic, copy) NSString *identifier;
+
 @property (nonatomic, copy) NSString *avatar;
 
 @property (nonatomic, copy) NSString *name;

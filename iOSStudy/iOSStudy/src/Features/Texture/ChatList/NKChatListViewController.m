@@ -9,7 +9,7 @@
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 #import "NKChat.h"
-#import "NKChatCellNode.h"
+#import "iOSStudy-Swift.h"
 
 @interface NKChatListViewController () <ASTableDelegate, ASTableDataSource>
 
@@ -33,11 +33,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
+    [self.node reloadData];
 }
 
 
 - (void)loadData {
-    self.chatList = [NSArray new];
+    NKChat *chat1 = [NKChat new];
+    chat1.identifier = NSUUID.UUID.UUIDString;
+    chat1.name = @"张三";
+    chat1.avatar = @"天空_草坪";
+    chat1.desc = @"明天就周末了，有什么安排呀？";
+    chat1.updateTime = [NSDate date];
+    self.chatList = @[chat1];
 }
 
 #pragma mark - ASTableDelegate

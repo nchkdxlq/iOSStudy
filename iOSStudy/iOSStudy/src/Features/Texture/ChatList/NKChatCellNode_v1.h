@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NKChatCellNode : ASCellNode
+@interface NKChatCellNode_v1 : ASCellNode
 
 - (instancetype)initWithChat:(NKChat *)chat;
 

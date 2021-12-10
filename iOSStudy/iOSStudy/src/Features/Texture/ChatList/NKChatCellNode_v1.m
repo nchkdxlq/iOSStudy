@@ -5,9 +5,9 @@
 //  Created by Knox on 2021/12/8.
 //
 
-#import "NKChatCellNode.h"
+#import "NKChatCellNode_v1.h"
 
-@interface NKChatCellNode ()
+@interface NKChatCellNode_v1 ()
 
 @property (nonatomic, strong) ASImageNode *avatarNode;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation NKChatCellNode
+@implementation NKChatCellNode_v1
 
 - (NSDictionary *)nameStyle {
     return @{
@@ -69,8 +69,8 @@
     [ASStackLayoutSpec
      stackLayoutSpecWithDirection:ASStackLayoutDirectionHorizontal
      spacing:10
-     justifyContent:ASStackLayoutJustifyContentStart
-     alignItems:ASStackLayoutAlignItemsCenter
+     justifyContent:ASStackLayoutJustifyContentSpaceBetween
+     alignItems:ASStackLayoutAlignItemsStart
      children:@[_nameNode, _timeNode]];
     
     ASStackLayoutSpec *nameDescStack =
