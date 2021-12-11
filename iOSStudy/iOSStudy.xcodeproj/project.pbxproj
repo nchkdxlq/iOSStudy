@@ -49,6 +49,8 @@
 		186E35962644264200FC810F /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		186E359A2650DBB000FC810F /* NKRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 186E35992650DBB000FC810F /* NKRuntime.mm */; };
 		187867F82713319200C87E48 /* OffScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187867F72713319200C87E48 /* OffScreenViewController.m */; };
+		189EBE022764FECD00FD92BA /* BaseASDKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE012764FECD00FD92BA /* BaseASDKViewController.m */; };
+		189EBE08276504BC00FD92BA /* UINavigationBar+NKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */; };
 		18A2FC562752018000864595 /* UIDeviceMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC552752018000864595 /* UIDeviceMetrics.m */; };
 		18A2FC5C27527E9700864595 /* HTTPMetricsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC5B27527E9700864595 /* HTTPMetricsManager.m */; };
 		18A2FC652752870B00864595 /* HMHTTPTransactionMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC642752870B00864595 /* HMHTTPTransactionMetrics.m */; };
@@ -68,7 +70,6 @@
 		18F6A00E2760F1EC009C9774 /* ASTextNodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A00D2760F1EC009C9774 /* ASTextNodeViewController.m */; };
 		18F6A0112760F3BA009C9774 /* NKChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A0102760F3BA009C9774 /* NKChatListViewController.m */; };
 		18F6A0152760F4E2009C9774 /* NKChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A0142760F4E2009C9774 /* NKChat.m */; };
-		18F6A0182760F656009C9774 /* NKChatCellNode_v1.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A0172760F656009C9774 /* NKChatCellNode_v1.m */; };
 		18F6A01B27625812009C9774 /* NKChatCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A01A27625812009C9774 /* NKChatCellNode.swift */; };
 		564DE6EEE4050BA9C61E183E /* Pods_iOSStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566FA0030E572F51EADBDEF0 /* Pods_iOSStudy.framework */; };
 		763A4F5F25BACBB900A46471 /* NKCGUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 763A4F5E25BACBB900A46471 /* NKCGUtilities.m */; };
@@ -207,6 +208,10 @@
 		186E35992650DBB000FC810F /* NKRuntime.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NKRuntime.mm; sourceTree = "<group>"; };
 		187867F62713319200C87E48 /* OffScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OffScreenViewController.h; sourceTree = "<group>"; };
 		187867F72713319200C87E48 /* OffScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffScreenViewController.m; sourceTree = "<group>"; };
+		189EBE002764FECD00FD92BA /* BaseASDKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseASDKViewController.h; sourceTree = "<group>"; };
+		189EBE012764FECD00FD92BA /* BaseASDKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseASDKViewController.m; sourceTree = "<group>"; };
+		189EBE06276504BC00FD92BA /* UINavigationBar+NKExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+NKExtension.h"; sourceTree = "<group>"; };
+		189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+NKExtension.m"; sourceTree = "<group>"; };
 		18A2FC542752018000864595 /* UIDeviceMetrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceMetrics.h; sourceTree = "<group>"; };
 		18A2FC552752018000864595 /* UIDeviceMetrics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIDeviceMetrics.m; sourceTree = "<group>"; };
 		18A2FC5A27527E9700864595 /* HTTPMetricsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPMetricsManager.h; sourceTree = "<group>"; };
@@ -244,8 +249,6 @@
 		18F6A0102760F3BA009C9774 /* NKChatListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKChatListViewController.m; sourceTree = "<group>"; };
 		18F6A0132760F4E2009C9774 /* NKChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKChat.h; sourceTree = "<group>"; };
 		18F6A0142760F4E2009C9774 /* NKChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKChat.m; sourceTree = "<group>"; };
-		18F6A0162760F656009C9774 /* NKChatCellNode_v1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKChatCellNode_v1.h; sourceTree = "<group>"; };
-		18F6A0172760F656009C9774 /* NKChatCellNode_v1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKChatCellNode_v1.m; sourceTree = "<group>"; };
 		18F6A01927625811009C9774 /* iOSStudy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOSStudy-Bridging-Header.h"; sourceTree = "<group>"; };
 		18F6A01A27625812009C9774 /* NKChatCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKChatCellNode.swift; sourceTree = "<group>"; };
 		5067C21F0903FF04983847D7 /* Pods-iOSStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStudy.release.xcconfig"; path = "Target Support Files/Pods-iOSStudy/Pods-iOSStudy.release.xcconfig"; sourceTree = "<group>"; };
@@ -564,6 +567,8 @@
 			children = (
 				186CE6BE2598298A00EA71B8 /* UIScreen+NKExtension.m */,
 				186CE6BF2598298A00EA71B8 /* UIScreen+NKExtension.h */,
+				189EBE06276504BC00FD92BA /* UINavigationBar+NKExtension.h */,
+				189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -669,6 +674,8 @@
 		18A2FEEB275FADAC00864595 /* Texture */ = {
 			isa = PBXGroup;
 			children = (
+				189EBE002764FECD00FD92BA /* BaseASDKViewController.h */,
+				189EBE012764FECD00FD92BA /* BaseASDKViewController.m */,
 				18A2FEEC275FADCB00864595 /* NKTextureViewController.h */,
 				18A2FEED275FADCB00864595 /* NKTextureViewController.m */,
 				18F6A00C2760F1EC009C9774 /* ASTextNodeViewController.h */,
@@ -744,8 +751,6 @@
 				18F6A0102760F3BA009C9774 /* NKChatListViewController.m */,
 				18F6A0132760F4E2009C9774 /* NKChat.h */,
 				18F6A0142760F4E2009C9774 /* NKChat.m */,
-				18F6A0162760F656009C9774 /* NKChatCellNode_v1.h */,
-				18F6A0172760F656009C9774 /* NKChatCellNode_v1.m */,
 				18F6A01A27625812009C9774 /* NKChatCellNode.swift */,
 			);
 			path = ChatList;
@@ -1146,6 +1151,7 @@
 				18CF9AD92669A73500A34A85 /* NKHTTPClient.m in Sources */,
 				18F6A01B27625812009C9774 /* NKChatCellNode.swift in Sources */,
 				766CF0D5272AD43900DBC236 /* BSBacktraceLogger.m in Sources */,
+				189EBE08276504BC00FD92BA /* UINavigationBar+NKExtension.m in Sources */,
 				182E154825980A8C007343C4 /* BaseViewController.m in Sources */,
 				186CE6D825989E5200EA71B8 /* NKAsyncLayer.m in Sources */,
 				186CE6DE25989E6F00EA71B8 /* NKLabel.m in Sources */,
@@ -1156,6 +1162,7 @@
 				18F6A00E2760F1EC009C9774 /* ASTextNodeViewController.m in Sources */,
 				76E441A826E88DE00020C828 /* NKMonitor.m in Sources */,
 				18A2FC652752870B00864595 /* HMHTTPTransactionMetrics.m in Sources */,
+				189EBE022764FECD00FD92BA /* BaseASDKViewController.m in Sources */,
 				18A2FC562752018000864595 /* UIDeviceMetrics.m in Sources */,
 				186CE6F32598C63700EA71B8 /* NKTextContainer.m in Sources */,
 				1854064327511ED700EDB9A5 /* NetworkViewController.m in Sources */,
@@ -1199,7 +1206,6 @@
 				184165EC26E38506001398C5 /* NKCrashViewController.m in Sources */,
 				186CE6ED2598C60C00EA71B8 /* NKTextLayout.m in Sources */,
 				1855C8852737D0DD0038E3AD /* fishhook.c in Sources */,
-				18F6A0182760F656009C9774 /* NKChatCellNode_v1.m in Sources */,
 				18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */,
 				184165DD26E04F43001398C5 /* NKUIViewLifeCircleController.m in Sources */,
 				763A4F5F25BACBB900A46471 /* NKCGUtilities.m in Sources */,

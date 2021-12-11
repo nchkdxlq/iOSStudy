@@ -41,18 +41,12 @@
 
 @implementation NKTextureViewController
 
-- (instancetype)init {
-    self = [super initWithNode:[ASTableNode new]];
-    if (self) {
-        self.node.delegate = self;
-        self.node.dataSource = self;
-        _dataSource = @[
-            [NKCatogaryItem itemWithTitle:@"ASTextNode" class:ASTextNodeViewController.class],
-            [NKCatogaryItem itemWithTitle:@"Chat" class:NKChatListViewController.class],
-            [NKCatogaryItem itemWithTitle:@"ASImageNode" class:nil]
-        ];
-    }
-    return self;
+
+- (ASDisplayNode *)displayNode {
+    ASTableNode *node = [[ASTableNode alloc] initWithStyle:UITableViewStylePlain];
+    node.delegate = self;
+    node.dataSource = self;
+    return node;
 }
 
 
@@ -60,6 +54,15 @@
     [super viewDidLoad];
     self.title = @"Texture Catogaries";
     
+    [self setupDataSource];
+}
+
+- (void)setupDataSource {
+    _dataSource = @[
+        [NKCatogaryItem itemWithTitle:@"ASTextNode" class:ASTextNodeViewController.class],
+        [NKCatogaryItem itemWithTitle:@"Chat" class:NKChatListViewController.class],
+        [NKCatogaryItem itemWithTitle:@"ASImageNode" class:nil]
+    ];
 }
 
 #pragma mark - ASTableDelegate

@@ -5,12 +5,11 @@
 //  Created by Knox on 2021/12/8.
 //
 
-#import <AsyncDisplayKit/ASDKViewController.h>
-#import <AsyncDisplayKit/ASTableNode.h>
+#import "BaseASDKViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NKChatListViewController : ASDKViewController<ASTableNode *>
+@interface NKChatListViewController : BaseASDKViewController
 
 @end
 

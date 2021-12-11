@@ -78,6 +78,7 @@ class NKChatCellNode: ASCellNode {
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+         print("layoutSpecThatFits chatCell, %@", Thread.current)
         
         avatarNode.style.preferredSize = CGSize(width: 48, height: 48)
         // 在 main axis 方向上, 内容的宽度大于最大宽度，被压缩的比例

@@ -67,6 +67,10 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
 }
 
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+}
+
 - (void)setupData {
     _dataSource = @[
                     @{kDataSourceClassKey:YYKitViewController.class, kDataSourceTitleKey:@"YYKit"},

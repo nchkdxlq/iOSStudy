@@ -140,7 +140,6 @@ PODS:
     - Texture/Core
   - Texture/Video (3.1.0):
     - Texture/Core
-  - "UITableView+FDTemplateLayoutCell (1.6)"
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -157,7 +156,6 @@ DEPENDENCIES:
   - PLCrashReporter
   - SDWebImage
   - Texture
-  - "UITableView+FDTemplateLayoutCell"
   - YYKit
 
 SPEC REPOS:
@@ -178,7 +176,6 @@ SPEC REPOS:
     - PLCrashReporter
     - SDWebImage
     - Texture
-    - "UITableView+FDTemplateLayoutCell"
     - YYKit
 
 SPEC CHECKSUMS:
@@ -198,9 +195,8 @@ SPEC CHECKSUMS:
   PLCrashReporter: b8c81dcdb3dd7c4247c00b95ada1f1b37d53fde8
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   Texture: 2e8ab2519452515f7f5a520f5a8f7e0a413abfa3
-  "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 929f7a5885f503dd6002c8e75e1b8fd472cabd66
+PODFILE CHECKSUM: 4ef49a4b621ca1047e8a199cc21ff7f3e462c499
 
 COCOAPODS: 1.10.0

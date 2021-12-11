@@ -12,7 +12,7 @@ target 'iOSStudy' do
   pod 'Masonry'
   pod 'FMDB'
   pod 'AFNetworking'
-  pod 'UITableView+FDTemplateLayoutCell'
+#  pod 'UITableView+FDTemplateLayoutCell'
   pod 'PLCrashReporter'
   pod 'KSCrash'
   pod 'DoraemonKit'
