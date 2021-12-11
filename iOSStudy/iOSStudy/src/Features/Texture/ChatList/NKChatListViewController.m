@@ -55,6 +55,11 @@
 }
 
 
+- (void)tableNode:(ASTableNode *)tableNode didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableNode deselectRowAtIndexPath:indexPath animated:false];
+    NSLog(@"indexPath = %@", indexPath);
+}
+
 #pragma mark - ASTableDataSource
 
 - (ASCellNodeBlock)tableNode:(ASTableNode *)tableNode nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -8,11 +8,42 @@ import AsyncDisplayKit
 
 class NKChatCellNode: ASCellNode {
     
-    let avatarNode = ASImageNode()
-    let nameNode = ASTextNode()
-    let timeNode = ASTextNode()
-    let descNode = ASTextNode()
-    let slientNode = ASImageNode()
+    let avatarNode: ASImageNode = {
+        let node = ASImageNode()
+        node.isLayerBacked = true
+        return node
+    }()
+    
+    let nameNode: ASTextNode = {
+        let node = ASTextNode()
+        node.maximumNumberOfLines = 1
+        node.truncationMode = .byTruncatingTail
+        node.isLayerBacked = true
+        return node
+    }()
+    
+    let timeNode: ASTextNode = {
+        let node = ASTextNode()
+        node.maximumNumberOfLines = 1
+        node.truncationMode = .byTruncatingTail
+        node.isLayerBacked = true
+        return node
+    }()
+    
+    let descNode: ASTextNode = {
+        let node = ASTextNode()
+        node.maximumNumberOfLines = 1
+        node.truncationMode = .byTruncatingTail
+        node.isLayerBacked = true
+        return node
+    }()
+    
+    let slientNode: ASImageNode = {
+        let node = ASImageNode()
+        node.isLayerBacked = true
+        node.image = UIImage(named: "chat_slient")
+        return node
+    }()
     
     let chat: NKChat
     
@@ -20,12 +51,6 @@ class NKChatCellNode: ASCellNode {
         self.chat = chat
         super.init()
         selectionStyle = .none
-        
-        nameNode.maximumNumberOfLines = 1
-        nameNode.truncationMode = .byTruncatingTail
-        
-        descNode.maximumNumberOfLines = 1
-        descNode.truncationMode = .byTruncatingTail
         
         addSubnode(avatarNode)
         addSubnode(nameNode)
@@ -37,7 +62,6 @@ class NKChatCellNode: ASCellNode {
         nameNode.attributedText = NSAttributedString(string: chat.name, attributes: nameTextStyle())
         descNode.attributedText = NSAttributedString(string: chat.desc, attributes: descTextStyle())
         timeNode.attributedText = NSAttributedString(string: chat.updateTime.description, attributes: timeTextStyle())
-        slientNode.image = UIImage(named: "chat_slient")
     }
     
     private func nameTextStyle() -> [NSAttributedString.Key:Any] {
