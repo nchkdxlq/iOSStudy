@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIScreen (SafeAreaInsets)
 
-@property (class, nonatomic, assign, readonly) UIEdgeInsets safeAreaInset;
+@property (nonatomic, assign, readonly, class) UIEdgeInsets safeAreaInset;
 
 @end
 

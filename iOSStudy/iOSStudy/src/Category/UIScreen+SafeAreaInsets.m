@@ -52,13 +52,11 @@
 }
 
 - (instancetype)safeAreaInsets_initWithFrame:(CGRect)frame API_AVAILABLE(ios(11.0)) {
-    UIWindow *window = [self safeAreaInsets_initWithFrame:frame];
-    if (self) {
-        if (CGRectEqualToRect(frame, UIScreen.mainScreen.bounds)) {
-            [UIScreen setSafeAreaInset:window.safeAreaInsets];
-        }
+    [self safeAreaInsets_initWithFrame:frame];
+    if (CGRectEqualToRect(frame, UIScreen.mainScreen.bounds)) {
+        [UIScreen setSafeAreaInset:self.safeAreaInsets];
     }
-    return window;
+    return self;
 }
 
 @end

@@ -569,8 +569,8 @@
 		186CE6BD2598298A00EA71B8 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				186CE6BE2598298A00EA71B8 /* UIScreen+NKExtension.m */,
 				186CE6BF2598298A00EA71B8 /* UIScreen+NKExtension.h */,
+				186CE6BE2598298A00EA71B8 /* UIScreen+NKExtension.m */,
 				189EBE06276504BC00FD92BA /* UINavigationBar+NKExtension.h */,
 				189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */,
 				189EBE0D2765DA4900FD92BA /* UIScreen+SafeAreaInsets.h */,
