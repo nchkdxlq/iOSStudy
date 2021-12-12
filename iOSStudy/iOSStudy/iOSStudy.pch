@@ -9,8 +9,12 @@
 #define iOSStudy_pch
 #ifdef __OBJC__
 
+// Foundation
 #import "NKRunLoopActivityMonitor.h"
 #import "NSObject+GCD.h"
+
+// UIKit
+#import "UIWindow+SafeAreaInsets.h"
 
 #endif
 #endif /* iOSStudy_pch */

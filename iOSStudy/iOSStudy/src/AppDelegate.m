@@ -16,13 +16,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[FeatureListViewController new]];
     window.rootViewController = nav;
     self.window = window;
     [window makeKeyAndVisible];
     [NKRunLoopActivityMonitor startMonitor];
+    
+    NSLog(@"keyWindowSafeAreaInset = %@", NSStringFromUIEdgeInsets(UIWindow.keyWindowSafeAreaInset));
     return YES;
 }
 
