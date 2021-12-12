@@ -51,6 +51,7 @@ class NKChatCellNode: ASCellNode {
         self.chat = chat
         super.init()
         selectionStyle = .none
+        style.height = ASDimensionMake(70)
         
         addSubnode(avatarNode)
         addSubnode(nameNode)
@@ -114,6 +115,27 @@ class NKChatCellNode: ASCellNode {
         
         let insets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return ASInsetLayoutSpec(insets: insets, child: avatarContentStack)
+    }
+    
+    override func layoutDidFinish() {
+        super.layoutDidFinish();
+    }
+    
+    // 为什么不被调用？ NSCellNode直接继承ASDisplayNode，而ASDisplayNode对象没有内容，不需要绘制，所以不会被调用
+    // 只有ASTextNode ASImageNode 才会被调用
+    override func displayDidFinish() {
+        super.displayDidFinish()
+    }
+    override func displayWillStartAsynchronously(_ asynchronously: Bool) {
+        super.displayWillStartAsynchronously(asynchronously)
+    }
+    
+    
+    override func subnodeDisplayDidFinish(_ subnode: ASDisplayNode) {
+        super.subnodeDisplayDidFinish(subnode)
+        if neverShowPlaceholders {
+            neverShowPlaceholders = false
+        }
     }
 }
 

@@ -17,13 +17,29 @@
 }
 
 - (void)textNode {
+    
     ASTextNode *nameNode = [ASTextNode new];
     nameNode.backgroundColor = [UIColor redColor];
     nameNode.attributedText = [[NSAttributedString alloc] initWithString:@"AsyncDisplayKit" attributes:[self textStyle]];
-    [self.view addSubnode:nameNode];
-    ASSizeRange sizeRange = ASSizeRangeMake(CGSizeZero, CGSizeMake(300, 100));
-    CGSize size = [nameNode calculateLayoutLayoutSpec:sizeRange].size;
-    nameNode.frame = CGRectMake(100, 200, size.width, size.height);
+    
+    ASDisplayNode *paddingNode = [ASDisplayNode new];
+    paddingNode.backgroundColor = [UIColor blueColor];
+    [paddingNode addSubnode:nameNode];
+    [self.node addSubnode:paddingNode];
+    
+    [paddingNode setLayoutSpecBlock:^ASLayoutSpec * _Nonnull(__kindof ASDisplayNode * _Nonnull node, ASSizeRange constrainedSize) {
+        UIEdgeInsets inset = UIEdgeInsetsMake(10, 20, 10, 20);
+        return [ASInsetLayoutSpec insetLayoutSpecWithInsets:inset child:nameNode];
+    }];
+    
+    ASCenterLayoutSpec *center = [ASCenterLayoutSpec centerLayoutSpecWithCenteringOptions:ASCenterLayoutSpecCenteringXY
+                                                                            sizingOptions:ASCenterLayoutSpecSizingOptionDefault
+                                                                                    child:paddingNode];
+    [self.node setLayoutSpecBlock:^ASLayoutSpec * _Nonnull(__kindof ASDisplayNode * _Nonnull node, ASSizeRange constrainedSize) {
+        return center;
+    }];
+    
+    [self.node setNeedsLayout];
 }
 
 - (NSDictionary *)textStyle {
