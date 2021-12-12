@@ -21,4 +21,8 @@
     return [ASDisplayNode new];
 }
 
+- (void)dealloc {
+    NSLog(@"<dealloc> %@", self);
+}
+
 @end

@@ -142,5 +142,9 @@ class NKChatCellNode: ASCellNode {
             neverShowPlaceholders = false
         }
     }
+    
+    deinit {
+        print("<deinit> \(self)")
+    }
 }
 
