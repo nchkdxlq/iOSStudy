@@ -14,7 +14,7 @@
 #import "NSObject+GCD.h"
 
 // UIKit
-#import "UIWindow+SafeAreaInsets.h"
+#import "UIScreen+SafeAreaInsets.h"
 
 #endif
 #endif /* iOSStudy_pch */

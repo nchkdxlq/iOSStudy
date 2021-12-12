@@ -16,6 +16,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"safeAreaInset = %@", NSStringFromUIEdgeInsets(UIScreen.safeAreaInset));
+    
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[FeatureListViewController new]];
     window.rootViewController = nav;
@@ -23,7 +25,6 @@
     [window makeKeyAndVisible];
     [NKRunLoopActivityMonitor startMonitor];
     
-    NSLog(@"keyWindowSafeAreaInset = %@", NSStringFromUIEdgeInsets(UIWindow.keyWindowSafeAreaInset));
     return YES;
 }
 

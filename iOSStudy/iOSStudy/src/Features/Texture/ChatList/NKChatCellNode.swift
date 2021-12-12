@@ -5,8 +5,13 @@
 //  Created by Knox on 2021/12/9.
 //
 import AsyncDisplayKit
+import CoreGraphics
 
 class NKChatCellNode: ASCellNode {
+    
+    @objc class var cellHeight: CGFloat {
+        return 70
+    }
     
     let avatarNode: ASImageNode = {
         let node = ASImageNode()
@@ -51,7 +56,7 @@ class NKChatCellNode: ASCellNode {
         self.chat = chat
         super.init()
         selectionStyle = .none
-        style.height = ASDimensionMake(70)
+        style.height = ASDimensionMake(NKChatCellNode.cellHeight)
         
         addSubnode(avatarNode)
         addSubnode(nameNode)

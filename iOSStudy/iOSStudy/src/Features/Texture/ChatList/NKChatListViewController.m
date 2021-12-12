@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) NSMutableSet<NSIndexPath *> *avoidFlickerIndexPaths;
 
+@property (nonatomic, assign) NSInteger dataSourceCount;
+
 @end
 
 @implementation NKChatListViewController
@@ -36,12 +38,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.node.backgroundColor = [UIColor whiteColor];
-    
+    self.dataSourceCount = 30;
     [self setupTableNode];
     [self loadData];
     
+    // 滚动到最底部
+    CGFloat offSetY = NKChatCellNode.cellHeight * self.dataSourceCount - CGRectGetHeight(self.tableNode.frame) + self.tableNode.contentInset.bottom;
     dispatch_async(dispatch_get_main_queue(), ^{
-        CGFloat offSetY = 1371;
         self.tableNode.contentOffset = CGPointMake(0, offSetY);
     });
 }
@@ -50,7 +53,7 @@
     self.tableNode = [[ASTableNode alloc] initWithStyle:UITableViewStylePlain];
     self.tableNode.view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     self.tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableNode.contentInset = UIEdgeInsetsMake(0, 0, UIWindow.keyWindowSafeAreaInset.bottom, 0);
+    self.tableNode.contentInset = UIEdgeInsetsMake(0, 0, UIScreen.safeAreaInset.bottom, 0);
     self.tableNode.automaticallyAdjustsContentOffset = NO;
     self.tableNode.delegate = self;
     self.tableNode.dataSource = self;
@@ -92,7 +95,7 @@
 #pragma mark - ASTableDelegate
 
 - (NSInteger)tableNode:(ASTableNode *)tableNode numberOfRowsInSection:(NSInteger)section {
-    return 30; // self.chatList.count;
+    return self.dataSourceCount;
 }
 
 - (void)tableNode:(ASTableNode *)tableNode didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -108,7 +111,6 @@
 
 
 - (void)reloadIndexPath_v1:(NSIndexPath *)indexPath {
-    
     [self.tableNode reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
@@ -137,11 +139,20 @@
 
 - (ASCellNode *)tableNode:(ASTableNode *)tableNode nodeForRowAtIndexPath:(NSIndexPath *)indexPath {
 #if 1
-    NKChat *chat = self.chatList.firstObject;
-    NKChatCellNode *cellNode = [[NKChatCellNode alloc] initWithChat:chat];
+    NKChatCellNode *cellNode = nil;
     if ([self.avoidFlickerIndexPaths containsObject:indexPath]) {
-        cellNode.neverShowPlaceholders = YES;
         [self.avoidFlickerIndexPaths removeObject:indexPath];
+        NKChat *chat = [NKChat new];
+        chat.identifier = NSUUID.UUID.UUIDString;
+        chat.name = @"张学友 - 四大天王";
+        chat.avatar = @"天空_草坪";
+        chat.desc = [NSString stringWithFormat:@"%u - 明天就周末了，有什么安排呀？", arc4random() % 100];
+        chat.updateTime = [NSDate date];
+        cellNode = [[NKChatCellNode alloc] initWithChat:chat];
+        cellNode.neverShowPlaceholders = YES;
+    } else {
+        NKChat *chat = self.chatList.firstObject;
+        cellNode = [[NKChatCellNode alloc] initWithChat:chat];
     }
     return cellNode;
 #else

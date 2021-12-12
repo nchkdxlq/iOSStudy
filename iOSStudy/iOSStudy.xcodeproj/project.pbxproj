@@ -51,7 +51,7 @@
 		187867F82713319200C87E48 /* OffScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187867F72713319200C87E48 /* OffScreenViewController.m */; };
 		189EBE022764FECD00FD92BA /* BaseASDKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE012764FECD00FD92BA /* BaseASDKViewController.m */; };
 		189EBE08276504BC00FD92BA /* UINavigationBar+NKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */; };
-		189EBE0B2765093800FD92BA /* UIWindow+SafeAreaInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE0A2765093800FD92BA /* UIWindow+SafeAreaInsets.m */; };
+		189EBE0F2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE0E2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m */; };
 		18A2FC562752018000864595 /* UIDeviceMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC552752018000864595 /* UIDeviceMetrics.m */; };
 		18A2FC5C27527E9700864595 /* HTTPMetricsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC5B27527E9700864595 /* HTTPMetricsManager.m */; };
 		18A2FC652752870B00864595 /* HMHTTPTransactionMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC642752870B00864595 /* HMHTTPTransactionMetrics.m */; };
@@ -213,8 +213,8 @@
 		189EBE012764FECD00FD92BA /* BaseASDKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseASDKViewController.m; sourceTree = "<group>"; };
 		189EBE06276504BC00FD92BA /* UINavigationBar+NKExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+NKExtension.h"; sourceTree = "<group>"; };
 		189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+NKExtension.m"; sourceTree = "<group>"; };
-		189EBE092765093800FD92BA /* UIWindow+SafeAreaInsets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SafeAreaInsets.h"; sourceTree = "<group>"; };
-		189EBE0A2765093800FD92BA /* UIWindow+SafeAreaInsets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SafeAreaInsets.m"; sourceTree = "<group>"; };
+		189EBE0D2765DA4900FD92BA /* UIScreen+SafeAreaInsets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScreen+SafeAreaInsets.h"; sourceTree = "<group>"; };
+		189EBE0E2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+SafeAreaInsets.m"; sourceTree = "<group>"; };
 		18A2FC542752018000864595 /* UIDeviceMetrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceMetrics.h; sourceTree = "<group>"; };
 		18A2FC552752018000864595 /* UIDeviceMetrics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIDeviceMetrics.m; sourceTree = "<group>"; };
 		18A2FC5A27527E9700864595 /* HTTPMetricsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPMetricsManager.h; sourceTree = "<group>"; };
@@ -573,8 +573,8 @@
 				186CE6BF2598298A00EA71B8 /* UIScreen+NKExtension.h */,
 				189EBE06276504BC00FD92BA /* UINavigationBar+NKExtension.h */,
 				189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */,
-				189EBE092765093800FD92BA /* UIWindow+SafeAreaInsets.h */,
-				189EBE0A2765093800FD92BA /* UIWindow+SafeAreaInsets.m */,
+				189EBE0D2765DA4900FD92BA /* UIScreen+SafeAreaInsets.h */,
+				189EBE0E2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1189,7 +1189,6 @@
 				76841703273012B400DC201A /* NKProcessInfo.m in Sources */,
 				18CF9AE3266B7C3400A34A85 /* NKWeakProxy.m in Sources */,
 				186CE6CD259829A300EA71B8 /* MDHTMLLabel.m in Sources */,
-				189EBE0B2765093800FD92BA /* UIWindow+SafeAreaInsets.m in Sources */,
 				182B99B926FE1D2800F55ECD /* LayoutBgView.m in Sources */,
 				18CF9AE0266B753000A34A85 /* NKTimerViewController.m in Sources */,
 				18A9370F26C78638000088B7 /* LockViewController.m in Sources */,
@@ -1201,6 +1200,7 @@
 				18A2FC5C27527E9700864595 /* HTTPMetricsManager.m in Sources */,
 				180C6BF926FEC6E3004EEB67 /* LayoutLayer.m in Sources */,
 				18A2FC68275CBF8B00864595 /* NSURLSession+Metrics.m in Sources */,
+				189EBE0F2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m in Sources */,
 				186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */,
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
 				181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */,
