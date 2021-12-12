@@ -19,8 +19,15 @@
 + (UIEdgeInsets)safeAreaInset {
     NSValue *safeAreaInsetsValue = objc_getAssociatedObject(self, _cmd);
     if (safeAreaInsetsValue == nil) {
-        UIWindow *window =[[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-        return window.safeAreaInsets;
+        UIEdgeInsets insets;
+        if (@available(iOS 11.0, *)) {
+            UIWindow *window =[[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+            insets = window.safeAreaInsets;
+        } else {
+            insets = UIEdgeInsetsMake(20, 0, 0, 0);
+            [UIScreen setSafeAreaInset:insets];
+        }
+        return insets;
     } else {
         return [safeAreaInsetsValue UIEdgeInsetsValue];
     }
@@ -34,7 +41,7 @@
 @implementation UIWindow (SafeAreaInsets)
 
 + (void)initialize {
-    if (@available(iOS 11.0, *)) {    
+    if (@available(iOS 11.0, *)) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             Method originMethod = class_getInstanceMethod(self, @selector(initWithFrame:));
@@ -44,7 +51,7 @@
     }
 }
 
-- (instancetype)safeAreaInsets_initWithFrame:(CGRect)frame {
+- (instancetype)safeAreaInsets_initWithFrame:(CGRect)frame API_AVAILABLE(ios(11.0)) {
     UIWindow *window = [self safeAreaInsets_initWithFrame:frame];
     if (self) {
         if (CGRectEqualToRect(frame, UIScreen.mainScreen.bounds)) {
