@@ -26,6 +26,7 @@
 #import "NetworkViewController.h"
 #import "NKTextureViewController.h"
 #import "NKIGListKitViewController.h"
+#import "KVOViewController.h"
 
 #import "LaunchImageHelper.h"
 
@@ -81,6 +82,7 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:CallStackViewController.class, kDataSourceTitleKey:@"CallStack"},
                     @{kDataSourceClassKey:NKGCDViewController.class, kDataSourceTitleKey:@"GCD"},
                     @{kDataSourceClassKey:NKTimerViewController.class, kDataSourceTitleKey:@"Timer"},
+                    @{kDataSourceClassKey:KVOViewController.class, kDataSourceTitleKey:@"KVO"},
                     @{kDataSourceClassKey:NKUIViewLifeCircleController.class, kDataSourceTitleKey:@"UIViewLifeCircle"},
                     @{kDataSourceClassKey:NKPortViewController.class, kDataSourceTitleKey:@"NKPortViewController"},
                     @{kDataSourceClassKey:LockViewController.class, kDataSourceTitleKey:@"Lock"},

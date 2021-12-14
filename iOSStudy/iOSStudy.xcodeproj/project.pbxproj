@@ -52,6 +52,7 @@
 		189EBE022764FECD00FD92BA /* BaseASDKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE012764FECD00FD92BA /* BaseASDKViewController.m */; };
 		189EBE08276504BC00FD92BA /* UINavigationBar+NKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */; };
 		189EBE0F2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE0E2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m */; };
+		189EBE132767944600FD92BA /* KVOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE122767944600FD92BA /* KVOViewController.m */; };
 		18A2FC562752018000864595 /* UIDeviceMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC552752018000864595 /* UIDeviceMetrics.m */; };
 		18A2FC5C27527E9700864595 /* HTTPMetricsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC5B27527E9700864595 /* HTTPMetricsManager.m */; };
 		18A2FC652752870B00864595 /* HMHTTPTransactionMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2FC642752870B00864595 /* HMHTTPTransactionMetrics.m */; };
@@ -215,6 +216,8 @@
 		189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+NKExtension.m"; sourceTree = "<group>"; };
 		189EBE0D2765DA4900FD92BA /* UIScreen+SafeAreaInsets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScreen+SafeAreaInsets.h"; sourceTree = "<group>"; };
 		189EBE0E2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+SafeAreaInsets.m"; sourceTree = "<group>"; };
+		189EBE112767944600FD92BA /* KVOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVOViewController.h; sourceTree = "<group>"; };
+		189EBE122767944600FD92BA /* KVOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVOViewController.m; sourceTree = "<group>"; };
 		18A2FC542752018000864595 /* UIDeviceMetrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceMetrics.h; sourceTree = "<group>"; };
 		18A2FC552752018000864595 /* UIDeviceMetrics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIDeviceMetrics.m; sourceTree = "<group>"; };
 		18A2FC5A27527E9700864595 /* HTTPMetricsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPMetricsManager.h; sourceTree = "<group>"; };
@@ -458,7 +461,6 @@
 		182E154225980A4E007343C4 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				189EBE0C2765887200FD92BA /* NKLayout */,
 				76B150C825C257380075D367 /* DynamicLaunchImage */,
 				186CE6D525989DFC00EA71B8 /* NKText */,
 				186CE6BD2598298A00EA71B8 /* Category */,
@@ -542,6 +544,7 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				189EBE102767942400FD92BA /* KVO */,
 				18A2FEEF2760424500864595 /* IGListKit */,
 				18A2FEEB275FADAC00864595 /* Texture */,
 				1854064027511EB300EDB9A5 /* Network */,
@@ -661,11 +664,13 @@
 			path = OffScreen;
 			sourceTree = "<group>";
 		};
-		189EBE0C2765887200FD92BA /* NKLayout */ = {
+		189EBE102767942400FD92BA /* KVO */ = {
 			isa = PBXGroup;
 			children = (
+				189EBE112767944600FD92BA /* KVOViewController.h */,
+				189EBE122767944600FD92BA /* KVOViewController.m */,
 			);
-			path = NKLayout;
+			path = KVO;
 			sourceTree = "<group>";
 		};
 		18A2FC6F275CF50E00864595 /* HTTPMetrics */ = {
@@ -1205,6 +1210,7 @@
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
 				181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */,
 				768715EF25B06727005C14A8 /* NKTextAttribute.m in Sources */,
+				189EBE132767944600FD92BA /* KVOViewController.m in Sources */,
 				767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */,
 				184165E026E0598D001398C5 /* NSObject+GCD.m in Sources */,
 				182B99B626FE1C9700F55ECD /* LayoutViewController.m in Sources */,

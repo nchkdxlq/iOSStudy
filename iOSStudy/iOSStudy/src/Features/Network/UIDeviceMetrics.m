@@ -11,16 +11,6 @@
 @implementation UIDeviceMetrics
 
 + (float)appCpuUsage {
-    kern_return_t kr;
-    task_info_data_t taskInfo;
-    mach_msg_type_number_t taskInfoCount;
-    
-    taskInfoCount = TASK_INFO_MAX;
-    kr = task_info(mach_task_self(), MACH_TASK_BASIC_INFO, (task_info_t)taskInfo, &taskInfoCount);
-    if (kr != KERN_SUCCESS) {
-        return -1;
-    }
-    
     thread_array_t threadList;
     mach_msg_type_number_t threadCount;
     
@@ -30,7 +20,7 @@
     thread_basic_info_t threadBasicInfo;
     
     // 获取线程数量
-    kr = task_threads(mach_task_self(), &threadList, &threadCount);
+    kern_return_t kr = task_threads(mach_task_self(), &threadList, &threadCount);
     if (kr != KERN_SUCCESS) {
         return -1;
     }
@@ -50,6 +40,7 @@
         }
     }
     
+    // 销毁内存
     kr = vm_deallocate(mach_task_self(), (vm_offset_t)threadList, threadCount * sizeof(thread_t));
     assert(kr == KERN_SUCCESS);
     

@@ -12,6 +12,8 @@ static NSString * const kDidTapSend = @"didTapSend";
 
 @interface NotificationViewController ()
 
+@property (nonatomic, strong) id<NSObject> observer;
+
 @end
 
 @implementation NotificationViewController
@@ -20,15 +22,17 @@ static NSString * const kDidTapSend = @"didTapSend";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTapSendHandler:) name:kDidTapSend object:nil];
     
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(didTapSendHandler:) name:kDidTapSend object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:kDidTapSend
-                                                      object:nil
-                                                       queue:[NSOperationQueue mainQueue]
-                                                  usingBlock:^(NSNotification * _Nonnull note) {
+    // 使用这种方式添加同时，返回的对象在NSNotificationCenter内部被强引用, 在dealloc中需要移除。
+    id<NSObject> observer = [center addObserverForName:kDidTapSend object:nil queue:[NSOperationQueue mainQueue]
+                                            usingBlock:^(NSNotification * _Nonnull note) {
         // do something
+        NSLog(@"kDidTapSend = %@", note);
     }];
+    self.observer = observer;
 }
 
 
@@ -54,6 +58,7 @@ static NSString * const kDidTapSend = @"didTapSend";
 
 - (void)dealloc {
     NSLog(@"%s", __func__);
+    [[NSNotificationCenter defaultCenter] removeObserver:self.observer];
 }
 
 /*

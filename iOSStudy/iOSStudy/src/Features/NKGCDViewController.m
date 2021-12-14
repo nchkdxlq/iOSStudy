@@ -26,7 +26,7 @@ static dispatch_once_t onceToken;
     [super viewDidLoad];
     
 //    [self serialQueue];
-//    [self concurrentQueue];
+    [self concurrentQueue];
 //    [self dispatch_group_enter_leave];
 //    [self dispatch_group_enter_leave];
 //    [self dispatch_barrier];
@@ -49,7 +49,7 @@ static dispatch_once_t onceToken;
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
+
 }
 
 
@@ -109,16 +109,24 @@ static dispatch_once_t onceToken;
 
 
 - (void)concurrentQueue {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        NSLog(@"ConcurrentQueue dispatch_async %@", [NSThread currentThread]);
-    });
-    
-    for (int i = 0; i < 100; i++) {
+    dispatch_queue_t queue = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);
+    NSLog(@"dispatch_sync before");
+    dispatch_sync(queue, ^{
+        NSLog(@"dispatch_sync 111 %@", NSThread.currentThread);
         dispatch_sync(queue, ^{
-            NSLog(@"ConcurrentQueue dispatch_sync %@", [NSThread currentThread]);
+            NSLog(@"dispatch_sync 222 %@", NSThread.currentThread);
         });
-    }
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSLog(@"dispatch_sync 333");
+        });
+    });
+    NSLog(@"dispatch_sync end");
+    
+//    for (int i = 0; i < 100; i++) {
+//        dispatch_sync(queue, ^{
+//            NSLog(@"ConcurrentQueue dispatch_sync %@", [NSThread currentThread]);
+//        });
+//    }
 }
 
 - (void)createQueue {
