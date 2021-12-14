@@ -12,6 +12,7 @@
 // Foundation
 #import "NKRunLoopActivityMonitor.h"
 #import "NSObject+GCD.h"
+#import "NSObject+RetainCount.h"
 
 // UIKit
 #import "UIScreen+SafeAreaInsets.h"

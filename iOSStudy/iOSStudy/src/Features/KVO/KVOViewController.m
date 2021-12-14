@@ -44,8 +44,9 @@
     
     Class originCls = object_getClass(_obj.class);
     IMP originSEL = [_obj methodForSelector:@selector(setAge:)];
-    
+    NSLog(@"before RetainCount = %ld", [_obj getRetainCount]);
     [_obj addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew context:NULL];
+    NSLog(@"after RetainCount = %ld", [_obj getRetainCount]);
     
     Class newCls = object_getClass(_obj);
     IMP newSEL = [_obj methodForSelector:@selector(setAge:)];
