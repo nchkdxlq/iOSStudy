@@ -63,7 +63,7 @@ void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity ac
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"RunLoop";
-    
+    NSLog(@"%s, %@", __func__, NKRunLoopActivityMonitor.activityText);
 //    [self addRunLoopObserver];
 //    [self dispatchMainQueue];
 //    [self timer];
@@ -193,6 +193,7 @@ void runLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity ac
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    NSLog(@"%s, %@", __func__, NKRunLoopActivityMonitor.activityText);
     int a = 8;
     NSLog(@"调试：大量计算 didSelectRowAtIndexPath");
     for (long i = 0; i < 999999999; i++) {

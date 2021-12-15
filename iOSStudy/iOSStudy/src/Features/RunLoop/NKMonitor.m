@@ -22,45 +22,44 @@ NSString* activityText(CFRunLoopActivity activity) {
         case kCFRunLoopExit:
             return @"kCFRunLoopExit";
         default:
-            return @"unknow";
+            return @"kCFRunLoopUnknow";
     }
 }
 
 
 
-
 @interface NKMonitor ()
 
-@property (nonatomic, assign) CFRunLoopObserverRef beforeSourcesObserver;
-@property (nonatomic, strong) dispatch_semaphore_t beforeSourcesSemaphore;
-@property (nonatomic, assign) CFRunLoopActivity beforeSourcesRunLoopActivity;
-@property (nonatomic, assign) NSInteger beforeSourcesTimeoutCount;
+@property (nonatomic, assign) CFRunLoopObserverRef firstOrderObserver;
+@property (nonatomic, strong) dispatch_semaphore_t firstOrderSemaphore;
+@property (nonatomic, assign) CFRunLoopActivity firstOrderRunLoopActivity;
+@property (nonatomic, assign) NSInteger firstOrderTimeoutCount;
 
-@property (nonatomic, assign) CFRunLoopObserverRef afterWaitingObserver;
-@property (nonatomic, strong) dispatch_semaphore_t afterWaitingSemaphore;
-@property (nonatomic, assign) CFRunLoopActivity afterWaitingRunLoopActivity;
-@property (nonatomic, assign) NSInteger afterWaitingTimeoutCount;
+@property (nonatomic, assign) CFRunLoopObserverRef lastOrderObserver;
+@property (nonatomic, strong) dispatch_semaphore_t lastOrderSemaphore;
+@property (nonatomic, assign) CFRunLoopActivity lastOrderRunLoopActivity;
+@property (nonatomic, assign) NSInteger lastOrderTimeoutCount;
 
-@property (nonatomic, assign) BOOL stop;
+@property (nonatomic, assign) BOOL running;
 
 @end
 
 
 
-static void beforeSourcesObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
+static void firstOrderObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
     NKMonitor *lagMonitor = (__bridge NKMonitor*)info;
-    lagMonitor.beforeSourcesRunLoopActivity = activity;
-    // NSLog(@"beforeSourcesObserverCallBack %@", activityText(activity));
-    dispatch_semaphore_t semaphore = lagMonitor.beforeSourcesSemaphore;
+    lagMonitor.firstOrderRunLoopActivity = activity;
+//     NSLog(@"firstOrderObserverCallBack %@", activityText(activity));
+    dispatch_semaphore_t semaphore = lagMonitor.firstOrderSemaphore;
     dispatch_semaphore_signal(semaphore);
 }
 
 
-static void afterWaitingObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
+static void lastOrderObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
     NKMonitor *lagMonitor = (__bridge NKMonitor*)info;
-    lagMonitor.afterWaitingRunLoopActivity = activity;
-    // NSLog(@"afterWaitingObserverCallBack %@", activityText(activity));
-    dispatch_semaphore_t semaphore = lagMonitor.afterWaitingSemaphore;
+    lagMonitor.lastOrderRunLoopActivity = activity;
+//     NSLog(@"lastOrderObserverCallBack %@", activityText(activity));
+    dispatch_semaphore_t semaphore = lagMonitor.lastOrderSemaphore;
     dispatch_semaphore_signal(semaphore);
 }
 
@@ -70,77 +69,79 @@ static void afterWaitingObserverCallBack(CFRunLoopObserverRef observer, CFRunLoo
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.beforeSourcesSemaphore = dispatch_semaphore_create(0);
-        self.afterWaitingSemaphore = dispatch_semaphore_create(0);
+        self.firstOrderSemaphore = dispatch_semaphore_create(0);
+        self.lastOrderSemaphore = dispatch_semaphore_create(0);
         [self addRunLoopObserver];
     }
     return self;
 }
 
 - (void)addRunLoopObserver {
-    CFRunLoopObserverContext context = {0,(__bridge void*)self, NULL, NULL};
-    CFRunLoopObserverRef beforeSourcesObserver = CFRunLoopObserverCreate(kCFAllocatorDefault,
-                                                                         kCFRunLoopAllActivities,
-                                                                         YES,
-                                                                         INT_MAX,
-                                                                         &beforeSourcesObserverCallBack,
-                                                                         &context);
-     CFRunLoopAddObserver(CFRunLoopGetMain(), beforeSourcesObserver, kCFRunLoopCommonModes);
-     self.beforeSourcesObserver = beforeSourcesObserver;
+    CFRunLoopObserverContext context = {0, (__bridge void*)self, NULL, NULL};
+    CFRunLoopObserverRef firstOrderObserver = CFRunLoopObserverCreate(kCFAllocatorDefault,
+                                                                      kCFRunLoopAllActivities,
+                                                                      YES,
+                                                                      INT_MIN,
+                                                                      &firstOrderObserverCallBack,
+                                                                      &context);
+     CFRunLoopAddObserver(CFRunLoopGetMain(), firstOrderObserver, kCFRunLoopCommonModes);
+     self.firstOrderObserver = firstOrderObserver;
     
     
-    CFRunLoopObserverRef afterWaitingObserver = CFRunLoopObserverCreate(kCFAllocatorDefault,
-                                                                        kCFRunLoopAllActivities,
-                                                                        YES,
-                                                                        INT_MIN,
-                                                                        &afterWaitingObserverCallBack,
-                                                                        &context);
-     CFRunLoopAddObserver(CFRunLoopGetMain(), afterWaitingObserver, kCFRunLoopCommonModes);
-     self.afterWaitingObserver = afterWaitingObserver;
+    CFRunLoopObserverRef lastOrderObserver = CFRunLoopObserverCreate(kCFAllocatorDefault,
+                                                                     kCFRunLoopAllActivities,
+                                                                     YES,
+                                                                     INT_MAX,
+                                                                     &lastOrderObserverCallBack,
+                                                                     &context);
+     CFRunLoopAddObserver(CFRunLoopGetMain(), lastOrderObserver, kCFRunLoopCommonModes);
+     self.lastOrderObserver = lastOrderObserver;
 }
 
 - (void)beginMonitor {
-    self.stop = NO;
+    if (self.running) return;
+    self.running = YES;
+    NSTimeInterval interval = 80; // ms
    //创建子线程监控
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        while (self.stop == NO) {
-            long semaphoreWait = dispatch_semaphore_wait(self.beforeSourcesSemaphore,
-                                                         dispatch_time(DISPATCH_TIME_NOW, 80 * NSEC_PER_MSEC));
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        while (self.running) {
+            dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_MSEC);
+            long semaphoreWait = dispatch_semaphore_wait(self.firstOrderSemaphore, time);
             if (semaphoreWait != 0) {
-                if (self.beforeSourcesRunLoopActivity == kCFRunLoopBeforeSources) {
-                   //出现三次出结果
-                    if (++self.beforeSourcesTimeoutCount < 3) {
-                        continue;
+                switch (self.firstOrderRunLoopActivity) {
+                    case kCFRunLoopAfterWaiting:
+                    case kCFRunLoopBeforeTimers:
+                    case kCFRunLoopBeforeSources: {
+                        NSLog(@"firstOrder 监测到卡顿 Activity = %@", activityText(self.firstOrderRunLoopActivity));
                     }
-                    NSLog(@"调试：监测到卡顿 beforeSourcesRunLoopActivity");
+                        break;
+                        
+                    default:
+                        break;
                 }
             }
-            self.beforeSourcesTimeoutCount = 0;
+            self.firstOrderTimeoutCount = 0;
         }
     });
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        while (self.stop == NO) {
-            long semaphoreWait = dispatch_semaphore_wait(self.afterWaitingSemaphore,
-                                                         dispatch_time(DISPATCH_TIME_NOW, 80 * NSEC_PER_MSEC));
+    dispatch_async(queue, ^{
+        while (self.running) {
+            dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_MSEC);
+            long semaphoreWait = dispatch_semaphore_wait(self.lastOrderSemaphore, time);
             if (semaphoreWait != 0) {
-                if (self.afterWaitingRunLoopActivity == kCFRunLoopAfterWaiting) {
-                    //出现三次出结果
-                    if (++self.afterWaitingTimeoutCount < 3) {
-                        continue;
-                    }
-                    NSLog(@"调试：监测到卡顿 afterWaitingRunLoopActivity");
+                // 增加self.firstOrderRunLoopActivity == kCFRunLoopBeforeWaiting 为了不与firstOrder监测重复
+                if (self.lastOrderRunLoopActivity == kCFRunLoopBeforeSources
+                    && self.firstOrderRunLoopActivity == kCFRunLoopBeforeWaiting) {
+                    NSLog(@"lastOrder 监测到卡顿 Activity = %@", activityText(kCFRunLoopBeforeSources));
                 }
             }
-            self.afterWaitingTimeoutCount = 0;
         }
     });
 }
 
 - (void)endMonitor {
-    CFRunLoopRemoveObserver(CFRunLoopGetMain(), self.beforeSourcesObserver, kCFRunLoopCommonModes);
-    CFRunLoopRemoveObserver(CFRunLoopGetMain(), self.afterWaitingObserver, kCFRunLoopCommonModes);
-    self.stop = YES;
+    self.running = NO;
 }
 
 - (void)dealloc {
