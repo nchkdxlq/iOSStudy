@@ -11,6 +11,23 @@
 
 static mach_port_t main_thread_id;
 
+
+int funC(int p, int q) {
+    int sum = p + q;
+    return sum;
+}
+
+void funB(int i) {
+    int j = 10;
+    int ret = funC(i, j);
+}
+
+void funA(void) {
+    int a = 1;
+    funB(a);
+}
+
+
 @interface CallStackViewController ()
 
 @end
@@ -30,6 +47,8 @@ static mach_port_t main_thread_id;
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self callStackSymbols];
     [self backtraceLogger];
+    [self plCrashReport];
+//    funA();
 }
 
 - (void)callStackSymbols {

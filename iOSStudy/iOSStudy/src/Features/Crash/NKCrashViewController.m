@@ -63,10 +63,33 @@ void registerSignalHandler(void) {
     [super viewDidLoad];
 
     _dataSource = [NSArray new];
+    
+    [self setupZombie];
+}
+
+
+- (void)setupZombie {
+    UIButton *zomBieBtn = [UIButton new];
+    [self.view addSubview:zomBieBtn];
+    [zomBieBtn setTitle:@"僵尸对象" forState:UIControlStateNormal];
+    [zomBieBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [zomBieBtn sizeToFit];
+    [zomBieBtn addTarget:self action:@selector(createZombieObject:) forControlEvents:UIControlEventTouchUpInside];
+    zomBieBtn.center = CGPointMake(150, 200);
+}
+
+- (void)createZombieObject:(UIButton *)button {
+    void *ptr = (__bridge void *)([UIView new]);
+    [self dispatchMainQueueAfterInterval:3 block:^{
+        // prt指向的对象已经释放了
+        UIView *view = (__bridge UIView *)ptr;
+        [view backgroundColor];
+    }];
 }
 
 - (void)triggerCrash {
-    [_dataSource objectAtIndex:1];
+//    [_dataSource objectAtIndex:1];
+//    abort();
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

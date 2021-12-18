@@ -11,8 +11,8 @@
 
 // 栈帧抽象结构体,只关注有用的两个指针
 typedef struct StackFrame {
-    const struct StackFrame *const previous; // FP: *FP 上一个函数起始
-    const uintptr_t return_address; // LR: *(FP + 8) 此函数结束后返回的上一个函数的下一条指令的地址
+    const struct StackFrame *const framePoint; // FP: *FP 上一个函数起始
+    const uintptr_t linkRegister; // LR: *(FP + 8) 此函数结束后返回的上一个函数的下一条指令的地址
 } StackFrame;
 
 
@@ -38,12 +38,19 @@ uintptr_t mach_stackPointer(mcontext_t const machineContext) {
     return machineContext->__ss.NK_STACK_POINTER;
 }
 
+// 获取当前函数调用栈的LR, 即返回地址，即函数调用的下一条指令的地址
 uintptr_t mach_linkRegister(mcontext_t const machineContext) {
 #if defined(__i386__) || defined(__x86_64__)
     return 0;
 #else
     return machineContext->__ss.__lr;
 #endif
+}
+
+//
+kern_return_t mach_copyMemory(const void *const src, void *const dst, const size_t numBytes) {
+    vm_size_t bytesCopied = 0;
+    return vm_read_overwrite(mach_task_self(), (vm_address_t)src, (vm_size_t)numBytes, (vm_address_t)dst, &bytesCopied);
 }
 
 
@@ -78,13 +85,36 @@ uintptr_t mach_linkRegister(mcontext_t const machineContext) {
         NSLog(@"Fail to get instruction address");
         return;
     }
-    
     backtraceBuffer[i++] = instructionAddress;
     
     // LR寄存器,函数返回地址.用于递归符号化堆栈
     uintptr_t linkRegister = mach_linkRegister(&machineContext);
     if (linkRegister > 0) {
         backtraceBuffer[i++] = linkRegister;
+    }
+    
+    StackFrame frame = {0};
+    const uintptr_t framePtr = mach_framePointer(&machineContext);
+    if (framePtr == 0) { // 获取栈帧指针FP失败
+        NSLog(@"Fail to get frame pointer from register");
+        return;
+    }
+    if(mach_copyMemory((void *)framePtr, &frame, sizeof(frame)) != KERN_SUCCESS) {
+        NSLog(@"Fail to get frame pointer from Memory");
+        return;
+    }
+    
+    // 递归获取函数调用栈
+    while (frame.linkRegister > 0) {
+        backtraceBuffer[i++] = frame.linkRegister;
+        if (frame.framePoint == NULL) { // 递归到底了, 到了第一个函数
+            break;
+        }
+        
+        if(mach_copyMemory(frame.framePoint, &frame, sizeof(frame)) != KERN_SUCCESS) {
+            NSLog(@"Fail to get frame pointer from Memory");
+            break;
+        }
     }
     
     
