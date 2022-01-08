@@ -177,6 +177,7 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
   struct symtab_command* symtab_cmd = NULL;
   struct dysymtab_command* dysymtab_cmd = NULL;
 
+  // 跳过Mach-O文件的Header部分，到LoadComand开始位置
   uintptr_t cur = (uintptr_t)header + sizeof(mach_header_t);
   for (uint i = 0; i < header->ncmds; i++, cur += cur_seg_cmd->cmdsize) {
     cur_seg_cmd = (segment_command_t *)cur;
@@ -252,11 +253,14 @@ int rebind_symbols(struct rebinding rebindings[], size_t rebindings_nel) {
   }
   // If this was the first call, register callback for image additions (which is also invoked for
   // existing images, otherwise, just run on existing images
+  // _rebindings_head -> next 是第一次调用的标志符，NULL 则代表第一次调用
   if (!_rebindings_head->next) {
     _dyld_register_func_for_add_image(_rebind_symbols_for_image);
   } else {
+    // 先获取 dyld 镜像数量
     uint32_t c = _dyld_image_count();
     for (uint32_t i = 0; i < c; i++) {
+      // 根据下标依次进行重绑定过程
       _rebind_symbols_for_image(_dyld_get_image_header(i), _dyld_get_image_vmaddr_slide(i));
     }
   }
