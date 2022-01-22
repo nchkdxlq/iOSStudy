@@ -6,6 +6,45 @@
 //
 
 #import "NKMonitor.h"
+#import <mach/mach.h>
+
+#if defined(__arm64__)
+#include <mach/arm/thread_state.h>
+#elif defined(__x86_64__)
+#include <mach/i386/thread_state.h>
+#endif
+
+
+static thread_t g_main_thread;
+
+typedef struct {
+    __uint64_t lr; // LinkRegister
+    __uint64_t fp; // FramePoint
+} NKStackFrame;
+
+// 获取主线程当前函数的 栈帧指针fp、返回地址lr
+static inline BOOL fillTopStackFrame(NKStackFrame *frame) {
+    mach_msg_type_number_t state_count;
+    kern_return_t kr;
+#if defined(__arm64__)
+    state_count = ARM_UNIFIED_THREAD_STATE_COUNT;
+    arm_unified_thread_state_t arm_thread_state;
+    kr = thread_get_state(g_main_thread, ARM_UNIFIED_THREAD_STATE, (thread_state_t)&arm_thread_state, &state_count);
+    frame->lr = arm_thread_state.ts_64.__lr;
+    frame->fp = arm_thread_state.ts_64.__fp;
+#elif defined(__x86_64__)
+    state_count = x86_THREAD_STATE_COUNT;
+    x86_thread_state_t x86_thread_state;
+    kr = thread_get_state(g_main_thread, x86_THREAD_STATE, (thread_state_t)&x86_thread_state, &state_count);
+    frame->lr = x86_thread_state.uts.ts64.__rax;
+    frame->fp = x86_thread_state.uts.ts64.__rbx;
+#endif
+    return kr != KERN_SUCCESS;
+}
+
+static inline BOOL NKStackFrameEqualToFrame(NKStackFrame frame1, NKStackFrame frame2) {
+    return frame1.fp == frame2.fp && frame1.lr == frame2.lr;
+}
 
 NSString* activityText(CFRunLoopActivity activity) {
     switch (activity) {
@@ -35,10 +74,14 @@ NSString* activityText(CFRunLoopActivity activity) {
 @property (nonatomic, assign) CFRunLoopActivity hightestPriorityRunLoopActivity;
 @property (nonatomic, assign) NSInteger hightestPriorityTimeoutCount;
 
+@property (nonatomic, assign) NSUInteger loopCount;
+
 @property (nonatomic, assign) CFRunLoopObserverRef lowestPriorityObserver;
 @property (nonatomic, strong) dispatch_semaphore_t lowestPrioritySemaphore;
 @property (nonatomic, assign) CFRunLoopActivity lowestPriorityRunLoopActivity;
 @property (nonatomic, assign) NSInteger lowestPriorityTimeoutCount;
+
+@property (nonatomic, assign) NKStackFrame stackFrame;
 
 @property (nonatomic, assign) BOOL running;
 
@@ -46,24 +89,32 @@ NSString* activityText(CFRunLoopActivity activity) {
 
 
 
-static void hightestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
-    NKMonitor *lagMonitor = (__bridge NKMonitor*)info;
-    lagMonitor.hightestPriorityRunLoopActivity = activity;
-//     NSLog(@"hightestPriorityObserverCallBack %@", activityText(activity));
-    dispatch_semaphore_t semaphore = lagMonitor.hightestPrioritySemaphore;
-    dispatch_semaphore_signal(semaphore);
+static void hightestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info) {
+    NKMonitor *monitor = (__bridge NKMonitor *)info;
+    monitor.hightestPriorityRunLoopActivity = activity;
+    monitor.loopCount++;
+    if (monitor.running) {
+        dispatch_semaphore_t semaphore = monitor.hightestPrioritySemaphore;
+        dispatch_semaphore_signal(semaphore);
+    }
 }
 
 
-static void lowestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
-    NKMonitor *lagMonitor = (__bridge NKMonitor*)info;
-    lagMonitor.lowestPriorityRunLoopActivity = activity;
-//     NSLog(@"lowestPriorityObserverCallBack %@", activityText(activity));
-    dispatch_semaphore_t semaphore = lagMonitor.lowestPrioritySemaphore;
-    dispatch_semaphore_signal(semaphore);
+static void lowestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info) {
+    NKMonitor *monitor = (__bridge NKMonitor *)info;
+    monitor.lowestPriorityRunLoopActivity = activity;
+    if (monitor.running) {
+        dispatch_semaphore_t semaphore = monitor.lowestPrioritySemaphore;
+        dispatch_semaphore_signal(semaphore);
+    }
 }
 
 @implementation NKMonitor
+
+
++ (void)load {
+    g_main_thread = mach_thread_self();
+}
 
 
 - (instancetype)init {
@@ -77,7 +128,7 @@ static void lowestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunL
 }
 
 - (void)addRunLoopObserver {
-    CFRunLoopObserverContext context = {0, (__bridge void*)self, NULL, NULL};
+    CFRunLoopObserverContext context = {0, (__bridge void *)self, NULL, NULL};
     CFRunLoopObserverRef hightestPriorityObserver = CFRunLoopObserverCreate(kCFAllocatorDefault,
                                                                             kCFRunLoopAllActivities,
                                                                             YES,
@@ -108,26 +159,35 @@ static void lowestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunL
         while (self.running) {
             dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_MSEC);
             long semaphoreWait = dispatch_semaphore_wait(self.hightestPrioritySemaphore, time);
-            CFRunLoopActivity activity = self.hightestPriorityRunLoopActivity;
-            if (semaphoreWait != 0) {
+            if (semaphoreWait == 0) {
+                self.hightestPriorityTimeoutCount = 0;
+            } else {
+                CFRunLoopActivity activity = self.hightestPriorityRunLoopActivity;
                 switch (activity) {
                     case kCFRunLoopAfterWaiting:
-                    case kCFRunLoopBeforeTimers:
                     case kCFRunLoopBeforeSources: {
-                        if (++self.hightestPriorityTimeoutCount < 3) {
-                            // 小卡顿
+                        // 避免误判, 只有在一个方法里面的耗时超过设定的阈值就算是卡顿
+                        NKStackFrame curStackFrame;
+                        BOOL success = fillTopStackFrame(&curStackFrame);
+                        if (success == NO) continue;
+                        if (NKStackFrameEqualToFrame(curStackFrame, self.stackFrame)) {
+                            self.hightestPriorityTimeoutCount++;
+                            if (self.hightestPriorityTimeoutCount < 3) {
+                                // 小卡顿
+                            } else {
+                                // 大卡顿
+                            }
+                            NSLog(@"hightestPriority 监测到卡顿 Activity = %@", activityText(activity));
                         } else {
-                            // 大卡顿
+                            self.hightestPriorityTimeoutCount = 0;
                         }
-                        NSLog(@"hightestPriority 监测到卡顿 Activity = %@", activityText(activity));
+                        self.stackFrame = curStackFrame;
                     }
                         break;
                         
                     default:
                         break;
                 }
-            } else {
-                self.hightestPriorityTimeoutCount = 0;
             }
         }
     });
@@ -136,19 +196,30 @@ static void lowestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunL
         while (self.running) {
             dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_MSEC);
             long semaphoreWait = dispatch_semaphore_wait(self.lowestPrioritySemaphore, time);
-            if (semaphoreWait != 0) {
+            if (semaphoreWait == 0) {
+                self.lowestPriorityTimeoutCount = 0;
+            } else {
                 // 增加self.hightestPriorityRunLoopActivity == kCFRunLoopBeforeWaiting 为了不与hightestPriority监测重复
                 if (self.lowestPriorityRunLoopActivity == kCFRunLoopBeforeSources
                     && self.hightestPriorityRunLoopActivity == kCFRunLoopBeforeWaiting) {
-                    if (++self.lowestPriorityTimeoutCount < 3) {
-                        // 小卡顿
+                    
+                    NKStackFrame curStackFrame;
+                    BOOL success = fillTopStackFrame(&curStackFrame);
+                    if (success == NO) continue;
+                    
+                    if (NKStackFrameEqualToFrame(curStackFrame, self.stackFrame)) {
+                        self.lowestPriorityTimeoutCount++;
+                        if (self.lowestPriorityTimeoutCount < 3) {
+                            // 小卡顿
+                        } else {
+                            // 大卡顿
+                        }
+                        NSLog(@"lowestPriority 监测到卡顿 Activity = %@", activityText(kCFRunLoopBeforeSources));
                     } else {
-                        // 大卡顿
+                        self.lowestPriorityTimeoutCount = 0;
                     }
-                    NSLog(@"lowestPriority 监测到卡顿 Activity = %@", activityText(kCFRunLoopBeforeSources));
+                    self.stackFrame = curStackFrame;
                 }
-            } else {
-                self.lowestPriorityTimeoutCount = 0;
             }
         }
     });
