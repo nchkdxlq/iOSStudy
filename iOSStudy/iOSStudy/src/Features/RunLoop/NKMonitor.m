@@ -24,6 +24,7 @@ typedef struct {
 
 // 获取主线程当前函数的 栈帧指针fp、返回地址lr
 static inline BOOL fillTopStackFrame(NKStackFrame *frame) {
+    NSDate *begin = [NSDate date];
     mach_msg_type_number_t state_count;
     kern_return_t kr;
 #if defined(__arm64__)
@@ -37,9 +38,10 @@ static inline BOOL fillTopStackFrame(NKStackFrame *frame) {
     x86_thread_state_t x86_thread_state;
     kr = thread_get_state(g_main_thread, x86_THREAD_STATE, (thread_state_t)&x86_thread_state, &state_count);
     frame->lr = x86_thread_state.uts.ts64.__rax;
-    frame->fp = x86_thread_state.uts.ts64.__rbx;
+    frame->fp = x86_thread_state.uts.ts64.__rbp;
 #endif
-    return kr != KERN_SUCCESS;
+    NSLog(@"fillTopStackFrame %f ms", [[NSDate date] timeIntervalSinceDate:begin] * 1000); // 十几~几十纳秒的性能损耗
+    return kr == KERN_SUCCESS;
 }
 
 static inline BOOL NKStackFrameEqualToFrame(NKStackFrame frame1, NKStackFrame frame2) {
@@ -90,6 +92,7 @@ NSString* activityText(CFRunLoopActivity activity) {
 
 
 static void hightestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info) {
+    NSDate *begin = [NSDate date];
     NKMonitor *monitor = (__bridge NKMonitor *)info;
     monitor.hightestPriorityRunLoopActivity = activity;
     monitor.loopCount++;
@@ -97,6 +100,7 @@ static void hightestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRu
         dispatch_semaphore_t semaphore = monitor.hightestPrioritySemaphore;
         dispatch_semaphore_signal(semaphore);
     }
+    NSLog(@"hightestPriorityObserverCallBack %f ms", [[NSDate date] timeIntervalSinceDate:begin] * 1000); // 几纳秒的性能损耗
 }
 
 
@@ -155,6 +159,7 @@ static void lowestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunL
     NSTimeInterval interval = 80; // ms
    //创建子线程监控
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
     dispatch_async(queue, ^{
         while (self.running) {
             dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_MSEC);
@@ -165,11 +170,17 @@ static void lowestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunL
                 CFRunLoopActivity activity = self.hightestPriorityRunLoopActivity;
                 switch (activity) {
                     case kCFRunLoopAfterWaiting:
+                    case kCFRunLoopBeforeTimers:
                     case kCFRunLoopBeforeSources: {
                         // 避免误判, 只有在一个方法里面的耗时超过设定的阈值就算是卡顿
                         NKStackFrame curStackFrame;
                         BOOL success = fillTopStackFrame(&curStackFrame);
-                        if (success == NO) continue;
+                        if (success == NO) {
+                            NSLog(@"获取寄存器失败");
+                            continue;
+                        }
+                        NSLog(@"lr = %llu, fp = %llu", curStackFrame.lr, curStackFrame.fp);
+                        
                         if (NKStackFrameEqualToFrame(curStackFrame, self.stackFrame)) {
                             self.hightestPriorityTimeoutCount++;
                             if (self.hightestPriorityTimeoutCount < 3) {
@@ -205,7 +216,11 @@ static void lowestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunL
                     
                     NKStackFrame curStackFrame;
                     BOOL success = fillTopStackFrame(&curStackFrame);
-                    if (success == NO) continue;
+                    if (success == NO) {
+                        NSLog(@"获取寄存器失败");
+                        continue;
+                    }
+                    NSLog(@"lr = %llu, fp = %llu", curStackFrame.lr, curStackFrame.fp);
                     
                     if (NKStackFrameEqualToFrame(curStackFrame, self.stackFrame)) {
                         self.lowestPriorityTimeoutCount++;
@@ -214,7 +229,7 @@ static void lowestPriorityObserverCallBack(CFRunLoopObserverRef observer, CFRunL
                         } else {
                             // 大卡顿
                         }
-                        NSLog(@"lowestPriority 监测到卡顿 Activity = %@", activityText(kCFRunLoopBeforeSources));
+                        NSLog(@"lowestPriority 监测到卡顿 Activity = %@", activityText(kCFRunLoopBeforeWaiting));
                     } else {
                         self.lowestPriorityTimeoutCount = 0;
                     }
