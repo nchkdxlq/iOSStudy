@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "FeatureListViewController.h"
+#import "NKCallTrace.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"safeAreaInset = %@", NSStringFromUIEdgeInsets(UIScreen.safeAreaInset));
+    [NKCallTrace start];
     
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[FeatureListViewController new]];

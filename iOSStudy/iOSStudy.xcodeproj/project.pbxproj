@@ -49,6 +49,10 @@
 		186E35962644264200FC810F /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		186E359A2650DBB000FC810F /* NKRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 186E35992650DBB000FC810F /* NKRuntime.mm */; };
 		187867F82713319200C87E48 /* OffScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187867F72713319200C87E48 /* OffScreenViewController.m */; };
+		189BA484278DD6BC0020AB0A /* NKCallRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 189BA483278DD6BC0020AB0A /* NKCallRecord.m */; };
+		189BA48827906A6D0020AB0A /* TestAssembly.c in Sources */ = {isa = PBXBuildFile; fileRef = 189BA48727906A6D0020AB0A /* TestAssembly.c */; };
+		189BA4A627A195B60020AB0A /* NKCallTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 189BA49027A0502F0020AB0A /* NKCallTrace.m */; };
+		189BA4AA27A19D160020AB0A /* SMCallTraceCore.c in Sources */ = {isa = PBXBuildFile; fileRef = 189BA49327A18BF10020AB0A /* SMCallTraceCore.c */; };
 		189EBE022764FECD00FD92BA /* BaseASDKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE012764FECD00FD92BA /* BaseASDKViewController.m */; };
 		189EBE08276504BC00FD92BA /* UINavigationBar+NKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */; };
 		189EBE0F2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 189EBE0E2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m */; };
@@ -210,6 +214,18 @@
 		186E35992650DBB000FC810F /* NKRuntime.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NKRuntime.mm; sourceTree = "<group>"; };
 		187867F62713319200C87E48 /* OffScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OffScreenViewController.h; sourceTree = "<group>"; };
 		187867F72713319200C87E48 /* OffScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffScreenViewController.m; sourceTree = "<group>"; };
+		189BA482278DD6BC0020AB0A /* NKCallRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCallRecord.h; sourceTree = "<group>"; };
+		189BA483278DD6BC0020AB0A /* NKCallRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKCallRecord.m; sourceTree = "<group>"; };
+		189BA48627906A6D0020AB0A /* TestAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAssembly.h; sourceTree = "<group>"; };
+		189BA48727906A6D0020AB0A /* TestAssembly.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TestAssembly.c; sourceTree = "<group>"; };
+		189BA48F27A0502F0020AB0A /* NKCallTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCallTrace.h; sourceTree = "<group>"; };
+		189BA49027A0502F0020AB0A /* NKCallTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKCallTrace.m; sourceTree = "<group>"; };
+		189BA49327A18BF10020AB0A /* SMCallTraceCore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SMCallTraceCore.c; sourceTree = "<group>"; };
+		189BA49427A18BF10020AB0A /* SMCallTraceCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCallTraceCore.h; sourceTree = "<group>"; };
+		189BA49C27A18C330020AB0A /* SMCallStackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCallStackModel.m; sourceTree = "<group>"; };
+		189BA49D27A18C330020AB0A /* SMCallStackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCallStackModel.h; sourceTree = "<group>"; };
+		189BA4A327A194460020AB0A /* NKCallTraceCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCallTraceCore.h; sourceTree = "<group>"; };
+		189BA4A427A194460020AB0A /* NKCallTraceCore.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = NKCallTraceCore.c; sourceTree = "<group>"; };
 		189EBE002764FECD00FD92BA /* BaseASDKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseASDKViewController.h; sourceTree = "<group>"; };
 		189EBE012764FECD00FD92BA /* BaseASDKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseASDKViewController.m; sourceTree = "<group>"; };
 		189EBE06276504BC00FD92BA /* UINavigationBar+NKExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+NKExtension.h"; sourceTree = "<group>"; };
@@ -478,6 +494,8 @@
 				184165DF26E0598D001398C5 /* NSObject+GCD.m */,
 				76767D082716DDF700540259 /* NKRunLoopActivityMonitor.h */,
 				76767D092716DDF700540259 /* NKRunLoopActivityMonitor.m */,
+				189BA482278DD6BC0020AB0A /* NKCallRecord.h */,
+				189BA483278DD6BC0020AB0A /* NKCallRecord.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -544,6 +562,8 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				189BA489279F85010020AB0A /* TimerProfiler */,
+				189BA48527906A330020AB0A /* Assembly */,
 				189EBE102767942400FD92BA /* KVO */,
 				18A2FEEF2760424500864595 /* IGListKit */,
 				18A2FEEB275FADAC00864595 /* Texture */,
@@ -662,6 +682,30 @@
 				187867F72713319200C87E48 /* OffScreenViewController.m */,
 			);
 			path = OffScreen;
+			sourceTree = "<group>";
+		};
+		189BA48527906A330020AB0A /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				189BA48627906A6D0020AB0A /* TestAssembly.h */,
+				189BA48727906A6D0020AB0A /* TestAssembly.c */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		189BA489279F85010020AB0A /* TimerProfiler */ = {
+			isa = PBXGroup;
+			children = (
+				189BA49D27A18C330020AB0A /* SMCallStackModel.h */,
+				189BA49C27A18C330020AB0A /* SMCallStackModel.m */,
+				189BA49327A18BF10020AB0A /* SMCallTraceCore.c */,
+				189BA49427A18BF10020AB0A /* SMCallTraceCore.h */,
+				189BA48F27A0502F0020AB0A /* NKCallTrace.h */,
+				189BA49027A0502F0020AB0A /* NKCallTrace.m */,
+				189BA4A327A194460020AB0A /* NKCallTraceCore.h */,
+				189BA4A427A194460020AB0A /* NKCallTraceCore.c */,
+			);
+			path = TimerProfiler;
 			sourceTree = "<group>";
 		};
 		189EBE102767942400FD92BA /* KVO */ = {
@@ -1202,18 +1246,21 @@
 				187867F82713319200C87E48 /* OffScreenViewController.m in Sources */,
 				18A2FEEE275FADCB00864595 /* NKTextureViewController.m in Sources */,
 				18F6A0152760F4E2009C9774 /* NKChat.m in Sources */,
+				189BA48827906A6D0020AB0A /* TestAssembly.c in Sources */,
 				18A2FC5C27527E9700864595 /* HTTPMetricsManager.m in Sources */,
 				180C6BF926FEC6E3004EEB67 /* LayoutLayer.m in Sources */,
 				18A2FC68275CBF8B00864595 /* NSURLSession+Metrics.m in Sources */,
 				189EBE0F2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m in Sources */,
 				186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */,
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
+				189BA484278DD6BC0020AB0A /* NKCallRecord.m in Sources */,
 				181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */,
 				768715EF25B06727005C14A8 /* NKTextAttribute.m in Sources */,
 				189EBE132767944600FD92BA /* KVOViewController.m in Sources */,
 				767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */,
 				184165E026E0598D001398C5 /* NSObject+GCD.m in Sources */,
 				182B99B626FE1C9700F55ECD /* LayoutViewController.m in Sources */,
+				189BA4A627A195B60020AB0A /* NKCallTrace.m in Sources */,
 				182E150525979670007343C4 /* main.m in Sources */,
 				184165E426E27A18001398C5 /* NKPortViewController.m in Sources */,
 				186CE70925995E4E00EA71B8 /* NKTextLine.m in Sources */,
@@ -1228,6 +1275,7 @@
 				1855C8852737D0DD0038E3AD /* fishhook.c in Sources */,
 				18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */,
 				184165DD26E04F43001398C5 /* NKUIViewLifeCircleController.m in Sources */,
+				189BA4AA27A19D160020AB0A /* SMCallTraceCore.c in Sources */,
 				763A4F5F25BACBB900A46471 /* NKCGUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
