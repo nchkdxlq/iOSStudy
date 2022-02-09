@@ -74,6 +74,7 @@ static void release_thread_call_stack(void *ptr) {
 }
 
 static inline void push_call_record(id _self, Class _cls, SEL _cmd, uintptr_t lr) {
+    printf("push_call_record\n");
     thread_call_stack *cs = get_thread_call_stack();
     if (cs) {
         int nextIndex = (++cs->index);
@@ -178,7 +179,7 @@ static void hook_Objc_msgSend() {
     save()
     
     __asm volatile ("mov x2, lr\n");
-    __asm volatile ("mov x3, x4\n");
+//    __asm volatile ("mov x3, x4\n");
     
     // Call our before_objc_msgSend.
     call(blr, &before_objc_msgSend)

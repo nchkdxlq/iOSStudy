@@ -15,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)stop;
 
+
++ (void)getCallRecords;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -49,7 +49,6 @@
 		186E35962644264200FC810F /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		186E359A2650DBB000FC810F /* NKRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 186E35992650DBB000FC810F /* NKRuntime.mm */; };
 		187867F82713319200C87E48 /* OffScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187867F72713319200C87E48 /* OffScreenViewController.m */; };
-		189BA484278DD6BC0020AB0A /* NKCallRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 189BA483278DD6BC0020AB0A /* NKCallRecord.m */; };
 		189BA48827906A6D0020AB0A /* TestAssembly.c in Sources */ = {isa = PBXBuildFile; fileRef = 189BA48727906A6D0020AB0A /* TestAssembly.c */; };
 		189BA4A627A195B60020AB0A /* NKCallTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 189BA49027A0502F0020AB0A /* NKCallTrace.m */; };
 		189BA4AA27A19D160020AB0A /* SMCallTraceCore.c in Sources */ = {isa = PBXBuildFile; fileRef = 189BA49327A18BF10020AB0A /* SMCallTraceCore.c */; };
@@ -214,8 +213,6 @@
 		186E35992650DBB000FC810F /* NKRuntime.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NKRuntime.mm; sourceTree = "<group>"; };
 		187867F62713319200C87E48 /* OffScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OffScreenViewController.h; sourceTree = "<group>"; };
 		187867F72713319200C87E48 /* OffScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffScreenViewController.m; sourceTree = "<group>"; };
-		189BA482278DD6BC0020AB0A /* NKCallRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCallRecord.h; sourceTree = "<group>"; };
-		189BA483278DD6BC0020AB0A /* NKCallRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKCallRecord.m; sourceTree = "<group>"; };
 		189BA48627906A6D0020AB0A /* TestAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAssembly.h; sourceTree = "<group>"; };
 		189BA48727906A6D0020AB0A /* TestAssembly.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TestAssembly.c; sourceTree = "<group>"; };
 		189BA48F27A0502F0020AB0A /* NKCallTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKCallTrace.h; sourceTree = "<group>"; };
@@ -494,8 +491,6 @@
 				184165DF26E0598D001398C5 /* NSObject+GCD.m */,
 				76767D082716DDF700540259 /* NKRunLoopActivityMonitor.h */,
 				76767D092716DDF700540259 /* NKRunLoopActivityMonitor.m */,
-				189BA482278DD6BC0020AB0A /* NKCallRecord.h */,
-				189BA483278DD6BC0020AB0A /* NKCallRecord.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1253,7 +1248,6 @@
 				189EBE0F2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m in Sources */,
 				186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */,
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
-				189BA484278DD6BC0020AB0A /* NKCallRecord.m in Sources */,
 				181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */,
 				768715EF25B06727005C14A8 /* NKTextAttribute.m in Sources */,
 				189EBE132767944600FD92BA /* KVOViewController.m in Sources */,
