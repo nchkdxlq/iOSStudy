@@ -22,7 +22,7 @@
         objc_setAssociatedObject(self, _cmd, [NSValue valueWithUIEdgeInsets:insets], OBJC_ASSOCIATION_RETAIN);
         return insets;
     } else {
-        return UIEdgeInsetsMake(20, 0, 0, 0);
+        return UIEdgeInsetsZero;
     }
 }
 

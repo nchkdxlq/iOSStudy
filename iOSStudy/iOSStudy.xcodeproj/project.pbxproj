@@ -48,6 +48,7 @@
 		186E35922644225200FC810F /* NKBlockCaptureObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35912644225200FC810F /* NKBlockCaptureObject.m */; };
 		186E35962644264200FC810F /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		186E359A2650DBB000FC810F /* NKRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 186E35992650DBB000FC810F /* NKRuntime.mm */; };
+		18719E5A27B3FAFF009C77C1 /* WKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18719E5927B3FAFF009C77C1 /* WKWebViewController.m */; };
 		187867F82713319200C87E48 /* OffScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187867F72713319200C87E48 /* OffScreenViewController.m */; };
 		189BA48827906A6D0020AB0A /* TestAssembly.c in Sources */ = {isa = PBXBuildFile; fileRef = 189BA48727906A6D0020AB0A /* TestAssembly.c */; };
 		189BA4A627A195B60020AB0A /* NKCallTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 189BA49027A0502F0020AB0A /* NKCallTrace.m */; };
@@ -211,6 +212,8 @@
 		186E35952644264200FC810F /* NSObject+RetainCount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RetainCount.m"; sourceTree = "<group>"; };
 		186E35982650DBB000FC810F /* NKRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKRuntime.h; sourceTree = "<group>"; };
 		186E35992650DBB000FC810F /* NKRuntime.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NKRuntime.mm; sourceTree = "<group>"; };
+		18719E5827B3FAFF009C77C1 /* WKWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKWebViewController.h; sourceTree = "<group>"; };
+		18719E5927B3FAFF009C77C1 /* WKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKWebViewController.m; sourceTree = "<group>"; };
 		187867F62713319200C87E48 /* OffScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OffScreenViewController.h; sourceTree = "<group>"; };
 		187867F72713319200C87E48 /* OffScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OffScreenViewController.m; sourceTree = "<group>"; };
 		189BA48627906A6D0020AB0A /* TestAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAssembly.h; sourceTree = "<group>"; };
@@ -557,6 +560,7 @@
 		186CE6BB2598294F00EA71B8 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				18719E5727B3FABC009C77C1 /* WKWebView */,
 				189BA489279F85010020AB0A /* TimerProfiler */,
 				189BA48527906A330020AB0A /* Assembly */,
 				189EBE102767942400FD92BA /* KVO */,
@@ -668,6 +672,15 @@
 				186E35992650DBB000FC810F /* NKRuntime.mm */,
 			);
 			path = Runtime;
+			sourceTree = "<group>";
+		};
+		18719E5727B3FABC009C77C1 /* WKWebView */ = {
+			isa = PBXGroup;
+			children = (
+				18719E5827B3FAFF009C77C1 /* WKWebViewController.h */,
+				18719E5927B3FAFF009C77C1 /* WKWebViewController.m */,
+			);
+			path = WKWebView;
 			sourceTree = "<group>";
 		};
 		187867F52713314B00C87E48 /* OffScreen */ = {
@@ -1247,6 +1260,7 @@
 				18A2FC68275CBF8B00864595 /* NSURLSession+Metrics.m in Sources */,
 				189EBE0F2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m in Sources */,
 				186CE7002598D5D300EA71B8 /* NKTextViewController.m in Sources */,
+				18719E5A27B3FAFF009C77C1 /* WKWebViewController.m in Sources */,
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
 				181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */,
 				768715EF25B06727005C14A8 /* NKTextAttribute.m in Sources */,
