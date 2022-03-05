@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "FeatureListViewController.h"
 #import "NKCallTrace.h"
+#import "NKLaunchMetrics.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [NKLaunchMetrics didFinishLaunchingBegin];
     NSLog(@"safeAreaInset = %@", NSStringFromUIEdgeInsets(UIScreen.safeAreaInset));
 //    [NKCallTrace start];
     
@@ -27,6 +29,7 @@
     [window makeKeyAndVisible];
     [NKRunLoopActivityMonitor startMonitor];
     
+    [NKLaunchMetrics didFinishLaunchingEnd];
     return YES;
 }
 

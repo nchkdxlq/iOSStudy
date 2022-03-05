@@ -7,8 +7,11 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "NKLaunchMetrics.h"
 
 int main(int argc, char * argv[]) {
+    [NKLaunchMetrics main];
+    
     NSString * appDelegateClassName;
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.

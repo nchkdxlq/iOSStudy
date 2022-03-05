@@ -67,6 +67,7 @@
 		18A9370F26C78638000088B7 /* LockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9370E26C78638000088B7 /* LockViewController.m */; };
 		18A9371026C7887C000088B7 /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18A9371426C78AEF000088B7 /* Synchronized.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9371326C78AEF000088B7 /* Synchronized.m */; };
+		18AD235727D34DC800E2DDAD /* NKLaunchMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AD235627D34DC800E2DDAD /* NKLaunchMetrics.m */; };
 		18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */; };
 		18CF9AD62663E05300A34A85 /* NKGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD52663E05300A34A85 /* NKGCDViewController.m */; };
 		18CF9AD92669A73500A34A85 /* NKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD82669A73500A34A85 /* NKHTTPClient.m */; };
@@ -254,6 +255,8 @@
 		18A9371226C78AEF000088B7 /* Synchronized.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Synchronized.h; sourceTree = "<group>"; };
 		18A9371326C78AEF000088B7 /* Synchronized.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Synchronized.m; sourceTree = "<group>"; };
 		18A9371526C78C8B000088B7 /* Synchronized.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Synchronized.cpp; sourceTree = "<group>"; };
+		18AD235527D34DC800E2DDAD /* NKLaunchMetrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKLaunchMetrics.h; sourceTree = "<group>"; };
+		18AD235627D34DC800E2DDAD /* NKLaunchMetrics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKLaunchMetrics.m; sourceTree = "<group>"; };
 		18CF9AD0265D4C1D00A34A85 /* NKRunLoopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKRunLoopViewController.h; sourceTree = "<group>"; };
 		18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKRunLoopViewController.m; sourceTree = "<group>"; };
 		18CF9AD42663E05300A34A85 /* NKGCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKGCDViewController.h; sourceTree = "<group>"; };
@@ -477,6 +480,7 @@
 		182E154225980A4E007343C4 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				18AD235427D34D9000E2DDAD /* NKLaunchMetrics */,
 				76B150C825C257380075D367 /* DynamicLaunchImage */,
 				186CE6D525989DFC00EA71B8 /* NKText */,
 				186CE6BD2598298A00EA71B8 /* Category */,
@@ -781,6 +785,15 @@
 				18A9371526C78C8B000088B7 /* Synchronized.cpp */,
 			);
 			path = "@synchronized";
+			sourceTree = "<group>";
+		};
+		18AD235427D34D9000E2DDAD /* NKLaunchMetrics */ = {
+			isa = PBXGroup;
+			children = (
+				18AD235527D34DC800E2DDAD /* NKLaunchMetrics.h */,
+				18AD235627D34DC800E2DDAD /* NKLaunchMetrics.m */,
+			);
+			path = NKLaunchMetrics;
 			sourceTree = "<group>";
 		};
 		18CF9ACF265D4BE800A34A85 /* RunLoop */ = {
@@ -1263,6 +1276,7 @@
 				18719E5A27B3FAFF009C77C1 /* WKWebViewController.m in Sources */,
 				186CE6CE259829A300EA71B8 /* MDHTMLViewController.m in Sources */,
 				181A8AF526D71F3800922CA6 /* NKOperationViewController.m in Sources */,
+				18AD235727D34DC800E2DDAD /* NKLaunchMetrics.m in Sources */,
 				768715EF25B06727005C14A8 /* NKTextAttribute.m in Sources */,
 				189EBE132767944600FD92BA /* KVOViewController.m in Sources */,
 				767E612625A810C6007066F3 /* SDWebImageViewController.m in Sources */,
@@ -1477,7 +1491,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 733RR644TP;
+				DEVELOPMENT_TEAM = PAXG53JU3J;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iOSStudy/iOSStudy.pch";
 				INFOPLIST_FILE = iOSStudy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

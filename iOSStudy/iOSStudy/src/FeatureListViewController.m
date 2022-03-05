@@ -30,6 +30,7 @@
 #import "WKWebViewController.h"
 
 #import "LaunchImageHelper.h"
+#import "NKLaunchMetrics.h"
 
 static NSString * const kDataSourceClassKey = @"dataSourceClassKey";
 static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
@@ -61,6 +62,11 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
     
     [self setupSubView];
     [self setupData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [NKLaunchMetrics firstFrameDidRender];
 }
 
 - (void)setupSubView {
