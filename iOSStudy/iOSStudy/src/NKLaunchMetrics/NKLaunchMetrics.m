@@ -28,7 +28,6 @@ NSTimeInterval processStartTime(void) {
 
 // 记录各节点的时间戳(ms)
 static NSTimeInterval g_mainTime = 0;
-static NSTimeInterval g_didFinishBeginTime = 0;
 static NSTimeInterval g_didFinishEndTime = 0;
 
 @implementation NKLaunchMetrics
@@ -37,38 +36,31 @@ static NSTimeInterval g_didFinishEndTime = 0;
     g_mainTime = [[NSDate date] timeIntervalSince1970] * 1000;
 }
 
-
-+ (void)didFinishLaunchingBegin {
-    g_didFinishBeginTime = [[NSDate date] timeIntervalSince1970] * 1000;
-}
-
-
 + (void)didFinishLaunchingEnd {
     g_didFinishEndTime = [[NSDate date] timeIntervalSince1970] * 1000;
 }
 
-+ (void)firstFrameDidRender {
++ (void)initialFrameDidRender {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self internalFirstFrameDidRender];
+        [self internalInitialFrameDidRender];
     });
 }
 
-+ (void)internalFirstFrameDidRender {
-    NSTimeInterval firstFrameDidRender = [[NSDate date] timeIntervalSince1970] * 1000;
++ (void)internalInitialFrameDidRender {
+    NSTimeInterval initialFrameDidRender = [[NSDate date] timeIntervalSince1970] * 1000;
     NSTimeInterval startTime = processStartTime();
     
-    NSTimeInterval total = firstFrameDidRender - startTime;
+    NSTimeInterval total = initialFrameDidRender - startTime;
     NSTimeInterval prevMain = g_mainTime - startTime;
-    NSTimeInterval afterMain = firstFrameDidRender - g_mainTime;
-    NSTimeInterval didFinishLaunch = g_didFinishEndTime - g_didFinishBeginTime;
+    NSTimeInterval didFinishLaunch = g_didFinishEndTime - g_mainTime; // 非常接近Instruments统计结果
+    NSTimeInterval initialFrame = initialFrameDidRender - g_didFinishEndTime;
     
     NSLog(@"\n\
           AppLaunch Metrics           total = %.3f ms \n\
           AppLaunch Metrics        prevMain = %.3f ms \n\
-          AppLaunch Metrics       afterMain = %.3f ms \n\
-          AppLaunch Metrics didFinishLaunch = %.3f ms", total,prevMain, afterMain, didFinishLaunch);
+          AppLaunch Metrics didFinishLaunch = %.3f ms \n\
+          AppLaunch Metrics    initialFrame = %.3f ms", total, prevMain, didFinishLaunch, initialFrame);
 }
-
 
 @end

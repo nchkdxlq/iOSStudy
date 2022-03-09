@@ -66,7 +66,7 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [NKLaunchMetrics firstFrameDidRender];
+    [NKLaunchMetrics initialFrameDidRender];
 }
 
 - (void)setupSubView {

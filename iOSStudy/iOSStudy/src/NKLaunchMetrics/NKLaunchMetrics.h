@@ -18,18 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NKLaunchMetrics : NSObject
 
-
 // mian函数
 + (void)main;
-
-// AppDelegate didFinishLaunchingWithOptions 函数开始
-+ (void)didFinishLaunchingBegin;
 
 // AppDelegate didFinishLaunchingWithOptions 函数结束
 + (void)didFinishLaunchingEnd;
 
-// 首帧渲染完成, 一般在首页控制器的 viewDidAppear 方法中调用
-+ (void)firstFrameDidRender;
+// 首帧渲染完成, 在首页控制器的 viewDidAppear 方法中调用
++ (void)initialFrameDidRender;
 
 
 @end

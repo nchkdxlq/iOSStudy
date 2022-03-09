@@ -18,7 +18,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [NKLaunchMetrics didFinishLaunchingBegin];
     NSLog(@"safeAreaInset = %@", NSStringFromUIEdgeInsets(UIScreen.safeAreaInset));
 //    [NKCallTrace start];
     
