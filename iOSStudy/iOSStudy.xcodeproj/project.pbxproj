@@ -68,6 +68,7 @@
 		18A9371026C7887C000088B7 /* NSObject+RetainCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E35952644264200FC810F /* NSObject+RetainCount.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18A9371426C78AEF000088B7 /* Synchronized.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9371326C78AEF000088B7 /* Synchronized.m */; };
 		18AD235727D34DC800E2DDAD /* NKLaunchMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AD235627D34DC800E2DDAD /* NKLaunchMetrics.m */; };
+		18AD235A27DA4BBB00E2DDAD /* NKURLSchemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AD235927DA4BBB00E2DDAD /* NKURLSchemeHandler.m */; };
 		18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */; };
 		18CF9AD62663E05300A34A85 /* NKGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD52663E05300A34A85 /* NKGCDViewController.m */; };
 		18CF9AD92669A73500A34A85 /* NKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD82669A73500A34A85 /* NKHTTPClient.m */; };
@@ -257,6 +258,8 @@
 		18A9371526C78C8B000088B7 /* Synchronized.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Synchronized.cpp; sourceTree = "<group>"; };
 		18AD235527D34DC800E2DDAD /* NKLaunchMetrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKLaunchMetrics.h; sourceTree = "<group>"; };
 		18AD235627D34DC800E2DDAD /* NKLaunchMetrics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKLaunchMetrics.m; sourceTree = "<group>"; };
+		18AD235827DA4BBB00E2DDAD /* NKURLSchemeHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKURLSchemeHandler.h; sourceTree = "<group>"; };
+		18AD235927DA4BBB00E2DDAD /* NKURLSchemeHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKURLSchemeHandler.m; sourceTree = "<group>"; };
 		18CF9AD0265D4C1D00A34A85 /* NKRunLoopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKRunLoopViewController.h; sourceTree = "<group>"; };
 		18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKRunLoopViewController.m; sourceTree = "<group>"; };
 		18CF9AD42663E05300A34A85 /* NKGCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKGCDViewController.h; sourceTree = "<group>"; };
@@ -683,6 +686,8 @@
 			children = (
 				18719E5827B3FAFF009C77C1 /* WKWebViewController.h */,
 				18719E5927B3FAFF009C77C1 /* WKWebViewController.m */,
+				18AD235827DA4BBB00E2DDAD /* NKURLSchemeHandler.h */,
+				18AD235927DA4BBB00E2DDAD /* NKURLSchemeHandler.m */,
 			);
 			path = WKWebView;
 			sourceTree = "<group>";
@@ -1250,6 +1255,7 @@
 				186CE6F32598C63700EA71B8 /* NKTextContainer.m in Sources */,
 				1854064327511ED700EDB9A5 /* NetworkViewController.m in Sources */,
 				76B150D125C2577F0075D367 /* BBADynamicLaunchImage.m in Sources */,
+				18AD235A27DA4BBB00E2DDAD /* NKURLSchemeHandler.m in Sources */,
 				186CE6F92598CE2000EA71B8 /* NKTextMacro.m in Sources */,
 				766CF0D2272AD34800DBC236 /* CallStackViewController.m in Sources */,
 				7684170027300B9100DC201A /* NKCallStackSymbols.m in Sources */,

@@ -8,6 +8,7 @@
 #import "WKWebViewController.h"
 #import <WebKit/WebKit.h>
 
+#import "NKURLSchemeHandler.h"
 
 /*
  
@@ -45,7 +46,7 @@
     CGFloat height = UIScreen.height - UIScreen.safeAreaInset.top - 200;
     CGRect frame = CGRectMake(0, UIScreen.safeAreaInset.top, UIScreen.width, height);
     WKWebViewConfiguration *config = [WKWebViewConfiguration new];
-    
+    [config setURLSchemeHandler:[NKURLSchemeHandler new] forURLScheme:NKURLSchemeHandler.scheme];
     WKUserScript *userScript = [[WKUserScript alloc] initWithSource:[self scriptString]
                                                       injectionTime:WKUserScriptInjectionTimeAtDocumentStart
                                                    forMainFrameOnly:NO];
