@@ -69,6 +69,7 @@
 		18A9371426C78AEF000088B7 /* Synchronized.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A9371326C78AEF000088B7 /* Synchronized.m */; };
 		18AD235727D34DC800E2DDAD /* NKLaunchMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AD235627D34DC800E2DDAD /* NKLaunchMetrics.m */; };
 		18AD235A27DA4BBB00E2DDAD /* NKURLSchemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AD235927DA4BBB00E2DDAD /* NKURLSchemeHandler.m */; };
+		18AD235D27EA0AA200E2DDAD /* UIDevice+UnitType.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AD235C27EA0AA200E2DDAD /* UIDevice+UnitType.m */; };
 		18CF9AD2265D4C1D00A34A85 /* NKRunLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */; };
 		18CF9AD62663E05300A34A85 /* NKGCDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD52663E05300A34A85 /* NKGCDViewController.m */; };
 		18CF9AD92669A73500A34A85 /* NKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF9AD82669A73500A34A85 /* NKHTTPClient.m */; };
@@ -260,6 +261,8 @@
 		18AD235627D34DC800E2DDAD /* NKLaunchMetrics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKLaunchMetrics.m; sourceTree = "<group>"; };
 		18AD235827DA4BBB00E2DDAD /* NKURLSchemeHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKURLSchemeHandler.h; sourceTree = "<group>"; };
 		18AD235927DA4BBB00E2DDAD /* NKURLSchemeHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKURLSchemeHandler.m; sourceTree = "<group>"; };
+		18AD235B27EA0AA200E2DDAD /* UIDevice+UnitType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+UnitType.h"; sourceTree = "<group>"; };
+		18AD235C27EA0AA200E2DDAD /* UIDevice+UnitType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+UnitType.m"; sourceTree = "<group>"; };
 		18CF9AD0265D4C1D00A34A85 /* NKRunLoopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKRunLoopViewController.h; sourceTree = "<group>"; };
 		18CF9AD1265D4C1D00A34A85 /* NKRunLoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKRunLoopViewController.m; sourceTree = "<group>"; };
 		18CF9AD42663E05300A34A85 /* NKGCDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NKGCDViewController.h; sourceTree = "<group>"; };
@@ -604,6 +607,8 @@
 				189EBE07276504BC00FD92BA /* UINavigationBar+NKExtension.m */,
 				189EBE0D2765DA4900FD92BA /* UIScreen+SafeAreaInsets.h */,
 				189EBE0E2765DA4900FD92BA /* UIScreen+SafeAreaInsets.m */,
+				18AD235B27EA0AA200E2DDAD /* UIDevice+UnitType.h */,
+				18AD235C27EA0AA200E2DDAD /* UIDevice+UnitType.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1260,6 +1265,7 @@
 				766CF0D2272AD34800DBC236 /* CallStackViewController.m in Sources */,
 				7684170027300B9100DC201A /* NKCallStackSymbols.m in Sources */,
 				76767D022715277600540259 /* NotificationViewController.m in Sources */,
+				18AD235D27EA0AA200E2DDAD /* UIDevice+UnitType.m in Sources */,
 				182B99B226F8DC9B00F55ECD /* NKTapGestureRecognizer.m in Sources */,
 				186CE6CC259829A300EA71B8 /* YYKitViewController.m in Sources */,
 				76841703273012B400DC201A /* NKProcessInfo.m in Sources */,

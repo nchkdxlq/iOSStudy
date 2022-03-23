@@ -9,6 +9,7 @@
 #import "FeatureListViewController.h"
 #import "NKCallTrace.h"
 #import "NKLaunchMetrics.h"
+#import "UIDevice+UnitType.h"
 
 @interface AppDelegate ()
 
@@ -18,10 +19,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NSLog(@"safeAreaInset = %@", NSStringFromUIEdgeInsets(UIScreen.safeAreaInset));
 //    [NKCallTrace start];
     
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    NSLog(@"%@ areaInset = %@", [UIDevice currentDevice].deviceTypeName, NSStringFromUIEdgeInsets(window.safeAreaInsets));
+    NSLog(@"%@ areaInset = %@", [UIDevice currentDevice].deviceTypeName, NSStringFromUIEdgeInsets(UIScreen.areaInsets));
+    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[FeatureListViewController new]];
     window.rootViewController = nav;
     self.window = window;

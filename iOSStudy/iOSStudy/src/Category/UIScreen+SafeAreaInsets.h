@@ -11,7 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIScreen (SafeAreaInsets)
 
-@property (nonatomic, assign, readonly, class) UIEdgeInsets safeAreaInset;
+@property (nonatomic, assign, readonly, class) UIEdgeInsets areaInsets;
+
+
+/// 是否为刘海屏
+@property (nonatomic, assign, readonly, class) BOOL isNotch;
 
 @end
 

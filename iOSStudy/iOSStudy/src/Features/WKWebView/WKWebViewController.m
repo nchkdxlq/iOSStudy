@@ -43,8 +43,8 @@
 }
 
 - (void)setupWebView {
-    CGFloat height = UIScreen.height - UIScreen.safeAreaInset.top - 200;
-    CGRect frame = CGRectMake(0, UIScreen.safeAreaInset.top, UIScreen.width, height);
+    CGFloat height = UIScreen.height - UIScreen.areaInsets.top - 200;
+    CGRect frame = CGRectMake(0, UIScreen.areaInsets.top, UIScreen.width, height);
     WKWebViewConfiguration *config = [WKWebViewConfiguration new];
     [config setURLSchemeHandler:[NKURLSchemeHandler new] forURLScheme:NKURLSchemeHandler.scheme];
     WKUserScript *userScript = [[WKUserScript alloc] initWithSource:[self scriptString]

@@ -53,7 +53,7 @@
     self.tableNode = [[ASTableNode alloc] initWithStyle:UITableViewStylePlain];
     self.tableNode.view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     self.tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableNode.contentInset = UIEdgeInsetsMake(0, 0, UIScreen.safeAreaInset.bottom, 0);
+    self.tableNode.contentInset = UIEdgeInsetsMake(0, 0, UIScreen.areaInsets.bottom, 0);
     self.tableNode.automaticallyAdjustsContentOffset = NO;
     self.tableNode.delegate = self;
     self.tableNode.dataSource = self;
