@@ -45,7 +45,7 @@
 }
 
 + (BOOL)isNotch {
-    return self.areaInsets.top > 0;
+    return self.areaInsets.bottom > 0;
 }
 
 @end

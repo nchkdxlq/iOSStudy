@@ -13,6 +13,10 @@ typedef NSString *UIDeviceTypeName NS_STRING_ENUM;
 
 FOUNDATION_EXPORT const UIDeviceTypeName UIDeviceTypeNameUnkown;
 
+FOUNDATION_EXPORT const UIDeviceTypeName UIDeviceTypeNameiPhone1G;
+FOUNDATION_EXPORT const UIDeviceTypeName UIDeviceTypeNameiPhone3G;
+FOUNDATION_EXPORT const UIDeviceTypeName UIDeviceTypeNameiPhone3GS;
+
 // 2010
 FOUNDATION_EXPORT const UIDeviceTypeName UIDeviceTypeNameiPhone4;
 

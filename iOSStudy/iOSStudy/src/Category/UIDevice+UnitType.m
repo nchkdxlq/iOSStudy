@@ -6,9 +6,13 @@
 //
 
 #import "UIDevice+UnitType.h"
-
+#import <sys/utsname.h>
 
 const UIDeviceTypeName UIDeviceTypeNameUnkown = @"Unkown";
+
+const UIDeviceTypeName UIDeviceTypeNameiPhone1G = @"iPhone 1G";
+const UIDeviceTypeName UIDeviceTypeNameiPhone3G = @"iPhone 3G";
+const UIDeviceTypeName UIDeviceTypeNameiPhone3GS = @"iPhone 3GS";
 
 // 2010
 const UIDeviceTypeName UIDeviceTypeNameiPhone4 = @"iPhone 4";
@@ -86,11 +90,63 @@ const UIDeviceTypeName UIDeviceTypeNameiPhone13ProMax = @"iPhone 13 Pro Max";
 }
 
 - (NSString *)simulatorDeviceName {
-    return [NSProcessInfo processInfo].environment[@"SIMULATOR_DEVICE_NAME"];
+    NSString *name = [NSProcessInfo processInfo].environment[@"SIMULATOR_DEVICE_NAME"];
+    if ([name isEqualToString:@"iPhone SE (1st generation)"]) {
+        return UIDeviceTypeNameiPhoneSE;
+    } else if ([name isEqualToString:@"iPhone SE (2nd generation)"]) {
+        return UIDeviceTypeNameiPhoneSE2;
+    } else {
+        return name;
+    }
 }
 
-- (NSString *)iPhoneDeviceName {
-    return nil;
++ (NSString *)iPhoneDeviceName {
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    
+    //iPhone
+    if ([platform isEqualToString:@"iPhone1,1"]) return UIDeviceTypeNameiPhone1G;
+    if ([platform isEqualToString:@"iPhone1,2"]) return UIDeviceTypeNameiPhone3G;
+    if ([platform isEqualToString:@"iPhone2,1"]) return UIDeviceTypeNameiPhone3GS;
+    if ([platform isEqualToString:@"iPhone3,1"]) return UIDeviceTypeNameiPhone4;
+    if ([platform isEqualToString:@"iPhone3,2"]) return UIDeviceTypeNameiPhone4;
+    if ([platform isEqualToString:@"iPhone4,1"]) return UIDeviceTypeNameiPhone4s;
+    if ([platform isEqualToString:@"iPhone5,1"]) return UIDeviceTypeNameiPhone5;
+    if ([platform isEqualToString:@"iPhone5,2"]) return UIDeviceTypeNameiPhone5;
+    if ([platform isEqualToString:@"iPhone5,3"]) return UIDeviceTypeNameiPhone5c;
+    if ([platform isEqualToString:@"iPhone5,4"]) return UIDeviceTypeNameiPhone5c;
+    if ([platform isEqualToString:@"iPhone6,1"]) return UIDeviceTypeNameiPhone5s;
+    if ([platform isEqualToString:@"iPhone6,2"]) return UIDeviceTypeNameiPhone5s;
+    if ([platform isEqualToString:@"iPhone7,1"]) return UIDeviceTypeNameiPhone6Plus;
+    if ([platform isEqualToString:@"iPhone7,2"]) return UIDeviceTypeNameiPhone6;
+    if ([platform isEqualToString:@"iPhone8,1"]) return UIDeviceTypeNameiPhone6s;
+    if ([platform isEqualToString:@"iPhone8,2"]) return UIDeviceTypeNameiPhone6sPlus;
+    if ([platform isEqualToString:@"iPhone8,4"]) return UIDeviceTypeNameiPhoneSE;
+    if ([platform isEqualToString:@"iPhone9,1"]) return UIDeviceTypeNameiPhone7;
+    if ([platform isEqualToString:@"iPhone9,3"]) return UIDeviceTypeNameiPhone7;
+    if ([platform isEqualToString:@"iPhone9,2"]) return UIDeviceTypeNameiPhone7Plus;
+    if ([platform isEqualToString:@"iPhone9,4"]) return UIDeviceTypeNameiPhone7Plus;
+    if ([platform isEqualToString:@"iPhone10,1"]) return UIDeviceTypeNameiPhone8;
+    if ([platform isEqualToString:@"iPhone10,4"]) return UIDeviceTypeNameiPhone8;
+    if ([platform isEqualToString:@"iPhone10,2"]) return UIDeviceTypeNameiPhone8Plus;
+    if ([platform isEqualToString:@"iPhone10,5"]) return UIDeviceTypeNameiPhone8Plus;
+    if ([platform isEqualToString:@"iPhone10,3"]) return UIDeviceTypeNameiPhoneX;
+    if ([platform isEqualToString:@"iPhone10,6"]) return UIDeviceTypeNameiPhoneX;
+    if ([platform isEqualToString:@"iPhone11,8"]) return UIDeviceTypeNameiPhoneXR;
+    if ([platform isEqualToString:@"iPhone11,2"]) return UIDeviceTypeNameiPhoneXS;
+    if ([platform isEqualToString:@"iPhone11,4"]) return UIDeviceTypeNameiPhoneXSMax;
+    if ([platform isEqualToString:@"iPhone11,6"]) return UIDeviceTypeNameiPhoneXSMax;
+    if ([platform isEqualToString:@"iPhone12,1"]) return UIDeviceTypeNameiPhone11;
+    if ([platform isEqualToString:@"iPhone12,3"]) return UIDeviceTypeNameiPhone11Pro;
+    if ([platform isEqualToString:@"iPhone12,5"]) return UIDeviceTypeNameiPhone11ProMax;
+    if ([platform isEqualToString:@"iPhone12,8"]) return UIDeviceTypeNameiPhoneSE2;
+    if ([platform isEqualToString:@"iPhone13,1"]) return UIDeviceTypeNameiPhone12Mini;
+    if ([platform isEqualToString:@"iPhone13,2"]) return UIDeviceTypeNameiPhone12;
+    if ([platform isEqualToString:@"iPhone13,3"]) return UIDeviceTypeNameiPhone12Pro;
+    if ([platform isEqualToString:@"iPhone13,4"]) return UIDeviceTypeNameiPhone12ProMax;
+    
+    return platform;
 }
 
 @end
