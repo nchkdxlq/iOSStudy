@@ -100,7 +100,7 @@ const UIDeviceTypeName UIDeviceTypeNameiPhone13ProMax = @"iPhone 13 Pro Max";
     }
 }
 
-+ (NSString *)iPhoneDeviceName {
+- (NSString *)iPhoneDeviceName {
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];

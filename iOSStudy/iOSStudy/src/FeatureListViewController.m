@@ -28,6 +28,7 @@
 #import "NKIGListKitViewController.h"
 #import "KVOViewController.h"
 #import "WKWebViewController.h"
+#import "NKOperationViewController.h"
 
 #import "LaunchImageHelper.h"
 #import "NKLaunchMetrics.h"
@@ -102,6 +103,7 @@ static NSString * const kDataSourceTitleKey = @"dataSourceTitleKey";
                     @{kDataSourceClassKey:NKTextureViewController.class, kDataSourceTitleKey:@"Texture"},
                     @{kDataSourceClassKey:NKIGListKitViewController.class, kDataSourceTitleKey:@"IGListKit"},
                     @{kDataSourceClassKey:WKWebViewController.class, kDataSourceTitleKey:@"WKWebView"},
+                    @{kDataSourceClassKey:NKOperationViewController.class, kDataSourceTitleKey:@"Operation"},
                     @{kDataSourceClassKey:NKResponderChainViewController.class, kDataSourceTitleKey:@"ResponderChain"}
                 ];
 }
